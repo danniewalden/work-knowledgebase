@@ -1,0 +1,51 @@
+{
+  "_comment": "Configuration for the 'event-modeling-agents-watch' scheduled task. Edit this file to change what the weekly watch looks for. The task reads it at the start of every run. Add/remove items freely; keep it valid JSON.",
+  "lookback_days": 14,
+  "_scope_options": "Each watch axis has its own scope. 'focus-only' = capture only items touching the listed topics (a narrow net for on-target material). 'anything-substantive' = capture any notable new post regardless of topic, flagging off-thread items in the report (used for the people watch, where the value is the author, not the keyword match).",
+  "topic_scope": "focus-only",
+  "people_scope": "anything-substantive",
+  "topics": [
+    {
+      "name": "Event Modeling × AI agents",
+      "description": "The intersection of AI agents / agentic systems and Event Modeling (Adam Dymitruk's design method) — not just event sourcing.",
+      "queries": [
+        "\"event modeling\" AI agents",
+        "\"event modeling\" LLM agentic",
+        "Adam Dymitruk agents LLM",
+        "eventmodeling.org new posts",
+        "\"given-when-then\" agent specification",
+        "discrete-event / formal specification of LLM agents"
+      ]
+    }
+  ],
+  "people": [
+    {
+      "name": "Adam Dymitruk",
+      "note": "Creator of Event Modeling; most on-target voice for the focus area.",
+      "x": ["https://x.com/adymitruk", "https://x.com/eventmodeling"],
+      "linkedin": "https://www.linkedin.com/in/eventmodeling",
+      "blog": ["https://eventmodeling.org/posts", "https://podcast.eventmodeling.org"]
+    },
+    {
+      "name": "Martin Dilger",
+      "note": "Co-host of the Event Modeling & Event Sourcing podcast; prooph board community. Verify handles by search if these go stale.",
+      "x": [],
+      "linkedin": "",
+      "blog": []
+    },
+    {
+      "name": "Andrej Karpathy",
+      "note": "Originator of the LLM Wiki pattern this KB runs on; broad AI/ML commentary.",
+      "x": ["https://x.com/karpathy"],
+      "linkedin": "",
+      "blog": ["https://karpathy.ai", "https://karpathy.github.io"]
+    },
+    {
+      "name": "Birgitta Böckeler",
+      "note": "Thoughtworks Distinguished Engineer; named the harness-engineering mental model.",
+      "x": [],
+      "linkedin": "",
+      "blog": ["https://martinfowler.com/articles"]
+    }
+  ]
+}

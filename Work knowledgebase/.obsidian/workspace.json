@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "6701efc9487a249d",
+    "type": "split",
+    "children": [
+      {
+        "id": "a5777bca8dd22a1b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "26085f9a378f23d8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "outputs/event-modeling-getting-started.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "event-modeling-getting-started"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "342f7b6fddbab427",
+    "type": "split",
+    "children": [
+      {
+        "id": "7faf28ae0eddfd62",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "33cb749be0d6504a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "8213cbf96d5e1634",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "f5103995c9f10dff",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 369.5
+  },
+  "right": {
+    "id": "f79fdc223894a169",
+    "type": "split",
+    "children": [
+      {
+        "id": "84df6296d9d840ff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ef9e4d3d95b51451",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "d8cad266617dbde9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "d5885e0db68dd4ed",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "8d9262f809c50c8d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "4a73b652d32d8016",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "26085f9a378f23d8",
+  "lastOpenFiles": [
+    "wiki/concepts/event-sourced-agentic-patterns.md",
+    "CLAUDE.md",
+    "wiki/concepts/fitness-functions.md",
+    "wiki/concepts/react-loop.md",
+    "wiki/concepts/conways-law.md",
+    "wiki/concepts/open-closed-principle.md",
+    "CLAUDE.md.tmp.49420.3abc2bd21c57",
+    "watch-config.json.tmp.45264.161657b8de45",
+    "watch-config.json",
+    "outputs/event-modeling-getting-started.md",
+    "outputs/denoting-an-agent-in-an-event-model.md",
+    "outputs/event-modeling-getting-started.md.tmp.37136.d5df92b4de64",
+    "outputs/README.md",
+    "wiki/sources/akka-event-sourcing-backbone-agentic-ai.md",
+    "wiki/concepts/agentic-coding.md.tmp.49348.a8c44ec81072",
+    "wiki/concepts/agent-engineering.md",
+    "wiki/concepts/event-modeled-agent-design.md.tmp.49348.19834760f231",
+    "wiki/entities/adam-dymitruk.md",
+    "wiki/entities/john-wilger.md",
+    "wiki/entities/john-wilger.md.tmp.49348.04f03eee4e84",
+    "wiki/sources/jwilger-agent-skills-event-modeling.md",
+    "wiki/sources/jwilger-agent-skills-event-modeling.md.tmp.49348.7655769a972d",
+    "wiki/log.md.tmp.14584.5efa9b9e5707",
+    "wiki/log.md.tmp.72220.972da528c20b",
+    "wiki/sources/esaa-event-sourcing-for-autonomous-agents.md",
+    "raw/papers/esaa-event-sourcing-for-autonomous-agents.md",
+    "wiki/concepts/agentic-event-driven-systems.md",
+    "wiki/concepts/event-driven-architecture.md",
+    "wiki/entities/idc.md",
+    "wiki/entities/prooph-board.md",
+    "wiki/entities/atlan.md",
+    "wiki/entities/solace.md",
+    "wiki/entities/confluent.md",
+    "wiki/sources/proophboard-skills-ai-agent-event-modeling.md",
+    "wiki/sources/atlan-event-driven-architecture-for-ai-agents.md",
+    "wiki/sources/solace-multi-agent-systems-real-time-context-eda.md"
+  ]
+}
