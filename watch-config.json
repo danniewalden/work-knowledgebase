@@ -1,0 +1,118 @@
+{
+  "_comment": "Configuration for the 'event-modeling-agents-watch' scheduled task. Edit this file to change what the weekly watch looks for. The task reads it at the start of every run. Add/remove items freely; keep it valid JSON.",
+  "lookback_days": 14,
+  "_scope_options": "Each watch axis has its own scope. 'focus-only' = capture only items touching the listed topics (a narrow net for on-target material). 'anything-substantive' = capture any notable new post regardless of topic, flagging off-thread items in the report (used for the people watch, where the value is the author, not the keyword match). PER-TOPIC OVERRIDE: a topic may carry its own `scope` field, which TAKES PRECEDENCE over the global `topic_scope` for that topic. This lets the tight EM×agents intersection stay 'focus-only' while the broader design-substrate topics run 'anything-substantive'.",
+  "topic_scope": "focus-only",
+  "people_scope": "anything-substantive",
+  "topics": [
+    {
+      "name": "Event Modeling × AI agents",
+      "scope": "focus-only",
+      "description": "The intersection of AI agents / agentic systems and Event Modeling (Adam Dymitruk's design method) — not just event sourcing. Keep this net TIGHT: an item qualifies only if it connects agents/LLMs to Event Modeling specifically.",
+      "queries": [
+        "\"event modeling\" AI agents",
+        "\"event modeling\" LLM agentic",
+        "Adam Dymitruk agents LLM",
+        "eventmodeling.org new posts",
+        "\"given-when-then\" agent specification",
+        "discrete-event / formal specification of LLM agents"
+      ]
+    },
+    {
+      "name": "Event sourcing, DCB, CQRS, vertical slice architecture & business capabilities",
+      "scope": "anything-substantive",
+      "description": "The design substrate around Event Modeling. Capture ANY substantive new development in these areas, with or without an AI-agents angle (per Dannie 2026-06-14). Flag items that DO connect to agents (extra-relevant) and note when an item is purely off the agents thread. Sub-areas: (1) event sourcing (event stores, projections, replay, aggregates); (2) Dynamic Consistency Boundaries / DCB — the 'kill the aggregate' line of work (Sara Pellegrini, Milan Savić et al.) on consistency boundaries decoupled from aggregates; (3) CQRS (command/query separation); (4) vertical slice architecture (feature slices over layered architecture; Jimmy Bogard lineage); (5) BUSINESS CAPABILITIES / capability-based design — capabilities as stable 'what-not-how' boundaries, capability maps, coupling/cohesion, business architecture, Wardley mapping of capabilities (FLAGGED IMPORTANT by Dannie 2026-06-14).",
+      "queries": [
+        "\"event sourcing\" 2026 new",
+        "\"dynamic consistency boundary\" event sourcing",
+        "DCB \"kill the aggregate\" Sara Pellegrini",
+        "CQRS pattern 2026",
+        "\"vertical slice architecture\" 2026",
+        "Jimmy Bogard vertical slice architecture",
+        "event sourcing projections aggregates DCB talk",
+        "\"vertical slice\" event modeling CQRS",
+        "\"business capability\" design coupling cohesion architecture",
+        "capability-based design bounded context business architecture",
+        "business capability map Wardley event modeling"
+      ]
+    }
+  ],
+  "people": [
+    {
+      "name": "Adam Dymitruk",
+      "note": "Creator of Event Modeling; most on-target voice for the focus area.",
+      "x": ["https://x.com/adymitruk", "https://x.com/eventmodeling"],
+      "linkedin": "https://www.linkedin.com/in/eventmodeling",
+      "blog": ["https://eventmodeling.org/posts", "https://podcast.eventmodeling.org"]
+    },
+    {
+      "name": "Martin Dilger",
+      "note": "Co-host of the Event Modeling & Event Sourcing podcast; prooph board community. Author of 'Understanding Eventsourcing' and 'Spec Driven'; building Agentic Software Modeling on Eventmodelers.ai. Prolific on LinkedIn. NOTE: the linkedin recent-activity feed only loads when a logged-in Chrome session is driven interactively (Chrome MCP) — the headless scheduled watch CANNOT fetch it. For the scheduled run, rely on the search_fallback queries below; for full LinkedIn coverage, ask in a live session to pull the feed via Chrome.",
+      "x": [],
+      "linkedin": "https://www.linkedin.com/in/martindilger/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": ["\"Martin Dilger\" event modeling", "\"Martin Dilger\" eventmodelers.ai", "Martin Dilger spec-driven development"],
+      "blog": ["https://www.eventmodelers.ai"]
+    },
+    {
+      "name": "Andrej Karpathy",
+      "note": "Originator of the LLM Wiki pattern this KB runs on; broad AI/ML commentary.",
+      "x": ["https://x.com/karpathy"],
+      "linkedin": "",
+      "blog": ["https://karpathy.ai", "https://karpathy.github.io"]
+    },
+    {
+      "name": "Birgitta Böckeler",
+      "note": "Thoughtworks Distinguished Engineer; named the harness-engineering mental model.",
+      "x": [],
+      "linkedin": "",
+      "blog": ["https://martinfowler.com/articles"]
+    },
+    {
+      "name": "Fraktalio",
+      "note": "Belgrade-based event-modeling/event-sourcing tooling company (Ivan Dugalić et al.). Builds an 'Event Modeler' board with direct AI-agent integration via MCP — squarely on the EM×agents focus. LinkedIn company page; requires live logged-in Chrome to fetch the feed (client-rendered, login-walled). Added per Dannie 2026-06-14.",
+      "x": [],
+      "linkedin": "https://www.linkedin.com/company/fraktalio/posts/?feedView=all",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": ["Fraktalio event modeler MCP", "Fraktalio event modeling AI agents", "Ivan Dugalic Fraktalio event modeling"],
+      "blog": []
+    },
+    {
+      "name": "Nick Tune",
+      "note": "DDD / sociotechnical-architecture practitioner (Architecture Modernization author), Staff Engineer at PayFit. Posts on agents, context engineering, system graphs/world models, and the building blocks 'underneath an agent' (Graph+Memory+Skills+Agent) — adjacent to the harness/context-engineering thread. NOTE: his recent-activity feed is mostly REPOSTS; use the 'Posts' filter and look for items authored by him (no 'reposted this' header). Requires live logged-in Chrome. Added per Dannie 2026-06-14.",
+      "x": [],
+      "linkedin": "https://www.linkedin.com/in/nick-tune/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": ["\"Nick Tune\" agents context engineering", "\"Nick Tune\" domain-driven design AI", "Nick Tune architecture modernization agents"],
+      "blog": []
+    },
+    {
+      "name": "Jeremy Miller",
+      "note": "Creator of the Critter Stack (Marten = .NET event store/document DB on Postgres; Wolverine = messaging/mediator; Polecat = SQL Server event store) and JasperFx OSS founder. Blog 'The Shade Tree Developer'. Core EVENT-SOURCING voice (Thread 2), not primarily an agents voice — most posts are Critter Stack release/tooling/docs/business. Watch anyway for any AI-agent / agentic angle on the event-sourcing substrate. NOTE: his LinkedIn recent-activity is repost-heavy; use the 'Posts' filter and skip 'reposted this' items. LinkedIn requires live logged-in Chrome. There is also a Marten MCP connector available in this workspace. Added per Dannie 2026-06-14.",
+      "x": [],
+      "linkedin": "https://www.linkedin.com/in/jeremy-miller-500a3a1/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": ["Jeremy Miller Critter Stack agents", "Marten Wolverine AI agents event sourcing", "\"Shade Tree Developer\" agents"],
+      "blog": ["https://jeremydmiller.com/"]
+    },
+    {
+      "name": "Adam Tornhill",
+      "note": "Founder of CodeScene; author 'Your Code as a Crime Scene' / 'Software Design X-Rays' — behavioral code analysis, code health, technical debt. Relevant to the harness / maintainability-sensors / agentic-coding thread: his recent angle is code health as a lever on AI-agent cost & reliability (CodeScene research: unhealthy code +35–45% agent token spend; agents perform worst in high-debt legacy code). NOTE: posts a mix of authored items, CodeScene reposts, and off-thread LLM-culture commentary — use the 'Posts' filter and judge per item. LinkedIn requires live logged-in Chrome. Added per Dannie 2026-06-14.",
+      "x": [],
+      "linkedin": "https://www.linkedin.com/in/adam-tornhill-71759b48/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": ["Adam Tornhill CodeScene agentic", "CodeScene unhealthy code agentic token", "Adam Tornhill code health AI agents"],
+      "blog": ["https://codescene.com/blog"]
+    },
+    {
+      "name": "Yves Goeleven",
+      "note": "Azure MVP, NServiceBus core team; creator of MessageHandler.net & ClubManagement.io. Strongly on-thread voice: long-form content on EVENT MODELING, event sourcing, EDA, DDD, coupling/cohesion, and designing around BUSINESS CAPABILITIES (swimlanes). Has a mini-series on translating an Event Model into code (2023) worth ingesting from the blog. NOTE: posts INFREQUENTLY in bursts (last cluster ≈April 2026) — for him, look back FURTHER than the default 14 days. LinkedIn requires live logged-in Chrome. Added per Dannie 2026-06-14.",
+      "x": [],
+      "linkedin": "https://www.linkedin.com/in/goeleven/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "lookback_override_days": 120,
+      "search_fallback": ["Yves Goeleven event modeling", "Yves Goeleven event sourcing business capabilities", "Yves Goeleven coupling cohesion architecture"],
+      "blog": ["https://www.goeleven.com/", "https://cloudshaper.wordpress.com/"]
+    }
+  ]
+}
