@@ -2,8 +2,8 @@
 title: Domain Discovery
 type: concept
 created: 2026-06-13
-updated: 2026-07-31
-sources: [dilger-automatic-domain-discovery-claude-code, eventmodeling-what-is-event-modeling, dilger-flea-market-model-to-deploy]
+updated: 2026-09-04
+sources: [dilger-automatic-domain-discovery-claude-code, eventmodeling-what-is-event-modeling, dilger-flea-market-model-to-deploy, fritzsche-what-ai-changes-is-which-work-stays-hard]
 tags: [event-modeling, event-storming, domain-discovery, agentic-coding, focus]
 ---
 
@@ -45,6 +45,24 @@ inverse — using an agent to *bootstrap the model* from an existing system. It 
 tools that generate models from a *textual description* ([[qlerify]]): here the source of truth is the
 **live UI behavior**, which can catch the gap between intended and actual design.
 
+**Why it becomes visible now (Fritzsche, 2026-09-04).** [[rico-fritzsche]]
+([[fritzsche-what-ai-changes-is-which-work-stays-hard]]) supplies a mechanism rather than a slogan:
+*"Nothing has changed in that regard. **What AI changes is which part of that work remains difficult**"* —
+and the checkable version, *"thanks to AI agents, it's becoming increasingly clear that **developers often
+created and solved problems that had absolutely nothing to do with the domain or the business
+problem**."* The claim is that **accidental complexity becomes visible once its production cost falls
+toward zero**, which is a different argument from "agents write the boring code": it predicts that the
+share of work traceable to the domain *rises* without the domain work getting any easier. His fundamentals
+list — *"system design, reliability, data, consistency, system structure and boundaries"* — with the
+corollary that *"a framework isn't a foundation… if you focus on them, then you yourself become
+interchangeable."*
+
+**Markers: PRACTITIONER OPINION, unmeasured, in a LinkedIn post, and it is his own standing thesis
+winning.** It converges with [[addyosmani-human-judgment-relocates]] ("human judgment doesn't leave the
+software factory. It relocates") and [[laycock-citizens-build-agents-execute-experts-govern]] — **three
+converging opinions, still not a measurement.** Nothing in the KB tests the accidental-complexity claim,
+and it is the most instrumentable of the three.
+
 ## Caveats / open
 
 Vendor self-report; no captured detail on how UI exploration maps to event-model elements
@@ -52,4 +70,4 @@ Vendor self-report; no captured detail on how UI exploration maps to event-model
 unverified. Whether UI-walk discovery produces a *valid* event model or just an annotated click-map is
 open.
 
-_Sources: [[dilger-automatic-domain-discovery-claude-code]] · [[eventmodeling-what-is-event-modeling]] · [[dilger-flea-market-model-to-deploy]]._
+_Sources: [[dilger-automatic-domain-discovery-claude-code]] · [[eventmodeling-what-is-event-modeling]] · [[dilger-flea-market-model-to-deploy]] · [[fritzsche-what-ai-changes-is-which-work-stays-hard]]._

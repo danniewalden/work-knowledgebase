@@ -2,8 +2,8 @@
 title: Balanced Coupling
 type: concept
 created: 2026-06-17
-updated: 2026-06-22
-sources: [khononov-golden-age-of-modularity, coupling-research-note, khononov-modularity-claude-code-plugin]
+updated: 2026-09-04
+sources: [khononov-golden-age-of-modularity, coupling-research-note, khononov-modularity-claude-code-plugin, khononov-ai-doesnt-fix-your-real-bottleneck, khononov-coupling-should-be-weighed-not-counted]
 tags: [coupling-cohesion, modularity, ddd, business-capabilities, agent-legibility, substrate]
 ---
 
@@ -18,17 +18,36 @@ the *right* coupling in the right places — strong coupling kept local and away
 Khononov judges any coupling between two components along three axes, whose interaction decides whether
 it will hurt:
 
-- **Strength** — how much one component must know about the other's internals (from shared
-  domain knowledge / intrusive integration down to loose, contract-only messaging). Stronger coupling
-  demands more co-change.
+- **Shared knowledge** — how much one component must know about the other's internals (from shared
+  domain knowledge / intrusive integration down to loose, contract-only messaging). More shared
+  knowledge demands more co-change. *(**Terminology corrected 2026-09-04:** this page previously named
+  this axis "**Strength**". Khononov's own current wording for the triad is **"shared knowledge"** —
+  see the first-party statement below. Same axis, and the book's four-level **Integration Strength**
+  scale is how it is graded; "strength" is the scale's name, not the axis's.)*
 - **Distance** — how far apart the coupled components live (same method/class → module → service →
-  system). Distance multiplies the cost of co-change.
+  system). Distance multiplies the cost of co-change. Khononov's own gloss makes it wider than geometry:
+  distance is "physical **and organizational**."
 - **Volatility** — how often the coupled area actually changes. Coupling to stable things is cheap;
   coupling to volatile things is where pain concentrates.
 
-The heuristic: **high strength is fine at short distance** (a tight, cohesive unit), and **distance is
-fine when strength and volatility are low** (stable, contract-only integration). Trouble is the
-combination of strong coupling *across* large distance *to* volatile components.
+The heuristic: **a lot of shared knowledge is fine at short distance** (a tight, cohesive unit), and
+**distance is fine when shared knowledge and volatility are low** (stable, contract-only integration).
+Trouble is the combination of strongly-knowledge-coupled components *across* large distance *to*
+volatile components.
+
+**First-party statement of the triad (2026-02).** The three dimensions above were sourced to the book and
+the [[coupling-research-note]]; [[khononov-ai-doesnt-fix-your-real-bottleneck]] states them in the
+author's own current words, and names the first axis **"shared knowledge"** rather than *strength*: "the
+knowledge components share about each other. The more knowledge is shared, the higher the likelihood that
+a change in one will trigger cascading changes in others." Distance is "physical **and
+organizational**"; volatility is "the probability that a component will need to change in the first
+place. High volatility amplifies design problems; low volatility neutralizes them." His balance rule, in
+prose: components that change together are located close; components that don't are spread apart; and
+"ultimately, **volatility multiplies** the effects of complexity." Same model, and the terminology drift
+(shared knowledge ≈ Integration Strength) is worth knowing when reading him. **Cite the triad to this
+piece**, not to [[khononov-coupling-should-be-weighed-not-counted]] — that companion post covers **only**
+the Integration Strength scale. **NOT INDEPENDENT** — the model's own author, closing with his own book
+via an affiliate link. **No data in either post.**
 
 ## The dimensions in detail (from the 2024 book)
 
@@ -44,6 +63,31 @@ companion site [coupling.dev](https://coupling.dev):
 | 3 | **Functional** | Components share functional requirements (the "what", not the "how"). Canonical case: duplicated business logic that forces co-change. |
 | 2 | **Model** | Components share knowledge of a (typically business-domain) model. Explicitly tied to DDD bounded contexts. |
 | 1 | **Contract** | Integration via an explicit published contract. Weakest, most desirable. |
+
+**Why weigh rather than count (2026-02, first-party prose).**
+[[khononov-coupling-should-be-weighed-not-counted]] gives the four levels in his own words and the
+argument for the scale's existence: each level down "removes an *entire category* of shared reasons for
+change," which is why "a single intrusive dependency can cause more cascading changes than a hundred
+contract-based ones." His illustration: a component with 1 outgoing and 100 incoming dependencies scores
+~0.01 on `I = Ce / (Ce + Ca)` — "textbook stability" — while its one outgoing dependency reaches into
+another component's internals (a service reading another service's database) and the 100 incoming ones go
+through stable contracts. "The metric says: rock-solid stability. Reality says: ticking time bomb." Each
+level restated: **intrusive** = "you have to assume that *all* knowledge is shared… reasons for cascading
+changes are essentially unbounded"; **functional** = "switches from 'how?' to 'what'" (the same rule
+implemented twice); **model** = "shifts from logic to structure… entities, relationships, and concepts";
+**contract** = "the contract encapsulates everything behind it… only modifications to the contract itself
+propagate."
+
+The generalisable warning: "Static analysis tools count because counting is easy to automate. But easy to
+automate and useful are not the same thing. A metric that treats use of reflection to modify a private
+field and an API call as equivalent is likely to point you in the wrong direction." Worth reading against
+the KB's measurement-based sources — [[tornhill-codescene-unhealthy-code-agentic-token-cost]] (**VENDOR
+SELF-REPORT** figures), [[fitness-functions]], [[fowler-bockeler-maintainability-sensors]] — as the
+sharpest sceptical frame on automatable design metrics the KB has. Caveats: **NOT INDEPENDENT**; the
+100-dependency component is a **constructed illustration**; "in my experience, chasing those metrics never
+really made the design more modular" is a **practitioner self-report**; and the post never addresses the
+obvious rejoinder that direct DB access *is* automatically detectable. **This post does not state the
+triad** — only this axis; the triad is in [[khononov-ai-doesnt-fix-your-real-bottleneck]].
 
 **Distance** — physical/logical separation: methods → objects → packages/namespaces →
 services/microservices → systems. *Observable* from deployment topology rather than judged. (A verifier
@@ -109,8 +153,10 @@ coupling-substrate analogue of the Event-Modeling-as-agent-skill pattern
 
 The primary book is now grounded second-hand via the [[coupling-research-note]] (book TOC,
 coupling.dev) and the [[khononov-modularity-claude-code-plugin|Modularity Skills plugin]] (which encodes
-the same dimensions and balance rule). *Still wanted:* a first-party capture of the book's own text on
-the BALANCE formula and the Integration Strength definitions, and a resolution of the **per-site →
-per-partition** scoring gap.
+the same dimensions and balance rule). *Partly closed (2026-09-04):*
+[[khononov-coupling-should-be-weighed-not-counted]] gives the Integration Strength definitions in the
+author's own prose, and [[khononov-ai-doesnt-fix-your-real-bottleneck]] the triad and balance rule.
+*Still wanted:* the book's own text on the **BALANCE formula** (neither post states it), and a resolution
+of the **per-site → per-partition** scoring gap.
 
-_Sources: [[khononov-golden-age-of-modularity]] · [[coupling-research-note]] · [[khononov-modularity-claude-code-plugin]]._
+_Sources: [[khononov-golden-age-of-modularity]] · [[coupling-research-note]] · [[khononov-modularity-claude-code-plugin]] · [[khononov-ai-doesnt-fix-your-real-bottleneck]] · [[khononov-coupling-should-be-weighed-not-counted]]._

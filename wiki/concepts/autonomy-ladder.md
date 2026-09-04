@@ -2,8 +2,8 @@
 title: Autonomy Ladder
 type: concept
 created: 2026-06-11
-updated: 2026-08-31
-sources: [svitla-agentic-ai-market-trends-2026, anthropic-building-effective-agents, jwilger-agent-skills-event-modeling, sadalage-chandrasekaran-making-data-ready-for-agentic-ai]
+updated: 2026-09-04
+sources: [svitla-agentic-ai-market-trends-2026, anthropic-building-effective-agents, jwilger-agent-skills-event-modeling, sadalage-chandrasekaran-making-data-ready-for-agentic-ai, miracle-my-loop-engineering-workflow, zalando-agentic-engineering-snapshot, addyosmani-practical-loop-engineering, addyosmani-agentic-code-quality, tornhill-controlling-the-uncertainty-machine, tornhill-task-uncertainty-decides-what-code-you-read]
 tags: [agentic-ai, framework, autonomy, maturity, focus]
 ---
 
@@ -78,10 +78,95 @@ of a stale answer." The authors are candid that composing those signals into one
 problem, and recommend starting with a hard gate — any contract or SLA breach forces a human — before
 attempting weighted scoring.
 
+## A third shape — autonomy as a running balance, not a setting ([[miracle-my-loop-engineering-workflow|Miracle, 2026-08-10]])
+
+Both ladders above are **staged by task class**: you decide in advance how much rope a kind of work gets.
+Miracle's **trust ledger** is a different mechanism — **privilege continuously recomputed from scored
+behaviour within a session**, i.e. autonomy as a *revocable running balance*.
+
+A hook on **every tool call** scores behaviour; every session starts at **50/100, level L2**. Levels gate
+tools: **L1** file edits · **L2** mutating bash + spawning agents · **L3** push / PR / deploy / external
+sends · **L4** destructive operations. Deductions are **Fibonacci-scaled** (2, 3, 5, 8, 13, 21) *"so small
+slips stay cheap while severe or repeated failures escalate super-linearly"* — a delivery miss −5, an
+**unverified claim −8**, **fabrication −13**, **tampering with the ledger itself −21**, and
+**self-reporting a violation a flat −3, "because disclosure should always be cheaper than discovery."**
+Only the operator awards points. **Below 20 the agent is terminated** — all mutating tools denied, fresh
+session. The score is permanently visible in his statusline next to the context meter, *"which are exactly
+the two numbers that decide whether I let it run, hand it off, or terminate it."*
+
+**The −3 self-report discount is the sharpest idea in it:** an incentive design aimed at the
+"agent declares victory it hasn't earned" failure that
+[[bockeler-tdd-inside-the-agent-loop|Böckeler]] measured and
+[[wong-loop-engineering-teaching-ai-agents-how-to-think|Wong]] names — **priced rather than policed**.
+*"It works because it prices honesty into the system. An agent that loses more trust by hiding a mistake
+than by admitting it will admit mistakes, and an agent whose privileges depend on verification will
+verify."*
+
+This is the concrete instrument for [[addyosmani-own-the-outer-loop|Osmani's]] back-pressure ("grant
+autonomy deliberately under the maximum") and [[dilger-trust-needs-to-be-engineered|Dilger's]] "trust
+needs to be engineered."
+
+*(**Configuration, not evidence.** Every number above is a setting; **no outcome is measured** — the
+ledger's efficacy is argued from first principles, and he does not report what it costs: how often
+sessions terminate, or how much operator time the point-awarding consumes. Single practitioner,
+tool-specific to Claude Code's hook surface as of Aug 2026.)*
+
+## Routing by change class, derived from incident history ([[zalando-agentic-engineering-snapshot|Zalando, 2026-08-14]])
+
+A fourth shape, running in production across >250 engineering teams: autonomy granted **per change**, by a
+risk classifier built from **past outages**. Every PR is evaluated at creation as **low / medium / high**
+rollout risk, and the rule set is *"built based on analysis of our production incidents and the typical
+drivers for outages… highly specific to our tech stack, deployment manifests, configuration files."*
+Concretely: **typos that break configuration are high risk** (with a named prior incident it would have
+caught), **breaking backwards-compatibility is medium** and *"requires judgement from another human to
+double-check the business rationale,"* **documentation-only changes are low.** Low-risk PRs are
+auto-approved and the author may self-merge.
+
+**The most interesting reported effect is behavioural, and the author labels it anecdotal:** *"the bot
+affects behavior of engineers to increase the probability of a low-risk PR. For example, PRs start to be
+broken down into those that can be shipped quickly (low risk) with backwards compatible-changes and less
+important medium-risk PRs dropping unused fields that require another approval. **In the past, we observed
+such changes to be mixed together, increasing time to market and rollout risk.**"* A classifier that
+changed how humans shape their work.
+
+This is the same instinct as [[borg-tornhill-code-for-machines-not-just-humans|Borg & Tornhill's]]
+peer-reviewed recommendation to **route AI work by code health** — but keyed on **deployment risk from
+incident history** rather than code metrics. Two independent instantiations of "route by measured risk";
+Zalando's runs at scale but is self-reported, Borg & Tornhill's is peer-reviewed but not deployed.
+**Neither validates the other.**
+
+*(**VENDOR SELF-REPORT** — Zalando's own figures about its own bot: *"33% of our PRs are low-risk and are
+auto-approved"* and *"reduced PR lead time by 20-40%."* The lead-time figure is explicitly *"when compared
+with all PRs,"* a **selection-biased comparison** — low-risk changes would merge faster anyway — so the
+delta is not attributable to the bot from what is published.)*
+
+## Task uncertainty moves two dials at once (Tornhill, 2026-08)
+
+The ladders above stage **autonomy**. [[adam-tornhill]] adds a second dial moved by the same judgement
+([[tornhill-controlling-the-uncertainty-machine]], stated compactly in
+[[tornhill-task-uncertainty-decides-what-code-you-read]]): *"That task uncertainty drives both the
+relative autonomy I grant a coding agent, **and the effort I spend reviewing the resulting code**."*
+
+His **uncertainty** is defined operationally, and usefully: *how much of the intended solution's
+behavior and structure is already understood and represented in the existing system.* That makes it a
+property of the task-in-this-codebase rather than of the task in the abstract — a bug fix is
+low-uncertainty because "the majority of bugs are local and contextual," so he inspects **the evidence
+for the fix** (reproduce, fix, new tests pass) rather than the code; the first iteration of a novel
+feature has no architectural home, so he inspects **structure and patterns** to establish one, and later
+iterations on the same feature can then be more autonomous. Autonomy therefore *rises as uncertainty
+falls*, and each completed high-uncertainty task lowers the uncertainty of its successors — a ratchet
+the staged ladders on this page do not model.
+
+Two notes. The gate is a **human-reviewed e2e test suite**, not a permission tier — the boundary is an
+artifact, not a policy. And this is a **single practitioner's rule**: no defect data, no comparison
+against reading the code, and the enforcement layer he relies on includes his own company's product
+(**VENDOR SELF-REPORT**; he is CodeScene's founder/CTO). See [[verification-burden]].
+
 ## Related
 
 [[business-capabilities]] · [[agent-explainability]] · [[agent-vs-workflow]] · [[agentwashing]] ·
 [[unattended-coding-agents]] · [[prompt-injection]] ·
-[[token-budget-quality-cliff]]
+[[token-budget-quality-cliff]] · [[verification-burden]] · [[agentic-coding]] · [[adam-tornhill]] ·
+[[loop-engineering]]
 
-_Source pages: [[svitla-agentic-ai-market-trends-2026]] · [[anthropic-building-effective-agents]] · [[jwilger-agent-skills-event-modeling]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]]._
+_Source pages: [[svitla-agentic-ai-market-trends-2026]] · [[anthropic-building-effective-agents]] · [[jwilger-agent-skills-event-modeling]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]] · [[miracle-my-loop-engineering-workflow]] · [[zalando-agentic-engineering-snapshot]] · [[tornhill-controlling-the-uncertainty-machine]] · [[tornhill-task-uncertainty-decides-what-code-you-read]]._

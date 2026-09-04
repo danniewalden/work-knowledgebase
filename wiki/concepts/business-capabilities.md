@@ -2,8 +2,8 @@
 title: Business Capabilities
 type: concept
 created: 2026-06-14
-updated: 2026-09-02
-sources: [laycock-citizens-build-agents-execute-experts-govern, nick-tune-enforced-application-architecture-agents-humans, homann-business-capabilities, goeleven-event-model-to-code-series, goeleven-event-sourcing-not-auditing-for-free, daniel-event-modeling-wardley-mapping, rico-fritzsche-autonomous-domain-capabilities-ccc, khononov-golden-age-of-modularity, rico-fritzsche-rpu-reactor-vocabulary, devadoss-cead-capability-aligned-agent-design, skelton-team-topologies-foundation-ai-roi, dora-roi-ai-assisted-software-development-2026, fritzsche-who-owns-a-rule-shared-across-domain-capabilities, sadalage-chandrasekaran-making-data-ready-for-agentic-ai]
+updated: 2026-09-04
+sources: [laycock-citizens-build-agents-execute-experts-govern, nick-tune-enforced-application-architecture-agents-humans, homann-business-capabilities, goeleven-event-model-to-code-series, goeleven-event-sourcing-not-auditing-for-free, daniel-event-modeling-wardley-mapping, rico-fritzsche-autonomous-domain-capabilities-ccc, khononov-golden-age-of-modularity, rico-fritzsche-rpu-reactor-vocabulary, devadoss-cead-capability-aligned-agent-design, skelton-team-topologies-foundation-ai-roi, dora-roi-ai-assisted-software-development-2026, fritzsche-who-owns-a-rule-shared-across-domain-capabilities, sadalage-chandrasekaran-making-data-ready-for-agentic-ai, fritzsche-how-event-sourcing-grows-with-the-business, fritzsche-why-the-entity-model-is-an-illusion]
 tags: [business-capabilities, coupling-cohesion, ddd, event-modeling, architecture, focus]
 ---
 
@@ -45,7 +45,7 @@ org structure), the [[open-closed-principle]] (extend a capability without modif
 [[vertical-slice-architecture]] (features cut vertically through a capability, not across layers).
 
 **[[vlad-khononov]]** supplies the design-theory spine here: his **[[balanced-coupling|Balanced
-Coupling]]** model judges a coupling by its *strength × distance × volatility* (so the aim is not "no coupling" but keeping strong
+Coupling]]** model judges a coupling by its *shared knowledge × distance × volatility* (his own wording; "strength" names the scale, not the axis — see [[balanced-coupling]]) (so the aim is not "no coupling" but keeping strong
 coupling at short distance and away from volatile parts), and his
 [[khononov-golden-age-of-modularity|modularity test]] — change is *localized* and its *effect is
 predictable* — is exactly the property a good capability boundary buys. It also reframes capabilities as
@@ -94,6 +94,30 @@ capabilities are forced to evolve together through shared structures (coordinati
 *capability* the ownership boundary keeps change additive and local — the same coupling/cohesion claim as
 Homann's black box and [[balanced-coupling|Khononov's]] localized-change test, stated as a code-structure
 rule. He also insists **user interaction ≠ domain capability** (they evolve for different reasons).
+
+### What a capability is, operationally — and why capabilities grow additively (2026-08)
+
+Two Aug-2026 articles reduce the capability to something you can point at in a repo.
+**A capability is one action the domain can take, named in pairs with the fact it produces** —
+"the capability *InfleetVehicle* produces the *VehicleInfleeted* event, and the *InspectVehicle*
+capability produces the *VehicleInspected* event… **Every action that leads to an event is a domain
+capability**" ([[fritzsche-how-event-sourcing-grows-with-the-business]]). They are "autonomous,
+self-contained, and coherent. **They share only the Application State** — in this implementation, an
+Event Store and the event definitions. However, they know nothing about each other"
+([[fritzsche-why-the-entity-model-is-an-illusion]]).
+
+The consequence is the strongest boundary argument on this page: because each capability derives its own
+state by folding only the events its rules read, **adding a capability changes nothing else**, and adding
+a *fact* changes only the capabilities that need it. "Events are additive, since no reader needs to know
+the big picture. Functions remain small because they derive their specific perspective precisely from the
+events." Where an entity-centred design makes a new process step "a change to a shared structure, because
+the database represents a global, shared, mutable state," here there is no shared structure to change —
+so **no schema migration and no data migration** (his worked case: `AcquireVehicle` and `ReceiveVehicle`
+untouched; `InfleetVehicle` gains one fold case and one rule). Cost does land on new **projections**,
+which he says explicitly.
+
+*One authored vehicle-rental example, no measurement; and see [[entity-centric-thinking]] for the
+counter-position that keeps business rules on the entity ([[oskar-dudycz]]).*
 
 ## Relation to the focus (agents)
 
@@ -276,6 +300,6 @@ most useful open question on this page.
 [[autonomous-domain-capabilities]] · [[command-context-consistency]] · [[coupling-taxonomy]] ·
 [[balanced-coupling]] · [[wardley-mapping]] · [[multi-agent-orchestration]] · [[autonomy-ladder]] ·
 [[agent-explainability]] · [[model-context-protocol]] · [[conways-law]] · [[harness-engineering]] ·
-[[event-modeled-agent-design]] · [[locality-of-reference]]
+[[event-modeled-agent-design]] · [[locality-of-reference]] · [[entity-centric-thinking]]
 
-_Sources: [[laycock-citizens-build-agents-execute-experts-govern]] · [[nick-tune-enforced-application-architecture-agents-humans]] · [[homann-business-capabilities]] · [[goeleven-event-model-to-code-series]] · [[goeleven-event-sourcing-not-auditing-for-free]] · [[daniel-event-modeling-wardley-mapping]] · [[rico-fritzsche-autonomous-domain-capabilities-ccc]] · [[rico-fritzsche-rpu-reactor-vocabulary]] · [[khononov-golden-age-of-modularity]] · [[devadoss-cead-capability-aligned-agent-design]] · [[skelton-team-topologies-foundation-ai-roi]] · [[dora-roi-ai-assisted-software-development-2026]] · [[fritzsche-who-owns-a-rule-shared-across-domain-capabilities]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]]._
+_Sources: [[laycock-citizens-build-agents-execute-experts-govern]] · [[nick-tune-enforced-application-architecture-agents-humans]] · [[homann-business-capabilities]] · [[goeleven-event-model-to-code-series]] · [[goeleven-event-sourcing-not-auditing-for-free]] · [[daniel-event-modeling-wardley-mapping]] · [[rico-fritzsche-autonomous-domain-capabilities-ccc]] · [[rico-fritzsche-rpu-reactor-vocabulary]] · [[khononov-golden-age-of-modularity]] · [[devadoss-cead-capability-aligned-agent-design]] · [[skelton-team-topologies-foundation-ai-roi]] · [[dora-roi-ai-assisted-software-development-2026]] · [[fritzsche-who-owns-a-rule-shared-across-domain-capabilities]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]] · [[fritzsche-how-event-sourcing-grows-with-the-business]] · [[fritzsche-why-the-entity-model-is-an-illusion]]._

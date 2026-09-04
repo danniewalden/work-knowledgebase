@@ -2,8 +2,8 @@
 title: Open–Closed Principle
 type: concept
 created: 2026-06-13
-updated: 2026-06-19
-sources: [semaphore-dymitruk-event-modeling, eventmodeling-what-is-event-modeling, dilger-done-is-done-open-closed-new-slice]
+updated: 2026-09-04
+sources: [semaphore-dymitruk-event-modeling, eventmodeling-what-is-event-modeling, dilger-done-is-done-open-closed-new-slice, fritzsche-how-event-sourcing-grows-with-the-business]
 tags: [software-design, principle, event-modeling]
 ---
 
@@ -42,9 +42,26 @@ live [[event-sourcing|event-sourced]] system, modifying an existing flow risks
 view (cf. [[balanced-coupling]], [[business-capabilities]]) and a concrete
 [[event-modeled-agent-design|model-a-slice-then-let-an-agent-build-it]] anecdote.
 
+**The mechanism under "additive," and where it stops (Fritzsche, 2026-08).**
+[[fritzsche-how-event-sourcing-grows-with-the-business]] explains *why* an event-sourced system extends by
+addition rather than modification: "for events, the schema consists of a set of event types, and that set
+**only grows**", and "**events are additive, since no reader needs to know the big picture.** Functions,
+on the other hand, remain small because they derive their specific perspective precisely from the events."
+Inserting a fifth process step into a running four-step flow touches one existing capability (one fold
+case, one rule) and requires **no data migration**, because old records simply lack the new event. Compare
+the entity-centred path, where "every new step is a change to a shared structure, because the database
+represents a global, shared, mutable state," and a new status value forces a decision about every existing
+row.
+
+Where it stops, in his own words: a new **projection** "is new code with its own rebuild." So the
+open–closed property holds for the write model and the stored facts, not for the read side. This is the
+storage-level counterpart to [[dilger-done-is-done-open-closed-new-slice|"Done is Done"]] (prefer a new
+slice to modifying a live flow). *One authored example, no measurement, and the favourable case is
+chosen — he does not test a fact every capability must read.*
+
 ## Related
 
 [[event-modeling]] · [[event-sourcing]] · [[domain-driven-design]] · [[cqrs]] ·
 [[vertical-slice-architecture]] · [[balanced-coupling]]
 
-_Sources: [[semaphore-dymitruk-event-modeling]] · [[eventmodeling-what-is-event-modeling]] · [[dilger-done-is-done-open-closed-new-slice]]._
+_Sources: [[semaphore-dymitruk-event-modeling]] · [[eventmodeling-what-is-event-modeling]] · [[dilger-done-is-done-open-closed-new-slice]] · [[fritzsche-how-event-sourcing-grows-with-the-business]]._

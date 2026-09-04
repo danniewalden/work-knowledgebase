@@ -2,8 +2,8 @@
 title: Model-as-Code vs Model-as-Language
 type: concept
 created: 2026-08-30
-updated: 2026-09-02
-sources: [miller-jasperfx-critterstack-ai-event-modeling-strategy, dilger-markdown-is-a-suggestion-dressed-as-a-spec, nick-tune-enforced-application-architecture-agents-humans, dilger-one-million-tokens-self-training-modeling-agent, dilger-spec-driven-tools-need-event-modeling-front-half, esdm-event-sourced-domain-modeling, dilger-drawio-model-in-code, dilger-eventmodelers-supports-esdm-export, dilger-triplet-flexible-agent-enabled-architecture, ng-spec-driven-development-is-waterfall-in-markdown, jwilger-agent-skills-event-modeling, proophboard-skills-ai-agent-event-modeling, fraktalio-event-modeler-connect-ai-agents-mcp]
+updated: 2026-09-04
+sources: [miller-jasperfx-critterstack-ai-event-modeling-strategy, dilger-markdown-is-a-suggestion-dressed-as-a-spec, nick-tune-enforced-application-architecture-agents-humans, dilger-one-million-tokens-self-training-modeling-agent, dilger-spec-driven-tools-need-event-modeling-front-half, esdm-event-sourced-domain-modeling, dilger-drawio-model-in-code, dilger-eventmodelers-supports-esdm-export, dilger-triplet-flexible-agent-enabled-architecture, ng-spec-driven-development-is-waterfall-in-markdown, jwilger-agent-skills-event-modeling, proophboard-skills-ai-agent-event-modeling, fraktalio-event-modeler-connect-ai-agents-mcp, bockeler-understanding-sdd-kiro-speckit-tessl, eberhardt-putting-spec-kit-through-its-paces, tornhill-blast-from-the-past-sdd-illusion-of-known-scope, dilger-communicating-intent-to-an-agent-needs-a-dsl, nick-tune-event-sourced-claude-code-workflows, dilger-agentic-engineer-program-stack-agnostic-spec, adzic-spec-driven-development-revenge-of-waterfall-or-bdd, tune-no-rapport-with-a-model-you-didnt-code, dilger-git-as-primary-persistence-for-event-models, dilger-podcast-episode-47-agentic-modeling-audit-trails]
 tags: [event-modeling, agentic-coding, spec-driven-development, controversy, focus]
 ---
 
@@ -52,6 +52,27 @@ Note that he does *not* dismiss code as a formal language — he calls it one �
 specifies implementation while the thing needing specification is **behavior over time**, which is what
 [[event-modeling]]'s timeline gives you.
 
+He names the missing artifact nine days later
+([[dilger-communicating-intent-to-an-agent-needs-a-dsl]], 2026-09-03):
+
+> "Somehow the software industry has chosen raw markdown as the medium of choice… **What's missing is a
+> DSL to unambiguously describe flow, behavior + business rules.** … The medium itself - nobody cares in
+> the end ( you can export Json, Markdown, Toon.. from my tools ). … For me, Eventmodeling is that DSL."
+
+Two clarifications this forces onto the table above. **First, his target is the *language*, not the file
+format** — he says explicitly that his tools export markdown and that the medium is irrelevant, so the
+framing caution at the top of this page applies to him too: this is not an anti-markdown-file position.
+**Second, he states four properties an agent-facing spec must have** — *specific, unambiguous,
+information complete, structured* — which is the closest thing the KB has to a testable statement of the
+model-as-language requirement. They are asserted, not defended. And the supporting claim is his own:
+*"Battle-tested over hundreds of projects by many companies"* (**VENDOR SELF-REPORT, his own figure, no
+project or company named, no independent corroboration anywhere in this KB**), resting on a **2024 JSON
+interchange format that is not captured in `raw/`**.
+
+Note that this puts Dilger and [[jeremy-miller|Miller]] in flat contradiction on the *category*, not
+just the artifact: Miller rejects *"intermediate DSL approaches… using YAML, XML, or custom built textual
+DSLs"* by name, and Dilger asks for exactly one.
+
 The position has accumulated infrastructure rather than just advocacy: a validated file format with an
 offline linter ([[esdm-event-sourced-domain-modeling]]), format-agnostic export on demand
 ([[dilger-eventmodelers-supports-esdm-export]]), model-in-git via draw.io XML
@@ -87,6 +108,38 @@ that become actionable specs**. That is not a rejection of [[given-when-then]] a
 specification — it is a claim that GWT is the *only* part of the model worth authoring by hand, and the
 rest should be inferred.
 
+**A second, independent statement of this position — and the only instrumented one
+([[eberhardt-putting-spec-kit-through-its-paces|Eberhardt]], 2025-11-26).** Where Miller argues from
+cost and lineage, Colin Eberhardt (CTO, [[scott-logic]]) argues from formality, having rebuilt a
+deleted ~1,000-line feature with Spec Kit and measured every step:
+
+> "Code is law because it is formal language you can reason about. You can test it. You can prove it is
+> right or wrong. Specifications, or at least ones expressed in the markdown format of Spec Kit, lack
+> this formality. **They are not a law I would put my trust in.**"
+
+He adds two arguments neither camp on this page had made. **(1) Training-distribution:** code is a far
+larger share of a model's training data and a language it can reason about, so *"asking an agent to write
+1000s of lines of markdown rather than just asking it to write the code is a misuse of this technology"*
+(he concedes this is not compelling on its own). **(2) Cheap code changes the economics of the whole
+question:** *"Code is now cheap; we can create it quickly and throw it away just as fast. Spec Kit, and
+SDD, don't capitalise on this."* If code is disposable, the artifact worth authoring and keeping is the
+**decision record** ([[adr]], [[decision-trace]]) — *"code can give you the 'what', but cannot tell you
+the 'why'"* — and not the requirement.
+
+**Where it collides with Dilger, precisely.** Both agree code is a formal language. Dilger's objection is
+that it is formal about the wrong thing — implementation rather than **behaviour over time** — and that
+the business cannot review it. Eberhardt's rejoinder is not that behaviour doesn't matter but that a
+*markdown* spec has no formality to trade for, and *"in most development processes specifications are a
+point-in-time tool for steering implementation. Once complete, and fully tested, how often do you
+re-visit a user story?"* That last point is the one thing on this page that argues against
+**spec-anchoring itself**, independent of notation.
+
+*(**IMPRESSION NOT MEASUREMENT** for his "around ten times faster"; n=1, his own hobby app, and he had
+already built the feature once. **NOT INDEPENDENT** in the weak sense that both arms of the comparison
+are his own work. His own stated defences travel with the figures: Spec Kit is immature, *"I am willing
+to entertain the possibility that I am simply just using it wrong"*, and he wonders whether a
+"vibe engineer" is even the target audience.)*
+
 ## Where they actually agree
 
 The disagreement is narrower than it first appears, and the agreements are load-bearing:
@@ -105,6 +158,61 @@ The disagreement is narrower than it first appears, and the agreements are load-
 - **Event Modeling concepts belong in the runtime.** Miller is pushing EM concepts into Wolverine and
   the Marten/Polecat/Fisher stores; Dilger's Triplet ([[dilger-triplet-flexible-agent-enabled-architecture]])
   binds EM to [[event-sourcing]] the same way.
+
+## The precedent both camps have to answer: MDA / MDD (2025–26)
+
+Two sources arrive independently at the same historical analogy, and it is the strongest external input
+this page has received.
+
+**[[bockeler-understanding-sdd-kiro-speckit-tessl|Böckeler]]** (2025-10-15) worked on model-driven
+development projects early in her career and Tessl's spec-as-source design reminded her of them: MDD
+models *were* specs — UML or a textual DSL — fed to hand-built code generators. Her verdict is
+double-edged, and both edges land here:
+
+> "Ultimately, MDD never took off for business applications, it sits at an awkward abstraction level and
+> just creates too much overhead and constraints. But LLMs take some of the overhead and constraints of
+> MDD away… With LLMs, we are not constrained by a predefined and parseable spec language anymore, and
+> we don't have to build elaborate code generators. The price for that is LLMs' non-determinism of
+> course. **And the parseable structure also had upsides that we're losing now: We could provide the
+> spec author with a lot of tool support to write valid, complete and consistent specs.** I wonder if
+> spec-as-source, and even spec-anchoring, might end up with the downsides of both MDD and LLMs:
+> Inflexibility and non-determinism."
+
+*(**NOT INDEPENDENT** — martinfowler.com is [[thoughtworks]]' own channel and Böckeler is a Thoughtworks
+Distinguished Engineer.)*
+
+Read carefully, that paragraph is **evidence for both columns**. Against
+[[martin-dilger|model-as-language]]: MDA is the precedent for a formal model that failed on abstraction
+level and overhead. *For* it: **a parseable structure buys tool support for validity and
+completeness** — precisely the property Dilger's structural-diff rubric exploits
+([[dilger-one-million-tokens-self-training-modeling-agent]]) and precisely what natural-language SDD
+threw away. Her framing is the sharpest statement anywhere of what the model-as-language camp is *for*,
+written by someone sceptical of it.
+
+**[[tornhill-blast-from-the-past-sdd-illusion-of-known-scope|Tornhill]]** (2026-05-28) supplies the
+lived version, and it is a warning about a specific failure trajectory rather than about modelling as
+such. Hand-drawn UML plus a design review **worked** and paid off for onboarding and extension. Then the
+vendors closed the loop with an "action language" so all code could be generated, and *"the first victim
+was the documented design. The executable diagrams turned so bloated and verbose that they became
+literally incomprehensible. After all, the new audience was a compiler, not humans."* The tooling
+regressed with it — no pipelines, CLIs, IDEs, linters: *"Imagine coding in a Microsoft Word document."*
+His closing rule is the page's hardest test:
+
+> "The moment a model becomes the implementation, it ceases to be a good model."
+
+**How each column has to answer it:**
+
+- **Model-as-language** must show its artifact stays at a *different* level of abstraction from the code
+  while still being complete enough for generation. Dilger's answers are the **Build Kits** (stack-
+  specific generators fed by a stack-agnostic model) and the claim that the model *"almost doesn't
+  matter"* which stack it drives ([[dilger-agentic-engineer-program-stack-agnostic-spec]]) — which is
+  structurally the MDA architecture. Tornhill's tooling objection, at least, is answered directly by
+  [[dilger-git-as-primary-persistence-for-event-models|git-as-primary persistence]]: the model gets the
+  whole git toolchain instead of a vendor design tool.
+- **Model-as-code** is arguably what Tornhill's *first* employer had and liked — a readable diagram
+  alongside code, not generating it. [[jeremy-miller]]'s derived-visualisation design is the modern form
+  of the thing that worked, which is the strongest lineage argument available to him and one he does not
+  make.
 
 ## Why the disagreement matters here
 
@@ -129,8 +237,22 @@ Three consequences, in rough order of how much they should change what you do:
 
 ## Open questions
 
-- Has anyone run the comparison directly — same requirements, model-first vs code-first-with-visualization,
-  measured on agent output quality? Nothing in the KB does.
+- Has anyone run the comparison directly — same requirements, model-first vs
+  code-first-with-visualization, measured on agent output quality? Nothing in the KB does. **But the
+  experiment now has a concrete design, supplied by the model-as-language camp itself:** Dilger claims
+  one event model drives builds in five runtimes via Build Kits, with participants free to *"switch
+  stacks mid-course or build in parallel in all Stacks"*
+  ([[dilger-agentic-engineer-program-stack-agnostic-spec]] — **VENDOR SELF-REPORT, marketing, hedged as
+  *"almost doesn't matter"*, demonstrated nowhere**). A model-as-code artifact is derived from *one*
+  implementation and structurally cannot have that property, so **one model, five stacks, measured
+  output** is the discriminating test. It is also the test
+  [[bockeler-understanding-sdd-kiro-speckit-tessl|Böckeler]] predicts will fail, on the grounds that
+  separating functional from technical spec is something *"we don't have a good track record as a
+  profession"* at.
+- Does either camp survive the MDA precedent (§ *The precedent both camps have to answer*)? Tornhill's
+  *"the moment a model becomes the implementation, it ceases to be a good model"* is a constraint on
+  Dilger's generation route; Böckeler's *"the parseable structure also had upsides that we're losing"*
+  is a point in its favour. Neither camp has answered either.
 - Does Miller's objection survive contact with **grading**? His argument is about authoring cost; Dilger's
   strongest evidence is about *verification* (a structural diff against good models). These may not be in
   conflict at all — code could be the authoring surface and a derived model still be the rubric.
@@ -142,7 +264,8 @@ Three consequences, in rough order of how much they should change what you do:
 
 [[event-modeling]] · [[agent-readable-model-artifacts]] · [[spec-driven-development]] ·
 [[event-modeled-agent-design]] · [[vertical-slice-architecture]] · [[given-when-then]] ·
-[[vibe-modeling]] · [[em-standardization-foundation]]
+[[vibe-modeling]] · [[em-standardization-foundation]] · [[screens-as-specification]] ·
+[[colin-eberhardt]] · [[birgitta-bockeler]] · [[adam-tornhill]] · [[nick-tune]]
 
 ## What each side's own material adds, once compiled (2026-08-31)
 
@@ -209,5 +332,24 @@ business stakeholder could read. "Running" is as far as the claim goes: the raw 
 measurement, and he calls the deepest tier of it unsettled — *"still playing around with that. Come
 back in 6 months. I feel confident it's the right approach."*
 
+**Where Tune himself draws the line (added 2026-09-04).** Two further captures from the same author bound
+the position from both sides. In [[nick-tune-event-sourced-claude-code-workflows]] (2026-03-04) he
+event-sources his own Claude Code workflow so the log yields per-state timings, rejection counts and
+hook-denial counts, then **feeds those events back to Claude to have it rewrite the harness** — maximal
+delegation of the *process*. In [[tune-no-rapport-with-a-model-you-didnt-code]] (2026-08-28) he doubts he
+can build rapport with a domain model he did not hand-code:
+*"the domain model is going to be worse because I'm clearly missing some nuances that could lead to big
+modelling breakthroughs… Maybe it's not even possible."*
+
+So his position is not "constraints instead of a model" but **"delegate and instrument the loop; author
+the domain model yourself."** That is a boundary claim, and it cuts against the model-as-language camp's
+strongest ambition — that a good enough DSL lets agents do the modelling
+([[dilger-podcast-episode-47-agentic-modeling-audit-trails|two agents modelling alongside him,
+"indistinguishable from modeling with humans"]] — **IMPRESSION NOT MEASUREMENT, VENDOR SELF-REPORT**).
+It also happens to be the same boundary [[bockeler-tdd-inside-the-agent-loop]] and
+[[dilger-describing-without-solving-burns-you-out]] land on from opposite directions: own the problem,
+delegate the process.
+
 *Sourcing note: written 2026-08-30 citing raw captures; re-grounded 2026-08-31 when Batch C compiled both
-primaries into source pages; third position added 2026-09-02 from the Tune ingest.*
+primaries into source pages; third position added 2026-09-02 from the Tune ingest; MDA precedent,
+Eberhardt, the DSL claim and Tune's boundary added 2026-09-04.*

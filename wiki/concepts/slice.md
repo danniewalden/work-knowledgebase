@@ -2,8 +2,8 @@
 title: Slice
 type: concept
 created: 2026-08-31
-updated: 2026-08-31
-sources: [dilger-element-slice-chapter-story-context-ladder, eventmodeling-what-is-event-modeling, dilger-done-is-done-open-closed-new-slice, dilger-event-modeling-agent-harness, jwilger-agent-skills-event-modeling, dilger-model-is-a-living-spec-always-on-agent, dilger-local-llm-distributed-agent-setup-event-modeling, dilger-triplet-flexible-agent-enabled-architecture, bogard-vertical-slice-architecture, dilger-todo-lists-storylines-one-scenario]
+updated: 2026-09-04
+sources: [dilger-element-slice-chapter-story-context-ladder, eventmodeling-what-is-event-modeling, dilger-done-is-done-open-closed-new-slice, dilger-event-modeling-agent-harness, jwilger-agent-skills-event-modeling, dilger-model-is-a-living-spec-always-on-agent, dilger-local-llm-distributed-agent-setup-event-modeling, dilger-triplet-flexible-agent-enabled-architecture, bogard-vertical-slice-architecture, dilger-todo-lists-storylines-one-scenario, dudycz-vertical-slices-ownership-and-external-dependencies]
 tags: [event-modeling, slice, method, agentic-coding, vocabulary, focus]
 ---
 
@@ -34,6 +34,36 @@ slice is the *specification* that a vertical slice of code *implements*. [[marti
 slices, so the unit survives the trip from model to code without translation. That correspondence is
 exactly why the two words collapsed into one in this wiki, and also why keeping them apart matters:
 **the claims the KB makes about agents are about the model unit, not the code unit.**
+
+### A third precise definition, plus the words around it (Dudycz, 2026-08)
+
+[[dudycz-vertical-slices-ownership-and-external-dependencies]] argues most slice confusion is vocabulary,
+and gives three definitions that are useful precisely because they are narrower than usual:
+
+- **Slice** — "one piece of functionality, cut through the whole application… **For me, a slice is more a
+  function than an entity.** *'Verify a transport order'* is a slice. It has a way in, some business
+  logic, and whatever it reads and writes. If you're thinking of it as a thing with a lifecycle, you're
+  probably thinking of an entity, **which is a different concept that lives within the slice's reach
+  rather than being the slice.**"
+- **Module** — "a logical grouping of slices… the criterion I use is **what changes together**."
+- **Bounded context** — "a **linguistic barrier**… a set of functionality that the business uses the same
+  vocabulary for." Consequences: "a frontend and a backend aren't two bounded contexts; they're two
+  **deployment targets**", and "seven features of one application are almost always slices, or at most
+  modules, sitting inside a single context. That's good news, because it means **they were never obliged
+  to be autonomous.**" He is also willing to drop the term: "If the word causes arguments on your team,
+  drop it and talk about which functionalities share a vocabulary."
+
+**Slice-as-function is the sharpest available statement of what this page disambiguates**: the
+Event-Modeling slice is a step in a process, Bogard's is a request cut through the layers, and Dudycz's is
+a *function with declared dependencies*. All three exclude the reading that causes the trouble — a slice
+as a noun with a lifecycle. Compare [[fritzsche-vsa-does-not-fix-entity-centered-thinking]]: folders named
+after nouns with CRUD verbs beneath them are exactly the entity-with-a-lifecycle reading, wearing slice
+clothing.
+
+*Note the limit of that agreement.* Dudycz excludes the entity from being the slice while keeping it as
+the home of business rules ("business logic goes per entity or aggregate"); Fritzsche rejects the entity
+outright. They agree on what a slice is and disagree on what lives inside it — see
+[[entity-centric-thinking]].
 
 ## The ladder — Element → Slice → Chapter → Story → Context
 
@@ -122,11 +152,13 @@ authoritative state. See [[event-sourcing]], [[cqrs]].
 
 [[event-modeling]] · [[vertical-slice-architecture]] · [[triplet-architecture]] · [[given-when-then]] ·
 [[event-modeled-agent-design]] · [[event-sourcing]] · [[cqrs]] · [[open-closed-principle]] ·
-[[martin-dilger]] · [[adam-dymitruk]] · [[jimmy-bogard]] · [[dynamic-consistency-boundaries]]
+[[martin-dilger]] · [[adam-dymitruk]] · [[jimmy-bogard]] · [[dynamic-consistency-boundaries]] ·
+[[entity-centric-thinking]] · [[oskar-dudycz]]
 
 _Sources: [[dilger-element-slice-chapter-story-context-ladder]] · [[eventmodeling-what-is-event-modeling]] ·
 [[dilger-done-is-done-open-closed-new-slice]] · [[dilger-event-modeling-agent-harness]] ·
 [[jwilger-agent-skills-event-modeling]] · [[dilger-model-is-a-living-spec-always-on-agent]] ·
 [[dilger-local-llm-distributed-agent-setup-event-modeling]] ·
 [[dilger-triplet-flexible-agent-enabled-architecture]] · [[bogard-vertical-slice-architecture]] ·
-[[dilger-todo-lists-storylines-one-scenario]]._
+[[dilger-todo-lists-storylines-one-scenario]] ·
+[[dudycz-vertical-slices-ownership-and-external-dependencies]]._

@@ -2,8 +2,8 @@
 title: Dynamic Consistency Boundaries (DCB)
 type: concept
 created: 2026-06-14
-updated: 2026-08-03
-sources: [pellegrini-dynamic-consistency-boundary, dilger-dcb-is-what-event-sourcing-should-have-been, atomicobject-cqrs-event-sourcing-production-walkthrough, event-modeling-event-sourcing-podcast, rico-fritzsche-es-does-not-require-aggregates-ccc-vs-dcb, fritzsche-ccc-atomic-append-serialized-write-order, dilger-first-event-modeling-conference-munich-recap, enzler-event-sourcing-aggregates-dcb-or-what, dilger-how-does-dcb-affect-event-modeling, fritzsche-command-context-consistency-principle]
+updated: 2026-09-04
+sources: [pellegrini-dynamic-consistency-boundary, dilger-dcb-is-what-event-sourcing-should-have-been, atomicobject-cqrs-event-sourcing-production-walkthrough, event-modeling-event-sourcing-podcast, rico-fritzsche-es-does-not-require-aggregates-ccc-vs-dcb, fritzsche-ccc-atomic-append-serialized-write-order, dilger-first-event-modeling-conference-munich-recap, enzler-event-sourcing-aggregates-dcb-or-what, dilger-how-does-dcb-affect-event-modeling, fritzsche-command-context-consistency-principle, pellegrini-dcb-tag-dilemma, klijs-skilj-rust-dcb-library, dudycz-vertical-slices-ownership-and-external-dependencies, fritzsche-why-the-entity-model-is-an-illusion]
 tags: [event-sourcing, dcb, ddd, consistency, focus]
 ---
 
@@ -31,6 +31,54 @@ The payoff is escaping the **aggregate** as the mandatory consistency unit: cons
 become per-operation "temporary bubbles" that include just the events a decision needs, so the model
 can evolve without re-architecting around early aggregate choices ("Aggregates introduce rigidity").
 
+## Type and tag are orthogonal — the mechanism that makes a boundary wider than an aggregate (Pellegrini, 2026-03)
+
+DCB's originator returns to define her own terms ([[pellegrini-dcb-tag-dilemma]]), and supplies the piece
+this page was missing: *why* a DCB selection can span what an aggregate could not.
+
+- **Event type = what happened.** `StudentSubscribedToCourse` "conveys the kind of thing that occurred,
+  describing the fact without tying it to the specific entities involved." Type is also "semantically
+  tied to the business logic," since events of one type are generally handled by the same logic.
+- **Tag = which domain elements were involved** — formally, **"the identifier of a historic route in the
+  domain,"** and "semantically tied to the **business rules**." A tag "captures a shared property across
+  a set of facts": all events sharing it involve the same domain element, "concrete entity, or something
+  more abstract."
+- **The load-bearing paragraph:** the aggregate carried the same *meaning* of consistency boundary, but
+  **"the limitation was that an aggregate is only one historic route. In reality, a single decision may
+  advance more than one historic route. The tags of DCB make it possible for the consistency boundaries
+  to involve more than one historical route."** And bringing type into the selection "avoids unnecessary
+  collisions between things that are actually irrelevant."
+- **Tag candidates are a domain-constraint decision, not a schema one.** Actor *and* target (student ID
+  and course); and **context can be tagged** — on `UsernameChanged`, the *released* previous username
+  should be a tag **if** the taken/available state matters when validating another user's claim.
+- **Her one-sentence form:** "An event's type tells you what kind of thing happened; the tags tell you
+  which historic routes were advanced by the event." Her closing rule is deliberately loose: "add a tag
+  whenever you believe it will be a useful grouping key for protecting the consistency of your business
+  model."
+
+**Markers.** **NOT INDEPENDENT** — this is the concept's author defining her own construct:
+authoritative on intent, not corroboration that tags are the right mechanism. **The piece contains no
+measurements, benchmarks or claims of outcome**, and "historic route" is introduced without formal
+definition while doing most of the argumentative work. Out-of-window backfill (2026-03).
+
+### Three incompatible statuses for a tag — hold all three
+
+**This is a live conflict, not a synthesis.** Three sources in this KB now say three different things
+about what a tag *is*, and the difference is not cosmetic: it changes who decides the tag set and at
+which point in the process.
+
+| Source | A tag is… | Where it enters |
+|---|---|---|
+| [[sara-pellegrini]] ([[pellegrini-dcb-tag-dilemma]]) | a **domain-level identifier** of a historic route, semantically tied to the business rules | domain modelling, from domain constraints |
+| [[martin-dilger]] ([[dilger-how-does-dcb-affect-event-modeling]]) | **"indices, not domain concepts"** | absent from Discovery; added in Detailed Modeling, "before handing the slice to an Agent" |
+| [[rico-fritzsche]] ([[rico-fritzsche-es-does-not-require-aggregates-ccc-vs-dcb]]) | an **optional implementation optimization** of a store-agnostic principle ([[command-context-consistency]]) | nowhere necessarily — CCC names no store |
+
+These are reconcilable in practice (an index whose keys happen to be domain identifiers) but they are not
+the same claim about where tags belong in the process, and they imply different answers to "who decides
+the tag set." Pellegrini's is the originator's view — and being the originator makes her **authoritative
+on intent but NOT INDEPENDENT as corroboration**; Dilger's is the modelling-workflow view; Fritzsche's
+demotes tags furthest. **The KB states all three rather than resolving them.**
+
 ## Where it sits / why it's in the focus
 
 DCB is part of the [[event-sourcing]] / [[cqrs]] design substrate around [[event-modeling]] (the
@@ -44,6 +92,11 @@ focus broadened to include it). It connects to several existing threads:
   queries; the Critter Stack's **Marten 9.0** added a higher-performance DCB option via PostgreSQL
   HSTORE ([[martin-dilger|—]] reported by [[jeremy-miller]] via *The Shade Tree Developer*, May 2026).
   *These are the canonical current implementations to capture if/when an in-window development lands.*
+  **Added 2026-08-28:** **skilj** ([[klijs-skilj-rust-dcb-library]]) brings DCB to **Rust on PostgreSQL**
+  — but at **v0.0.1**, author self-announced, **nothing evaluated**, and its capture's `source_url` is
+  **RECONSTRUCTED and unverified** (the repo path as tweeted, `codeberg.org/gklijs/SklilJ`, does not match
+  the crate name `skilj`). A signal that the store contract is spreading beyond the JVM/.NET, and nothing
+  more than that.
 - **Agent angle (claimed).** Vendor framing argues DCB "reduces AI hallucinations" and lets the
   architecture evolve safely under agent-driven change — a possible bridge to
   [[event-modeled-agent-design]] worth watching, currently assertion-level.
@@ -112,6 +165,19 @@ addresses (cross-entity decisions) handled the other way — keep the fixed boun
 coordination into projections/sagas, rather than making the boundary *dynamic per decision*. Worth
 holding both: DCB removes the boundary as a modeling commitment; the conventional view keeps it but
 shrinks it. The KB surfaces the disagreement rather than picking a winner.
+
+**A second voice on this side, arriving from the slice literature (2026-08).** [[oskar-dudycz]]
+([[dudycz-vertical-slices-ownership-and-external-dependencies]]) states as a deliberate rule that
+**"business logic goes per entity or aggregate** — the rules about what states an order can be in and
+which transitions are legal belong to the order. One place, and every slice that decides about an order
+goes through it." That lands him on the keep-the-aggregate side of this page, and it also puts him in
+direct disagreement with [[rico-fritzsche]], writing in the same fortnight, who denies the entity any
+place in software at all ([[fritzsche-why-the-entity-model-is-an-illusion]] — the row "is actually only
+the result of the last write"). Both are new-to-the-KB substrate primaries, neither cites the other, and
+neither is measured: Fritzsche argues from information loss, Dudycz from cohesion. **The conflict is
+carried on [[entity-centric-thinking]] and not resolved here.** Note that Pellegrini's "Kill Aggregate"
+line removes the aggregate as a *consistency* unit while Fritzsche removes the entity as a *modelling*
+unit — separable claims, and Dudycz's rule is about the modelling one.
 
 ## Naming debate (Dilger, 2026-06-15)
 
@@ -203,4 +269,4 @@ only way to get past the aggregate — it is one physical **guard** for a logica
 that carries over: the guard must **cover the context and never less** (an aggregate version is a guard
 far wider than most command contexts). See [[command-context-consistency]].
 
-_Sources: [[pellegrini-dynamic-consistency-boundary]] · [[dilger-dcb-is-what-event-sourcing-should-have-been]] · [[atomicobject-cqrs-event-sourcing-production-walkthrough]] · [[event-modeling-event-sourcing-podcast]] · [[fritzsche-command-context-consistency-principle]]._
+_Sources: [[pellegrini-dynamic-consistency-boundary]] · [[dilger-dcb-is-what-event-sourcing-should-have-been]] · [[atomicobject-cqrs-event-sourcing-production-walkthrough]] · [[event-modeling-event-sourcing-podcast]] · [[fritzsche-command-context-consistency-principle]] · [[pellegrini-dcb-tag-dilemma]] · [[klijs-skilj-rust-dcb-library]] · [[dudycz-vertical-slices-ownership-and-external-dependencies]]._

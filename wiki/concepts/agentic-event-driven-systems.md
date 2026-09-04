@@ -2,8 +2,8 @@
 title: Agentic Event-Driven Systems (Closed-Loop)
 type: concept
 created: 2026-06-12
-updated: 2026-06-21
-sources: [confluent-agentic-event-driven-systems-architecture, solace-multi-agent-systems-real-time-context-eda, atlan-event-driven-architecture-for-ai-agents, akka-event-sourcing-backbone-agentic-ai, axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember]
+updated: 2026-09-04
+sources: [confluent-agentic-event-driven-systems-architecture, solace-multi-agent-systems-real-time-context-eda, atlan-event-driven-architecture-for-ai-agents, akka-event-sourcing-backbone-agentic-ai, axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember, dudycz-backend-for-frontends-for-event-driven-apis]
 tags: [agentic-ai, eda, event-sourcing, closed-loop, multi-agent, synthesis]
 ---
 
@@ -83,4 +83,17 @@ independent [[akka]] thread, and — most tellingly — with the non-vendor acad
 [[esaa-event-sourcing-for-autonomous-agents]], which reaches the same event-sourced design for
 multi-agent LLM systems with nothing to sell.
 
-_Sources: [[confluent-agentic-event-driven-systems-architecture]] · [[solace-multi-agent-systems-real-time-context-eda]] · [[atlan-event-driven-architecture-for-ai-agents]] · [[akka-event-sourcing-backbone-agentic-ai]]._
+## A non-vendor constraint on what agent events must be (Dudycz, 2026-08)
+
+Every source above sells EDA tooling. [[dudycz-backend-for-frontends-for-event-driven-apis]] is a
+practitioner constraint on whether their conclusion is even reachable: if the messages are
+`SthSthCreated / Updated / Deleted`, they "aren't actually events… **Poor Man's replication through the
+queue**," and broadcasting all internal events buys "a leaking abstraction and a spider web of
+dependencies" — a **distributed monolith**, not the loose coupling the vendors credit to EDA. Two
+distinctions the agent literature here mostly skips: **internal vs external (integration) events**, and
+**commands are not events** — "directed, not broadcast… they can also be **rejected**. If we mistake
+them for events, we end up with passive-aggressive communication." For agent-to-agent traffic that is
+exactly the property a protocol must carry ([[agent2agent-protocol]], [[multi-agent-orchestration]]).
+See [[internal-vs-external-events]]. *Experience report, no measurement.*
+
+_Sources: [[confluent-agentic-event-driven-systems-architecture]] · [[solace-multi-agent-systems-real-time-context-eda]] · [[atlan-event-driven-architecture-for-ai-agents]] · [[akka-event-sourcing-backbone-agentic-ai]] · [[dudycz-backend-for-frontends-for-event-driven-apis]]._

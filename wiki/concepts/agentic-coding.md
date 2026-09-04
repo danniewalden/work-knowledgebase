@@ -2,8 +2,8 @@
 title: Agentic Coding
 type: concept
 created: 2026-06-11
-updated: 2026-07-31
-sources: [anthropic-building-effective-agents, langchain-state-of-agent-engineering-2026, svitla-agentic-ai-market-trends-2026, jwilger-agent-skills-event-modeling, jwilger-agent-skills-factory-pipeline, dilger-spec-driven-development-applied, dilger-keep-command-handlers-pure, tornhill-codescene-unhealthy-code-agentic-token-cost, borg-tornhill-code-for-machines-not-just-humans, miller-codebase-is-the-prompt-vertical-slices-ai, dymitruk-ai-trained-on-dysfunction-agents-are-a-must, dudycz-fork-can-you-own-it, fowler-agentic-programming, willison-agentic-engineering-patterns, willison-vibe-engineering]
+updated: 2026-09-04
+sources: [anthropic-building-effective-agents, langchain-state-of-agent-engineering-2026, svitla-agentic-ai-market-trends-2026, jwilger-agent-skills-event-modeling, jwilger-agent-skills-factory-pipeline, dilger-spec-driven-development-applied, dilger-keep-command-handlers-pure, tornhill-codescene-unhealthy-code-agentic-token-cost, borg-tornhill-code-for-machines-not-just-humans, miller-codebase-is-the-prompt-vertical-slices-ai, dymitruk-ai-trained-on-dysfunction-agents-are-a-must, dudycz-fork-can-you-own-it, fowler-agentic-programming, willison-agentic-engineering-patterns, willison-vibe-engineering, zalando-agentic-engineering-snapshot, addyosmani-code-agent-orchestra, addyosmani-agentic-code-quality, morris-humans-and-agents-in-software-engineering-loops, macmanus-prs-not-welcome-software-factories, tornhill-compressed-cognition-cost-of-faster-coding, willison-more-than-just-code-review, laycock-maybe-we-shouldnt-be-reviewing-all-this-code, willison-introducing-wrapture]
 tags: [agentic-ai, use-case, software-development, coding]
 ---
 
@@ -44,6 +44,26 @@ past mistakes, but coding agents can, provided we deliberately update our instru
 harnesses"** — [[harness-engineering]] as accumulated, edited context — and keeps the same narrow
 [[vibe-modeling|vibe-coding]] boundary Fowler draws.
 
+**The boundary, stated by a maintainer about his own project (2026-08).** Graham Dumpleton (author of
+`wrapt`, `mod_wsgi`, New Relic's Python agent), on shipping the `wrapture` library, relayed in
+[[willison-introducing-wrapture]]:
+
+> "Every line of code and documentation in wrapture was written by an AI assistant working under my
+> direction… **This was not vibe coding**, where a one-shot prompt produces a pile of generated code and
+> the person driving hopes for the best because they lack the knowledge to judge what came back… I have
+> spent a long time in this particular corner of Python and knew exactly what the result needed to be, and
+> **the AI was the means of producing it rather than the source of the design**."
+
+"The means of producing it rather than the source of the design" is the crispest statement in the KB of
+where this page's line falls: not in tooling, review volume or output quality, but in **who holds design
+authority and could judge what came back**. **Markers: a SELF-REPORT ABOUT HIS OWN PROCESS, relayed
+secondhand by Willison, about a library weeks old with no defect, review or maintenance data.** It is a
+usable definition; it is not evidence that agent-driven authorship works. Note also the selection effect
+running through all three of the KB's late-2026 cases of agent-authored libraries shipped under a
+maintainer's own name (this one, [[willison-sqlite-utils-4-mostly-written-by-fable]], and the prompt-diff
+system in [[willison-claudes-new-system-prompt]]): every one has a maintainer with deep prior ownership of
+the problem.
+
 ## State of play
 
 - Daily-driver tools named by practitioners: **Claude Code, Cursor, GitHub Copilot, Amazon
@@ -52,6 +72,69 @@ harnesses"** — [[harness-engineering]] as accumulated, edited context — and 
   developers using AI coding agents by 2028 (vs <10% in 2023).
 - The shift is from autocomplete → agents that **plan, execute, test, and iterate** with
   minimal guidance.
+
+## A non-vendor production account at scale ([[zalando-agentic-engineering-snapshot|Zalando, 2026-08-14]])
+
+The KB's second non-vendor, production-scale account of agentic engineering after
+[[stripe-minions-one-shot-coding-agents]], and the first that is about **organization** rather than
+tooling: >250 engineering teams, 2.5 years, and — unusually — **no productivity claim at all.** Its
+headline finding is the honest one: *"**AI amplifies the good and bad practices across our
+organization.**"*
+
+What actually turned out to matter, none of which appears in any practitioner-loop source:
+
+- **An LLM proxy from day one** (LiteLLM, January 2024) fronting OpenAI, AWS Bedrock and Google Vertex, so
+  engineers could experiment freely while the platform team got *"a single point to measure adoption via:
+  MAU, WAU, model, User-Agent."* With post-call hooks for anonymized cost tracking, **pre-call hooks
+  enforcing client version upgrades** (*"For self-managed client installations, unfortunately blocking
+  access is the only effective measure. Same goes for retiring models. **There is always a long-tail group
+  of users who do not adjust their local configurations**"*), and **auto-injected prompt-caching
+  checkpoints** *"which reduced costs for custom agents while their authors still learn about prompt
+  caching."*
+- **Vendor independence as policy, and a behavioural finding against it.** *"We have never centrally
+  mandated the use of a single tool."* But: *"we see users **becoming too attached** to the coding agent
+  they had been using for a while… **The hesitance to switch tools on psychological level exists despite
+  the rather low switching costs**."* And a structural reason to keep the option: *"moving off
+  closed-weight models requires switching to open tools."*
+- **Deliberate non-convergence.** *"With >200 teams innovating and broadly exploring the ecosystem, the
+  question arises whether and when to converge. **We believe it's way too early for this.**"* Instead:
+  transparency mechanisms — an internal **Tech Radar** now tracking **practices** as well as tools
+  (*"the cambrian explosion of AI tools… increased the need for clearer guidance on practices that are
+  proven and those that are still early stage"*), an **LLM guild** running weekly since 2024, and
+  topic-seeded hackathons used to *"explore parallel paths and choose what tools to invest in."* Contrast
+  [[em-standardization-foundation]] and [[laycock-citizens-build-agents-execute-experts-govern]].
+- **A centralized agent-skill collection**, grouped into plugins, spanning disciplines and languages, with
+  **migration skills the most popular type** — *"skills that guide teams in adopting new platform tools or
+  infrastructure practices."* Second-order benefit: *"By encouraging broad contribution of skills that
+  teams found useful, we got an opportunity to **discover and disseminate best practices across the
+  organization**."*
+- **Two vendor-ecosystem gaps reported as recurring:** tools using **generic `User-Agent` headers** (so
+  clients are unidentifiable at the proxy), and **no support for custom auth commands** — only static
+  credentials or subscription defaults, so *"tokens expire and need to be refreshed manually which
+  involves restarting the applications."*
+- **Observed codebase effects, offered as illustration and not causation.** PR sizes have grown for two
+  years, with growth in the [500,1k) and [1k,2k) buckets since Sonnet 4 (Q2/2025); commit messages *"carry
+  the footprint of coding agents, typically around the 5k character mark"* (one contained a full unit-test
+  log). Commit-level cyclomatic-complexity curves across four codebases show *"inflection points… at a
+  time when coding agents come into the picture,"* and for the agent-native codebase *"complexity to build
+  up very quickly with growth fading out"* — with the question left open: *"one would hope this means that
+  the time to build has been drastically reduced. **Time will show whether this is the case.**"*
+- **A caveat they raise against their own results, and against everyone else's.** *"Across industry, many
+  AI wins and increases in PR throughput are reported for **monorepos** where the leverage is high. While
+  we have a few monorepos, we largely use separate repositories for our microservices."* A caution about
+  every monorepo-based factory result in this KB.
+- **And a finding that cuts against the trend:** in training sessions, *"the temptation of participants to
+  use coding agents as a shortcut to achieve results is high. **Yet, using coding agents usually inhibits
+  learning**"* — which is why they now *"state explicitly when manual coding is expected."* See
+  [[comprehension-debt]].
+
+*(Two markers, both true. **Non-vendor about the market** — Zalando sells fashion, not agent tooling, and
+this is practice at scale rather than a pitch, which is why it is valuable. **VENDOR SELF-REPORT about
+itself** — every figure is Zalando's own account of its own internal tooling: the 33% low-risk /
+20–40% lead-time numbers (see [[autonomy-ladder]]), and the complexity analysis, which is **four codebases
+with no control arm** and agent adoption partly inferred from `Co-authored-by` markers the author says are
+inconsistent. All four figures are untranscribed images. No defect, incident, throughput or cost-per-change
+data is reported.)*
 
 ## Caution
 
@@ -77,6 +160,27 @@ policy. Code *structure* is the same kind of input:
 the prompt" — layered code forces the agent to load 6–7 scattered files per change, collapsing context
 signal-to-noise, while [[vertical-slice-architecture|vertical slices]] keep a feature local
 ([[locality-of-reference]]) and cut tokens per task.
+
+**Felt speed is not measured speed, and the gap is measurable.** The strongest caution on this page is
+not about code quality but about the productivity claim itself.
+[[tornhill-compressed-cognition-cost-of-faster-coding|Tornhill]] relays a controlled trial of
+experienced open-source developers in which the AI-assisted group **estimated a 20% speedup** and were
+**19% slower** than the control group — "even expert developers overestimate the AI impact on developer
+productivity." **Cite this carefully: he names no study, date or link** ("one of my favourite
+studies"), so it is *an unnamed controlled trial as relayed by Tornhill* and **must never be
+attributed to a named study, lab or set of authors, however tempting the guess** — and the two
+figures must stay distinct — one is what developers felt, one is what was measured. His proposed
+mechanism is **self-interruption**: agentic work is a stream of questions, diffs, failed tests and
+almost-right changes, each of which "pulls you into a new review-verify-steer decision." Everything on
+this page that reports a speedup as an impression (and most of the KB's practitioner speed claims are
+impressions) should be read against it. See [[attention-bottleneck]].
+
+**And the verification cost has its own dispute now.** Who reads agent-written code, and what replaces
+reading, is an open five-way argument among Brewster, Laycock, Tornhill, Osmani and Willison — held on
+[[verification-burden]] rather than resolved here. The short version: [[simon-willison]] —
+*"eyeballing every line of code has never been the most effective way to validate a change"*
+([[willison-more-than-just-code-review]]); [[rachel-laycock]] — don't automate review, move what review
+is *for* earlier and review by exception ([[laycock-maybe-we-shouldnt-be-reviewing-all-this-code]]).
 
 ## The ownership caveat — "LLM as a fork" ([[oskar-dudycz|Dudycz]])
 
@@ -118,4 +222,4 @@ rule in the routing layer, so a written skill had to be **enforced**, not just s
 won't produce best-practice software on its own — the value is in the spec/scaffolding you impose to
 *constrain* it toward good structure.
 
-_Source pages: [[anthropic-building-effective-agents]] · [[langchain-state-of-agent-engineering-2026]] · [[svitla-agentic-ai-market-trends-2026]] · [[jwilger-agent-skills-event-modeling]] · [[jwilger-agent-skills-factory-pipeline]] · [[dilger-spec-driven-development-applied]] · [[dilger-keep-command-handlers-pure]] · [[tornhill-codescene-unhealthy-code-agentic-token-cost]] · [[borg-tornhill-code-for-machines-not-just-humans]] · [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[dymitruk-ai-trained-on-dysfunction-agents-are-a-must]] · [[willison-agentic-engineering-patterns]] · [[willison-vibe-engineering]]._
+_Source pages: [[anthropic-building-effective-agents]] · [[langchain-state-of-agent-engineering-2026]] · [[svitla-agentic-ai-market-trends-2026]] · [[jwilger-agent-skills-event-modeling]] · [[jwilger-agent-skills-factory-pipeline]] · [[dilger-spec-driven-development-applied]] · [[dilger-keep-command-handlers-pure]] · [[tornhill-codescene-unhealthy-code-agentic-token-cost]] · [[borg-tornhill-code-for-machines-not-just-humans]] · [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[dymitruk-ai-trained-on-dysfunction-agents-are-a-must]] · [[willison-agentic-engineering-patterns]] · [[willison-vibe-engineering]] · [[zalando-agentic-engineering-snapshot]] · [[addyosmani-code-agent-orchestra]] · [[addyosmani-agentic-code-quality]] · [[morris-humans-and-agents-in-software-engineering-loops]] · [[macmanus-prs-not-welcome-software-factories]] · [[tornhill-compressed-cognition-cost-of-faster-coding]] · [[willison-more-than-just-code-review]] · [[laycock-maybe-we-shouldnt-be-reviewing-all-this-code]] · [[willison-introducing-wrapture]]._

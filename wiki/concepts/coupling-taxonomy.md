@@ -2,8 +2,8 @@
 title: Coupling Taxonomy (the coupling landscape)
 type: concept
 created: 2026-06-22
-updated: 2026-07-31
-sources: [coupling-research-note, devadoss-cead-capability-aligned-agent-design]
+updated: 2026-09-04
+sources: [coupling-research-note, devadoss-cead-capability-aligned-agent-design, khononov-coupling-should-be-weighed-not-counted]
 tags: [coupling-cohesion, software-design, modularity, substrate, agentic-ai]
 ---
 
@@ -44,6 +44,9 @@ level (content) maps to Khononov's **Intrusive** strength.
 [[balanced-coupling|Balanced Coupling]]: three dimensions (**Integration Strength × Distance ×
 Volatility**) plus a numeric balance formula. The **direct fit** for software-boundary placement
 (bounded contexts, services, modules) and the model this KB recommends. Full treatment on its own page.
+*(Terminology note: in his own 2026 prose Khononov names the first axis **"shared knowledge"** rather
+than strength — "Integration Strength" is the name of the four-level scale that grades it. Same model;
+see [[balanced-coupling]] and [[khononov-ai-doesnt-fix-your-real-bottleneck]].)*
 
 ## 3. Team-shaped — Team Topologies (2019)
 
@@ -100,6 +103,26 @@ only around durable **[[business-capabilities|capability]]** boundaries with dis
 and evaluation. The microservices→monolith backtracking literature CEAD cites is the same lesson from the
 service tier.
 
+## Weighed, not counted — the argument against the metric tradition (Khononov, 2026-02)
+
+[[khononov-coupling-should-be-weighed-not-counted]] is the first-party case for why a *qualitative*
+taxonomy survives alongside automatable metrics. Ca/Ce and `I = Ce / (Ce + Ca)` are "simple. Automatable.
+And deeply misleading," because they cannot see what flows through a dependency: his illustration is a
+component scoring ~0.01 ("textbook stability") whose single outgoing dependency reaches into another
+component's internals while its hundred incoming ones go through stable contracts. "The metric says:
+rock-solid stability. Reality says: ticking time bomb." Hence: "**Each level down removes an entire
+category of shared reasons for change**", so one intrusive dependency can out-cascade a hundred
+contract-based ones — and the general warning worth keeping on this page: "**easy to automate and useful
+are not the same thing.** A metric that treats use of reflection to modify a private field and an API
+call as equivalent is likely to point you in the wrong direction."
+
+*Markers:* **NOT INDEPENDENT** (his own model, and he runs coupling.dev); the 100-dependency component is
+a **constructed illustration**; "in my experience, chasing those metrics never really made the design more
+modular" is a **practitioner self-report**; **no data in the post**. He also never engages the rejoinder
+that direct database access is itself statically detectable. Full four-level scale on
+[[balanced-coupling]]. Note this post states **only** the Integration Strength axis, not the triad — do
+not cite it for the three dimensions.
+
 ## Related
 
 [[balanced-coupling]] · [[team-topologies]] · [[larry-constantine]] · [[vlad-khononov]] ·
@@ -107,4 +130,4 @@ service tier.
 [[locality-of-reference]] · [[multi-agent-orchestration]] ·
 [[devadoss-cead-capability-aligned-agent-design]] · [[coupling-research-note]]
 
-_Sources: [[coupling-research-note]] · [[devadoss-cead-capability-aligned-agent-design]]._
+_Sources: [[coupling-research-note]] · [[devadoss-cead-capability-aligned-agent-design]] · [[khononov-coupling-should-be-weighed-not-counted]]._

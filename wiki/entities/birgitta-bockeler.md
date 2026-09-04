@@ -2,8 +2,8 @@
 title: Birgitta Böckeler
 type: entity
 created: 2026-06-11
-updated: 2026-08-16
-sources: [fowler-bockeler-harness-engineering, fowler-bockeler-maintainability-sensors, bockeler-context-engineering-coding-agents, bockeler-tdd-inside-the-agent-loop, ng-spec-driven-development-is-waterfall-in-markdown]
+updated: 2026-09-04
+sources: [fowler-bockeler-harness-engineering, fowler-bockeler-maintainability-sensors, bockeler-context-engineering-coding-agents, bockeler-tdd-inside-the-agent-loop, bockeler-understanding-sdd-kiro-speckit-tessl, ng-spec-driven-development-is-waterfall-in-markdown]
 tags: [person, thoughtworks, harness-engineering, generative-ai]
 ---
 
@@ -43,30 +43,52 @@ the failure was for the right reason." The generalised lesson — stop specifyin
 monitor **outcomes**, and be deliberate about "where we insert ourselves as arbiters" — is the same
 guides-vs-sensors trade-off she named, now with evidence pushing budget toward sensors.
 
-## Referenced but not captured: the Kiro / SDD analysis
+## She originated the KB's SDD vocabulary (2025-10-15, ingested 2026-09-04)
 
-[[ng-spec-driven-development-is-waterfall-in-markdown]] cites a **"Fowler/Bockeler analysis" of AWS Kiro**
-that the KB does not hold: for a *minor bug fix* Kiro generated four user stories with sixteen acceptance
-criteria — "using a sledgehammer to crack a nut" — and the agents ignored portions of the spec and emitted
-duplicate code despite explicit instructions. If accurate, this is a fourth Böckeler-line negative eval,
-and it sits directly on the [[spec-driven-development]] thread rather than the harness one.
+**[[bockeler-understanding-sdd-kiro-speckit-tessl]]** — *"Understanding Spec-Driven-Development: Kiro,
+spec-kit, and Tessl"*, martinfowler.com "Exploring Gen AI", **2025-10-15** — is now a source page,
+resolving a flag that stood from 2026-08-16.
 
-**CAPTURED 2026-08-31**, resolving a flag that had stood since 2026-08-16. It is
-`raw/articles/bockeler-understanding-sdd-kiro-speckit-tessl.md` — *"Understanding Spec-Driven-Development:
-Kiro, spec-kit, and Tessl"*, martinfowler.com "Exploring Gen AI", **2025-10-15**. The guessed venue was
-right; the attribution was not — **she is the sole author**, so Ng's "the Fowler/Böckeler analysis," and
-the KB's repetition of it, is wrong and should read Böckeler.
+**Attribution correction, twice over.** [[ng-spec-driven-development-is-waterfall-in-markdown]] cites it
+as *"the Fowler/Böckeler analysis"* and this wiki repeated that. **She is the sole author**, published on
+[[martin-fowler]]'s site; any page saying "Fowler/Böckeler" on this piece is wrong and should read
+Böckeler.
 
-Three things this changes. It is the **earliest** of the four SDD critiques and the one the other two
-cite, so it heads an Oct–Nov 2025 wave rather than sitting inside Ng's 2026-03 summary. It is **the origin
-of the spec-first / spec-anchored / spec-as-source taxonomy** the KB already uses as working vocabulary
-without attributing it. And it carries an argument nothing else in the KB holds — the **MDD parallel**:
-spec-as-source risks inheriting "the downsides of both MDD and LLMs: inflexibility and non-determinism,"
-and MDD's *parseable* structure at least bought tool support for writing valid, complete, consistent
-specs, which natural-language specs give up. That lands directly on
-[[model-as-code-vs-model-as-language]], and is simultaneously the strongest historical prior for the
-model-as-language position and the sharpest warning against it. Awaiting ingest.
+**It is the source of the spec-first / spec-anchored / spec-as-source ladder** the wiki uses as working
+vocabulary, mostly without attribution — and it **predates every other primary in the critique cluster**:
+[[francois-zaninotto|Zaninotto]] and [[colin-eberhardt|Eberhardt]] both cite her,
+[[adam-tornhill|Tornhill]] uses her distinction to scope his own critique, and
+[[ng-spec-driven-development-is-waterfall-in-markdown|Ng]] is five months downstream. (Only
+[[gojko-adzic|Adzic]], 2025-09-29, is earlier.) So it heads an Oct–Nov 2025 wave rather than sitting
+inside Ng's 2026-03 summary.
+
+**Its MDD parallel is the strongest external input [[model-as-code-vs-model-as-language]] has received,
+and it cuts both ways:** model-driven development *"never took off for business applications, it sits at
+an awkward abstraction level"*, **but** *"the parseable structure also had upsides that we're losing now:
+We could provide the spec author with a lot of tool support to write valid, complete and consistent
+specs"* — so spec-as-source risks *"the downsides of both MDD and LLMs: Inflexibility and
+non-determinism."* Simultaneously the strongest historical prior for the model-as-language position and
+the sharpest warning against it.
+
+The Kiro finding the KB previously held only through Ng is now first-party: for a *minor bug fix* Kiro
+generated **four user stories with sixteen acceptance criteria** — "using a sledgehammer to crack a nut"
+— and agents ignored portions of the spec and emitted duplicate code despite explicit instructions.
+That count is an **artifact count, not an outcome**. Her *"in the same time it took me to run and review
+spec-kit I could have implemented the feature"* is an **IMPRESSION NOT MEASUREMENT** and **NOT
+INDEPENDENT** (see below).
+
+**Two markers, and they matter for how she is cited.** **NOT INDEPENDENT** — martinfowler.com is
+[[thoughtworks]]' own publishing channel and she is a Thoughtworks Distinguished Engineer; she is a
+*primary* for her own trials, and **never external corroboration for a Thoughtworks-originated framing**
+(harness engineering above all, which she named). And **she is pro-spec-first herself** — *"the general
+principle of spec-first is definitely valuable in many situations"* — so **filing her as an SDD opponent
+is wrong.**
+
+**Through-line across her four captured pieces:** an agent following instructions is not the same as the
+instructions being right.
 
 _Sources: [[fowler-bockeler-harness-engineering]] · [[fowler-bockeler-maintainability-sensors]] ·
 [[bockeler-context-engineering-coding-agents]] · [[bockeler-tdd-inside-the-agent-loop]] ·
-[[ng-spec-driven-development-is-waterfall-in-markdown]] (secondhand reference)._
+[[bockeler-understanding-sdd-kiro-speckit-tessl]] (2025-10-15, **sole author**) ·
+[[ng-spec-driven-development-is-waterfall-in-markdown]] (secondhand reference — unreliable on the
+attribution)._

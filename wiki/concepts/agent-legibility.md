@@ -2,8 +2,8 @@
 title: Agent Legibility
 type: concept
 created: 2026-06-11
-updated: 2026-06-17
-sources: [openai-harness-engineering-codex, miller-codebase-is-the-prompt-vertical-slices-ai, fritzsche-functional-core-imperative-shell-agentic-coding, tornhill-clear-design-principles-agentic-age, khononov-golden-age-of-modularity]
+updated: 2026-09-04
+sources: [openai-harness-engineering-codex, miller-codebase-is-the-prompt-vertical-slices-ai, fritzsche-functional-core-imperative-shell-agentic-coding, tornhill-clear-design-principles-agentic-age, khononov-golden-age-of-modularity, breunig-who-taught-the-models-to-do-that, zalando-agentic-engineering-snapshot, willison-claudes-new-system-prompt, willison-understanding-chatgpt-work, mcateer-evolution-of-the-agent-harness, cao-agentic-software-restructuring-software-paradigm]
 tags: [harness-engineering, codex, context]
 ---
 
@@ -54,4 +54,50 @@ stated from coupling theory (his [[balanced-coupling|Balanced Coupling]] model).
 good boundaries are what make a codebase legible/cheap for agents to evolve. This design/code side of
 legibility is collected under [[ai-readable-code]].
 
-_Sources: [[openai-harness-engineering-codex]] · [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[fritzsche-functional-core-imperative-shell-agentic-coding]] · [[tornhill-clear-design-principles-agentic-age]] · [[khononov-golden-age-of-modularity]]._
+## Models reason anywhere that can hold text — so every text field is now output
+
+[[breunig-who-taught-the-models-to-do-that|Breunig, 2026-08-30]]: models are trained to *"search, reflect,
+factor, and plan in text before delivering a final response,"* and *"they'll reason **pretty much anywhere
+that can hold text**."* Two instances he cites: with reasoning disabled, models think in their regular
+output; with Qwen 3.6's thinking hobbled, **the model shifted its reasoning into code comments.** Current
+frontier models *"write novels in comments,"* treating them *"like a scratchpad rather than, well, code
+comments."*
+
+Independently, [[zalando-agentic-engineering-snapshot|Zalando]] reports the same spill in a different
+field: *"even commit messages carry the footprint of coding agents, typically around the 5k character
+mark. In one extreme case, we found a commit message to include a full log of unit test execution"* — and
+their response is a **pre-commit constraint**.
+
+Two consequences for this page. **(1)** Comments and commit messages are no longer purely human-facing
+documentation; scratchpad overflow into them is a **predictable output of training**, not sloppiness, so
+the fix is a constraint at the boundary rather than an instruction in a prompt. **(2)** It is a reason the
+in-repo-artifact patterns work at all — an on-disk artifact is not only memory, it is **where reasoning
+goes when it cannot go anywhere else**, which is part of why
+[[edwards-alexander-an-accidental-blackboard|the repo-as-blackboard]] effect emerged and why
+[[dilger-highlighting-markers-give-context-to-agents|deliberately legible in-repo artifacts]] and the
+[[llm-wiki]] pattern get traction. Neither source connects these; the KB can.
+
+**The mirror image — legibility of the harness to *you* (2026-09).** This page's rule governs what the
+agent can see. Two same-week captures document the reverse, and it bounds the whole practice: for a
+harness you rent, the decisive layers are not published. [[anthropic]] publishes consumer system prompts
+with revision history but not Claude Code's or Cowork's, and — per the model's own account of its context —
+the published core prompt is followed by unpublished *"feature- and tool-specific blocks that get added
+depending on what's enabled for the session"* ([[willison-claudes-new-system-prompt]]; **a MODEL
+SELF-REPORT, not documentation**). [[openai]] publishes neither prompts nor tool descriptions, so the only
+available instrument was to have a ChatGPT Work session inventory **itself** — it reported **223 tools and
+44 skills** ([[willison-understanding-chatgpt-work]]; **also a model self-report**). Legibility is
+therefore high for the layer you build and near-zero for the layer you rent, and the asymmetry is a vendor
+choice rather than a property of the technology. See [[agent-harness]].
+
+**What survives absorption.** [[mcateer-evolution-of-the-agent-harness|McAteer (2026-08-22)]] argues that as
+models absorb harness capabilities into their weights ([[harness-absorption]]), what is left is the set of
+things no model can absorb — **permissions, identity, trust and legibility** — because "a model that absorbs
+permissions into itself has dissolved permissions." On that reading this page describes the *durable* part of
+harness work and much of the rest is temporary scaffolding. It is a practitioner prediction in an essay, not
+evidence — but it is a direct claim about where to invest, and it converges with
+[[cao-agentic-software-restructuring-software-paradigm|Cao]]'s academic version of the same relocation
+(architectural oversight, quality calibration, ethical governance as the human differentiators — *single-author
+arXiv position preprint, not peer-reviewed*). Where the surviving harness becomes a surface aimed at the human
+rather than the model, see [[attention-interface]].
+
+_Sources: [[openai-harness-engineering-codex]] · [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[fritzsche-functional-core-imperative-shell-agentic-coding]] · [[tornhill-clear-design-principles-agentic-age]] · [[khononov-golden-age-of-modularity]] · [[breunig-who-taught-the-models-to-do-that]] · [[zalando-agentic-engineering-snapshot]] · [[willison-claudes-new-system-prompt]] · [[willison-understanding-chatgpt-work]] · [[mcateer-evolution-of-the-agent-harness]] · [[cao-agentic-software-restructuring-software-paradigm]]._

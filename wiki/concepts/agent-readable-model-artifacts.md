@@ -2,8 +2,8 @@
 title: Agent-Readable Model Artifacts
 type: concept
 created: 2026-08-14
-updated: 2026-08-31
-sources: [miller-jasperfx-critterstack-ai-event-modeling-strategy, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-agentic-collaboration-freeform-drawings, dilger-planning-like-excel-legible-to-human-and-ai, dilger-event-modeling-knowledge-hub-emlang, dilger-drawio-model-in-code, esdm-event-sourced-domain-modeling, fraktalio-event-modeler-connect-ai-agents-mcp, proophboard-skills-ai-agent-event-modeling, dilger-adding-perspectives-to-event-modeling]
+updated: 2026-09-04
+sources: [miller-jasperfx-critterstack-ai-event-modeling-strategy, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-agentic-collaboration-freeform-drawings, dilger-planning-like-excel-legible-to-human-and-ai, dilger-event-modeling-knowledge-hub-emlang, dilger-drawio-model-in-code, esdm-event-sourced-domain-modeling, fraktalio-event-modeler-connect-ai-agents-mcp, proophboard-skills-ai-agent-event-modeling, dilger-adding-perspectives-to-event-modeling, dilger-git-as-primary-persistence-for-event-models, dilger-ui-only-interactions-filtering, dilger-ux-as-first-class-in-spec-driven-development, dilger-only-engineers-care-about-consistent-systems]
 tags: [event-modeling, agentic-ai, interoperability, focus]
 ---
 
@@ -30,6 +30,39 @@ Roughly in order of increasing machine-tractability, with the KB's evidence for 
 | **Freeform marks, both directions** | Spatial/graph context (inside a lasso, arrow direction) the agent reads — *and draws back* | [[dilger-agentic-collaboration-freeform-drawings]] |
 | **Attention markers on screens** | What is salient *right now*, region-scoped; agents read, validate, and build UI from them | [[dilger-highlighting-markers-give-context-to-agents]] |
 | **Derived export from code** *(off-ladder — see below)* | Slice definitions exported by CLI from a fluent API in the code, visualized on top; the model is a *projection*, not the source | [[miller-jasperfx-critterstack-ai-event-modeling-strategy]] |
+
+**A rung the ladder implied but never had: the model's *store* (2026-09-02).**
+[[dilger-git-as-primary-persistence-for-event-models]] makes **git a primary persistence layer for the
+model itself** rather than a versioning extension: *"No relational database. All data lives in Git."*
+One repository per board, configurable, **branching supported**, under a **"BYODS — bring your own
+datastore"** design (Redis, S3, YAML, SharePoint named as possibilities), and *"you can store your
+models in a Worm-Drive for auditability."*
+
+Three things follow for this page:
+
+- **The board-vs-file framing collapses.** The ladder has treated *board via MCP* and *linted file
+  format* as different rungs. If the board's primary store is a git repo, they are the same rung: an
+  agent can read the model, and its whole history, with ordinary `git` and `grep`, or via MCP, without
+  an export step.
+- **Addressability gains a time axis.** The page's central claim is that what makes a model
+  agent-usable is a **shared handle to instruct and report against**. A commit adds *which version* to
+  that handle, and makes **model↔code drift a diff between two repos** rather than a bespoke check
+  ([[dilger-keep-command-handlers-pure]], [[esdm-event-sourced-domain-modeling]]).
+- **Branching a specification is genuinely new**, and unexamined. Nothing in the source says how a
+  two-dimensional board serialises so diffs and merges are meaningful, what happens when two agents (or
+  humans) diverge on the same slice, or how branching interacts with the board-level claim-lock that
+  keeps parallel agents from colliding ([[dilger-loop-engineering-never-argue-with-agent]]).
+
+It also answers, squarely, one objection the KB holds against model-first work:
+[[tornhill-blast-from-the-past-sdd-illusion-of-known-scope|Tornhill's]] MDA complaint that vendor design
+tools lacked pipelines, CLIs, IDEs and linters — *"imagine coding in a Microsoft Word document."* A model
+in git gets the whole toolchain. It answers nothing about
+[[eberhardt-putting-spec-kit-through-its-paces|Eberhardt's]] opposite objection, that specs are
+point-in-time artifacts rarely revisited, so versioning them is cost without return.
+
+*(**VENDOR SELF-REPORT** — EM-Studio is [[martin-dilger]]'s own platform; the git backend is
+**announced as being added, not reported in use**, and no auditability requirement, regulation or
+auditor is named for the WORM claim.)*
 
 ## Three things the pattern shows
 
@@ -66,6 +99,17 @@ in place. That write direction is what turns a spec into a **conversation surfac
 mechanism behind the "agent critiques the model" direction of fit in [[event-modeled-agent-design]].
 Projection into audience-specific views ([[dilger-adding-perspectives-to-event-modeling]]) is the same
 idea aimed at humans: one model, many rendered surfaces.
+
+**A surface this page under-weights: the screen.** Beyond text, coordinates and freeform marks, the
+model's **UI mockups** are themselves an agent-readable artifact —
+[[dilger-ui-only-interactions-filtering]] states it plainly: *"Using the UI mockup - which is also
+accessible for a connected agent building from the model - it's quite clear what needs to be done."*
+With HTML Views authored in the model, region-scoped screen markers
+([[dilger-highlighting-markers-give-context-to-agents]]) and a Screen Preview that puts hand sketches,
+HTML mockups and Figma in one storyline
+([[dilger-only-engineers-care-about-consistent-systems]]), the screen becomes both the
+human-reviewable surface and an agent input. Treated as its own claim at
+[[screens-as-specification]]. *(**VENDOR SELF-REPORT** throughout — all EM-Studio features.)*
 
 ## What's missing
 
@@ -120,4 +164,4 @@ where the reverse holds. Neither side has published a comparison. See
 [[context-engineering]] · [[model-context-protocol]] · [[em-standardization-foundation]] ·
 [[spec-driven-development]] · [[eventmodelers-ai]]
 
-_Sources: [[dilger-eventmodelers-supports-esdm-export]] · [[dilger-highlighting-markers-give-context-to-agents]] · [[dilger-agentic-collaboration-freeform-drawings]] · [[dilger-planning-like-excel-legible-to-human-and-ai]] · [[dilger-event-modeling-knowledge-hub-emlang]] · [[dilger-drawio-model-in-code]] · [[esdm-event-sourced-domain-modeling]] · [[fraktalio-event-modeler-connect-ai-agents-mcp]] · [[proophboard-skills-ai-agent-event-modeling]] · [[dilger-adding-perspectives-to-event-modeling]]._
+_Sources: [[dilger-eventmodelers-supports-esdm-export]] · [[dilger-highlighting-markers-give-context-to-agents]] · [[dilger-agentic-collaboration-freeform-drawings]] · [[dilger-planning-like-excel-legible-to-human-and-ai]] · [[dilger-event-modeling-knowledge-hub-emlang]] · [[dilger-drawio-model-in-code]] · [[esdm-event-sourced-domain-modeling]] · [[fraktalio-event-modeler-connect-ai-agents-mcp]] · [[proophboard-skills-ai-agent-event-modeling]] · [[dilger-adding-perspectives-to-event-modeling]] · [[dilger-git-as-primary-persistence-for-event-models]] · [[dilger-ui-only-interactions-filtering]] · [[dilger-ux-as-first-class-in-spec-driven-development]] · [[dilger-only-engineers-care-about-consistent-systems]]._

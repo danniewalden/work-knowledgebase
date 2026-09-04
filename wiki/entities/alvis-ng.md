@@ -24,7 +24,9 @@ is **synthesis, not evidence**. His contribution is twofold:
 
 1. **He assembles the external empirical record** the [[spec-driven-development]] page had been asking
    for — Scott Logic's ~10x-slower SpecKit trial, the Fowler/Böckeler Kiro analysis, Augment Engineer's
-   1,300-lines-of-Markdown-to-render-a-date, Marmelab's "The Waterfall Strikes Back", and
+   1,300-lines-of-Markdown-to-render-a-date (the real primary for that figure is
+   [[zaninotto-spec-driven-development-waterfall-strikes-back|Zaninotto]], not Ng — cite it there),
+   Marmelab's "The Waterfall Strikes Back", and
    [[gojko-adzic]] calling SDD "the revenge of waterfall or BDD taken to a new level." None of it is his
    own data — **and the Adzic line is a misreading he introduced**: it is the title of Adzic's post, posed
    as a question and answered "it does not, really." See [[gojko-adzic]].

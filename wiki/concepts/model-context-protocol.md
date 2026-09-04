@@ -2,8 +2,8 @@
 title: Model Context Protocol (MCP)
 type: concept
 created: 2026-06-11
-updated: 2026-08-31
-sources: [mcp-specification-2025-11-25, sadalage-chandrasekaran-making-data-ready-for-agentic-ai, anthropic-building-effective-agents, svitla-agentic-ai-market-trends-2026, proophboard-skills-ai-agent-event-modeling, fraktalio-event-modeler-connect-ai-agents-mcp, roden-event-sourcing-meets-mcp-whole-story-for-llms]
+updated: 2026-09-04
+sources: [mcp-specification-2025-11-25, sadalage-chandrasekaran-making-data-ready-for-agentic-ai, anthropic-building-effective-agents, svitla-agentic-ai-market-trends-2026, proophboard-skills-ai-agent-event-modeling, fraktalio-event-modeler-connect-ai-agents-mcp, roden-event-sourcing-meets-mcp-whole-story-for-llms, miller-ai-assisted-production-support-with-critterwatch, fowler-fragments-2026-09-01]
 tags: [agentic-ai, protocol, tools, integration]
 ---
 
@@ -52,6 +52,36 @@ the model via MCP; one rung down it *reads the full event history* via MCP. The 
 MCP server (natural-language event read/write, subject/type search, EventQL) is the concrete example —
 though Roden stresses the principle is product-neutral. See [[event-sourcing]], [[context-engineering]].
 
+## MCP as a guarded operations surface (CritterWatch, 2026-09)
+
+[[miller-ai-assisted-production-support-with-critterwatch]] is the KB's fullest worked example of MCP used
+for **production support** rather than design or retrieval. Two lines of host code
+(`AddCritterWatchMcp()` / `MapCritterWatchMcp()`) mount **48 tools — 21 read and 27 action** — over
+streamable HTTP, *"deliberately configured stateless so every tool invocation sees the actual caller's
+identity for authorization."* **VENDOR SELF-REPORT: JasperFx's own paid product, JasperFx's fleet, and the
+failures in the demo were injected by the vendor's own chaos-monkey tools. Nothing is measured.**
+
+Three design points transfer regardless of the product:
+
+- **Read tools and action tools compose into a loop inside the agent.** Dead-letter triage runs
+  `summarize` → `query` → `replay` → `discard` with envelope ids flowing between calls, so no human ferries
+  identifiers between a console and a chat window. The *ordering* is taught by a paired skill, not inferred.
+- **Tools report their own completeness.** Reads fan out across every physical message store a service
+  owns and return `databasesAnnounced` vs `databasesAnswered` plus a `partial` flag, so an agent cannot
+  render "no rows" over "some stores never answered". See [[harness-engineering]] — this belongs in every
+  fan-out MCP read, not just this one.
+- **A structural tool alongside the observational ones.** `describe_lifecycle` returns a message type's
+  complete path across every monitored service — publisher → transport → handler → cascaded messages →
+  appended events → projections — as structured JSON **and a ready-to-paste Mermaid sequence diagram**.
+  That is an [[agent-readable-model-artifacts]] rung **derived from a running system** rather than from
+  source or a diagram, which no other capture in the KB currently supplies.
+
+Permissioning (license gate, capability-scoped RBAC, separate read-vs-act grants) is on
+[[agent-governance]]. The application-facing counterpart — twenty tools across `Marten.Mcp`,
+`Polecat.Mcp` and `WolverineFx.Mcp` that expose *your* app to an agent (query event streams, fetch
+aggregate state, daemon status, scaffold a vertical slice) — is announced in
+[[miller-new-stuff-in-critter-stack-ai-skills-1-10]].
+
 ## Antipattern — naive API-to-MCP conversion (2026-08)
 
 The sharpest design critique of MCP surface area the KB holds
@@ -80,4 +110,9 @@ Two structural points worth carrying forward:
 This is [[business-capabilities]] applied to protocol surface, and it is the reason MCP exposure is an
 architecture decision rather than a wiring one.
 
-_Source pages: [[mcp-specification-2025-11-25]] · [[anthropic-building-effective-agents]] · [[svitla-agentic-ai-market-trends-2026]] · [[proophboard-skills-ai-agent-event-modeling]] · [[fraktalio-event-modeler-connect-ai-agents-mcp]] · [[roden-event-sourcing-meets-mcp-whole-story-for-llms]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]]._
+**Recorded scepticism, for the register.** [[martin-fowler]] quotes Mickey Petersen, without comment, in
+[[fowler-fragments-2026-09-01]]: *"MCP is SOAP for Zoomers."* No argument accompanies it and none is
+implied here — it is logged as a dated snapshot of protocol scepticism from a well-read venue, because
+every other MCP source in this KB is a proponent or an implementer.
+
+_Source pages: [[mcp-specification-2025-11-25]] · [[anthropic-building-effective-agents]] · [[svitla-agentic-ai-market-trends-2026]] · [[proophboard-skills-ai-agent-event-modeling]] · [[fraktalio-event-modeler-connect-ai-agents-mcp]] · [[roden-event-sourcing-meets-mcp-whole-story-for-llms]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]] · [[miller-ai-assisted-production-support-with-critterwatch]] · [[fowler-fragments-2026-09-01]]._

@@ -2,9 +2,9 @@
 title: Overview
 type: overview
 created: 2026-06-11
-updated: 2026-08-16
-sources: [ng-spec-driven-development-is-waterfall-in-markdown, bockeler-tdd-inside-the-agent-loop, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-describing-without-solving-burns-you-out, dilger-the-shapes-event-modeling-anti-patterns, dilger-agentic-collaboration-freeform-drawings, dilger-99-percent-software-boring-two-patterns, dilger-event-model-structure-linter-reference-catalog, dymitruk-ai-melts-barrier-event-modeling-is-the-map, ahe-agentic-harness-engineering, dilger-triplet-flexible-agent-enabled-architecture, addyosmani-earning-taste-and-judgment, addyosmani-software-factories-light-and-dark, willison-fireside-chat-claude-code-team, karpathy-llm-wiki, eventmodeling-what-is-event-modeling, semaphore-dymitruk-event-modeling, akka-event-sourcing-backbone-agentic-ai, akka-agentic-systems-are-distributed-systems, anthropic-building-effective-agents, deloitte-ai-agents-scaling-faster-than-guardrails, langchain-state-of-agent-engineering-2026, svitla-agentic-ai-market-trends-2026, mcp-specification-2025-11-25, a2a-protocol-overview, gartner-40-percent-enterprise-apps-task-specific-agents-2026, fowler-bockeler-harness-engineering, fowler-bockeler-maintainability-sensors, openai-harness-engineering-codex, anthropic-effective-harnesses-long-running-agents, langchain-anatomy-of-an-agent-harness, firecrawl-what-is-an-agent-harness, hashimoto-my-ai-adoption-journey, stripe-minions-one-shot-coding-agents, dymitruk-event-modeling-future-proof-agents, qlerify-event-modeling-tool-ai, confluent-agentic-event-driven-systems-architecture, solace-multi-agent-systems-real-time-context-eda, atlan-event-driven-architecture-for-ai-agents, proophboard-skills-ai-agent-event-modeling, esaa-event-sourcing-for-autonomous-agents, jwilger-agent-skills-event-modeling, dilger-spec-driven-development-applied, dilger-faros-ai-report-amplifies-unclear-requirements, dilger-keep-command-handlers-pure, dilger-automatic-domain-discovery-claude-code, dilger-model-is-a-living-spec-always-on-agent, dilger-hold-my-beer-engineer, fraktalio-event-modeler-connect-ai-agents-mcp, dilger-craft-conf-idea-to-event-model-to-code, nick-tune-graphs-memory-skills-agents, rico-fritzsche-autonomous-domain-capabilities-ccc, miller-codebase-is-the-prompt-vertical-slices-ai, dymitruk-ai-trained-on-dysfunction-agents-are-a-must, dilger-dcb-is-what-event-sourcing-should-have-been, dilger-event-modeling-agent-harness, dilger-is-code-still-the-source-of-truth, dilger-adding-perspectives-to-event-modeling, atomicobject-cqrs-event-sourcing-production-walkthrough, tornhill-clear-design-principles-agentic-age, khononov-golden-age-of-modularity, event-modeling-event-sourcing-podcast, axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember, roden-event-sourcing-meets-mcp-whole-story-for-llms, borg-tornhill-code-for-machines-not-just-humans, coupling-research-note, addyosmani-loop-engineering, langchain-the-art-of-loop-engineering, swyx-loopcraft-art-of-stacking-loops, fowler-agentic-programming, bockeler-context-engineering-coding-agents, dilger-first-event-modeling-conference-munich-recap, anthropic-getting-started-with-loops, willison-rewriting-bun-in-rust, tornhill-why-human-level-ai-wont-be-enough, dilger-planning-like-excel-legible-to-human-and-ai, esdm-event-sourced-domain-modeling, adaptech-workflow-not-inside-giant-process-manager, dilger-extending-event-modeling-query-when, dilger-flea-market-model-to-deploy, dilger-drawio-model-in-code, jwilger-agent-skills-factory-pipeline, willison-vibe-engineering, prefect-loops-vs-graphs, khononov-microservices-hype-to-ai-sloop, devadoss-cead-capability-aligned-agent-design, skelton-team-topologies-foundation-ai-roi, willison-lethal-trifecta, yordis-prieto-code-is-the-ultimate-diagram, roden-too-many-islands-em-conf-2026, dora-roi-ai-assisted-software-development-2026, fritzsche-command-context-consistency-principle, fritzsche-who-owns-a-rule-shared-across-domain-capabilities, fritzsche-why-solid-is-outdated, fritzsche-choosing-storage-is-choosing-what-your-system-forgets, fritzsche-why-your-software-cannot-explain-business-decisions, dilger-spec-driven-tools-need-event-modeling-front-half, dilger-real-cost-of-ai-is-second-order]
-tags: [meta, event-modeling, event-sourcing, event-driven-architecture, agentic-ai, agent-patterns, governance, market, harness-engineering]
+updated: 2026-09-04
+sources: [ng-spec-driven-development-is-waterfall-in-markdown, bockeler-tdd-inside-the-agent-loop, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-describing-without-solving-burns-you-out, dilger-the-shapes-event-modeling-anti-patterns, dilger-agentic-collaboration-freeform-drawings, dilger-99-percent-software-boring-two-patterns, dilger-event-model-structure-linter-reference-catalog, dymitruk-ai-melts-barrier-event-modeling-is-the-map, ahe-agentic-harness-engineering, dilger-triplet-flexible-agent-enabled-architecture, addyosmani-earning-taste-and-judgment, addyosmani-software-factories-light-and-dark, willison-fireside-chat-claude-code-team, karpathy-llm-wiki, eventmodeling-what-is-event-modeling, semaphore-dymitruk-event-modeling, akka-event-sourcing-backbone-agentic-ai, akka-agentic-systems-are-distributed-systems, anthropic-building-effective-agents, deloitte-ai-agents-scaling-faster-than-guardrails, langchain-state-of-agent-engineering-2026, svitla-agentic-ai-market-trends-2026, mcp-specification-2025-11-25, a2a-protocol-overview, gartner-40-percent-enterprise-apps-task-specific-agents-2026, fowler-bockeler-harness-engineering, fowler-bockeler-maintainability-sensors, openai-harness-engineering-codex, anthropic-effective-harnesses-long-running-agents, langchain-anatomy-of-an-agent-harness, firecrawl-what-is-an-agent-harness, hashimoto-my-ai-adoption-journey, stripe-minions-one-shot-coding-agents, dymitruk-event-modeling-future-proof-agents, qlerify-event-modeling-tool-ai, confluent-agentic-event-driven-systems-architecture, solace-multi-agent-systems-real-time-context-eda, atlan-event-driven-architecture-for-ai-agents, proophboard-skills-ai-agent-event-modeling, esaa-event-sourcing-for-autonomous-agents, jwilger-agent-skills-event-modeling, dilger-spec-driven-development-applied, dilger-faros-ai-report-amplifies-unclear-requirements, dilger-keep-command-handlers-pure, dilger-automatic-domain-discovery-claude-code, dilger-model-is-a-living-spec-always-on-agent, dilger-hold-my-beer-engineer, fraktalio-event-modeler-connect-ai-agents-mcp, dilger-craft-conf-idea-to-event-model-to-code, nick-tune-graphs-memory-skills-agents, rico-fritzsche-autonomous-domain-capabilities-ccc, miller-codebase-is-the-prompt-vertical-slices-ai, dymitruk-ai-trained-on-dysfunction-agents-are-a-must, dilger-dcb-is-what-event-sourcing-should-have-been, dilger-event-modeling-agent-harness, dilger-is-code-still-the-source-of-truth, dilger-adding-perspectives-to-event-modeling, atomicobject-cqrs-event-sourcing-production-walkthrough, tornhill-clear-design-principles-agentic-age, khononov-golden-age-of-modularity, event-modeling-event-sourcing-podcast, axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember, roden-event-sourcing-meets-mcp-whole-story-for-llms, borg-tornhill-code-for-machines-not-just-humans, coupling-research-note, addyosmani-loop-engineering, langchain-the-art-of-loop-engineering, swyx-loopcraft-art-of-stacking-loops, fowler-agentic-programming, bockeler-context-engineering-coding-agents, dilger-first-event-modeling-conference-munich-recap, anthropic-getting-started-with-loops, willison-rewriting-bun-in-rust, tornhill-why-human-level-ai-wont-be-enough, dilger-planning-like-excel-legible-to-human-and-ai, esdm-event-sourced-domain-modeling, adaptech-workflow-not-inside-giant-process-manager, dilger-extending-event-modeling-query-when, dilger-flea-market-model-to-deploy, dilger-drawio-model-in-code, jwilger-agent-skills-factory-pipeline, willison-vibe-engineering, prefect-loops-vs-graphs, khononov-microservices-hype-to-ai-sloop, devadoss-cead-capability-aligned-agent-design, skelton-team-topologies-foundation-ai-roi, willison-lethal-trifecta, yordis-prieto-code-is-the-ultimate-diagram, roden-too-many-islands-em-conf-2026, dora-roi-ai-assisted-software-development-2026, fritzsche-command-context-consistency-principle, fritzsche-who-owns-a-rule-shared-across-domain-capabilities, fritzsche-why-solid-is-outdated, fritzsche-choosing-storage-is-choosing-what-your-system-forgets, fritzsche-why-your-software-cannot-explain-business-decisions, dilger-spec-driven-tools-need-event-modeling-front-half, dilger-real-cost-of-ai-is-second-order, guo-survey-question-answering-to-task-completion-harness-design, ning-code-as-agent-harness, graph-engineering-era-of-llm-agents-system-intelligence, harnessx-composable-adaptive-evolvable-agent-harness-foundry, harnessforge-joint-harness-and-policy-evolution, sbco-verifier-grounded-harness-optimization, evo-bench-can-language-models-improve-agent-harness, wang-rethinking-evaluation-of-harness-evolution-for-agents, mcateer-evolution-of-the-agent-harness, breunig-harnesses-are-situated-agents, willison-gpt6-astra, fowler-fragments-2026-09-01, willison-designing-agentic-loops, morris-humans-and-agents-in-software-engineering-loops, voss-what-the-hell-is-a-loop-anyway, miracle-my-loop-engineering-workflow, wong-loop-engineering-teaching-ai-agents-how-to-think, willison-brewster-cannot-review-180000-lines, laycock-maybe-we-shouldnt-be-reviewing-all-this-code, laycock-the-conductor-developer, tornhill-controlling-the-uncertainty-machine, tornhill-task-uncertainty-decides-what-code-you-read, tornhill-compressed-cognition-cost-of-faster-coding, willison-more-than-just-code-review, willison-conceptual-integrity-and-counting-lines-of-code, osmani-agentic-code-review-skill-five-axes, tune-no-rapport-with-a-model-you-didnt-code, khononov-value-of-90-percent-done-never-lower, dilger-lights-off-software-factory-dead-end, fritzsche-why-the-entity-model-is-an-illusion, fritzsche-the-entity-is-a-projection-not-a-row, fritzsche-vsa-does-not-fix-entity-centered-thinking, fritzsche-thinking-in-events, fritzsche-event-sourcing-is-not-an-audit-feature, dudycz-vertical-slices-ownership-and-external-dependencies, dudycz-backend-for-frontends-for-event-driven-apis, dudycz-fixing-bugs-in-event-sourcing, pellegrini-dcb-tag-dilemma, goeleven-event-sourcing-not-auditing-for-free, axoniq-government-ai-explainability-requirements, adzic-spec-driven-development-revenge-of-waterfall-or-bdd, bockeler-understanding-sdd-kiro-speckit-tessl, zaninotto-spec-driven-development-waterfall-strikes-back, eberhardt-putting-spec-kit-through-its-paces, tornhill-blast-from-the-past-sdd-illusion-of-known-scope, nick-tune-event-sourced-claude-code-workflows, dilger-communicating-intent-to-an-agent-needs-a-dsl, dilger-markdown-is-a-suggestion-dressed-as-a-spec, dilger-agentic-engineer-program-stack-agnostic-spec, dilger-podcast-episode-47-agentic-modeling-audit-trails, dilger-one-million-tokens-self-training-modeling-agent]
+tags: [meta, event-modeling, event-sourcing, event-driven-architecture, agentic-ai, agent-patterns, governance, market, harness-engineering, harness-evolution, loop-engineering, verification-burden, live-dispute]
 ---
 
 # Overview
@@ -16,11 +16,19 @@ individual pages.
 
 ## Current state
 
-Six content threads now, plus the meta-layer this KB runs on. Threads 1–2 cover Event Modeling and
+Seven content threads now, plus the meta-layer this KB runs on. Threads 1–2 cover Event Modeling and
 the event-sourcing backbone; 3 the agentic-AI landscape; 4 harness engineering (how to make agents
 reliable); 5 the external bridge — agentic event-driven systems; 6 the design substrate around Event
-Modeling (ES/DCB/CQRS/VSA/business capabilities). An active focus connects Event Modeling to agent
-design (see [[event-modeled-agent-design]]).
+Modeling (ES/DCB/CQRS/VSA/business capabilities); 7 the **verification burden** — who reads the code
+once producing it is cheap. An active focus connects Event Modeling to agent design (see
+[[event-modeled-agent-design]]).
+
+**Read this page knowing what changed shape.** Several positions it used to state as settled are now
+**disputed on the record**: harness optimisation's headline gains ([[harness-evolution]]), the loop/harness
+layering and the loop vocabulary itself ([[loop-engineering]]), what a DCB tag *is*
+([[dynamic-consistency-boundaries]]), whether event sourcing's history is the point ([[event-sourcing]]),
+and whether the SDD critics form a front at all ([[spec-driven-development]]). Where a thread below reads
+as consensus and is not, it says so — that is not hedging, it is the current state.
 
 **Meta: how this KB works.** It's built on the [[llm-wiki]] pattern from [[andrej-karpathy]]
 ([[karpathy-llm-wiki]]): immutable raw sources are compiled into a persistent, interlinked
@@ -126,6 +134,47 @@ Agents]] is the taxonomy primary under [[context-engineering]] (instructions vs 
 interfaces; who-loads / how-much axes; the "illusion of control" caveat) — the predecessor memo to her
 harness-engineering piece.
 
+**Thread 4 — what the harness *is*, now with an academic spine and a competing one.** The thread had a
+component list and no theory of responsibility. [[guo-survey-question-answering-to-task-completion-harness-design|Guo
+et al. (arXiv:2606.20683)]] supply both: an agent is "a foundation model **coupled with** an execution
+harness," the bottleneck is *the coupling*, and the harness carries **six coupled runtime
+responsibilities** — observation interface, context manager, control loop, action interface, state and
+artifact store, verification and governance layer. That is orthogonal to
+[[ahe-agentic-harness-engineering|AHE]]'s seven *editable* component files (what the harness must **do**
+vs. what you can **edit**), and the KB holds both. The same survey draws a **four-paradigm ladder** —
+prompt engineering → workflows/context engineering → **harness engineering** ("closes the loop"; context
+engineering "remains fundamentally feedforward", which is [[feedforward-and-feedback-controls]] arrived at
+independently) → **agent-native training and co-evolution**, the academic form of [[harness-absorption]].
+**But the ladder is itself contested:** [[graph-engineering-era-of-llm-agents-system-intelligence|Feng et
+al. (arXiv:2608.21156)]] agree on the first three rungs and then put **[[loop-engineering]]** fourth and
+**[[graph-engineering]]** fifth. *(Both **PREPRINTS**, not peer-reviewed.)* Two independent surveys agree
+prompt → context → harness and disagree about what comes next; record both, merge neither. Alongside them
+[[breunig-harnesses-are-situated-agents|Breunig]] gives the definitional practitioner framing — the harness
+is a **"situated agent"**, eight layers (session, environment, repo, memory, skills, team, organization,
+model) ordered by a **rate-of-change gradient**, *"each layer used by more people and changed less
+often"* — which is what tells you where a policy belongs, and the first place the KB had for Team and
+Organization. And [[mcateer-evolution-of-the-agent-harness|McAteer]] names the time dimension:
+**train → absorb → shed → repeat** ([[harness-absorption]]), with the metric *"how much of the harness you
+get to delete, while retaining the same capability level"* — against which [[langchain]] holds the
+opposite trend claim (better models *expand* what harnesses must do). Both can be true; the wiki does not
+pick. *(Practitioner essays, and McAteer's headline numbers — the much-quoted **Harness-Bench 52.4 → 76.2
+spread** above all — are **secondhand with no author, venue or link and no primary capture in this KB**.)*
+
+**Thread 4 — two labs moved the same benchmark by changing the harness (Sept 2026).** The clearest
+quantitative support for *agent = model + harness* arrived twice within two days, on **ARC-AGI-3**, with
+different mechanism sets. [[openai]]'s **Provider Adapter harness** took GPT-6 Astra to **99.9% for $19K
+while the default ARC-AGI harness scored 62.7% for $26K** — a 37.2-point spread, same model, and the better
+score cost less; the named mechanisms are **retained opaque reasoning state + compaction**
+([[willison-gpt6-astra]]). **NVIDIA's AVO** reports **100%** on the same benchmark with Claude Opus 5, via
+**persistent memory + trajectory supervision** (a watcher for stagnation and repeated unproductive cycles),
+relayed by [[martin-fowler]] ([[fowler-fragments-2026-09-01]]). **Both are VENDOR SELF-REPORTS about their
+own harnesses**, NVIDIA's secondhand and with no methodology, cost or replication published, and the
+dollar figures come from ARC Prize, the benchmark maintainer — better provenance but **NOT INDEPENDENT** of
+the benchmark's standing. So: two labs, two base models, two mechanism sets, one benchmark, large
+harness-attributed gains — **a convergence, not independent confirmation.** What it does do is upgrade a
+claim the KB carried as folklore (McAteer's unlinked "GPT-5.6 Sol tripled 13.3 → 38.3% from retained
+reasoning and compaction") to *traceable* — still not independent.
+
 **Thread 4 sub-thread — loop engineering (the layer above the harness, June 2026, active focus).** A
 named evolution of harness engineering has crystallized: **[[loop-engineering]]** — *designing the
 system that prompts, verifies, and stops the agent, instead of being the one who prompts it.* Coined as
@@ -159,18 +208,22 @@ coordinated parallel agents, a +1M-line PR, ≈$165k in tokens — an existence 
 suite can *be* the loop's grader. Open seam: whether an [[event-modeling|Event Model]] supplies the
 loop's goals + stop conditions (slice = unit of work, [[given-when-then|GWT]] = the verification
 rubric) — tying loop engineering to [[dilger-event-modeling-agent-harness|Dilger's Event Modeling Agent
-Harness]] on the focus area. The strand's **light independent evidence is now partly addressed**: the
-academic primary [[ahe-agentic-harness-engineering|AHE (Lin et al., Fudan/Peking, arXiv 2604.25850)]]
-turns the hill-climbing loop into a controlled experiment — an evolution agent autonomously rewrites a
-coding agent's **decoupled seven-component harness** (base model frozen) via three observability pillars
-(component / experience / decision) plus a **falsifiable change-manifest with per-edit rollback**, lifting
-Terminal-Bench 2 pass@1 69.7→77.0% over ten iterations and beating the hand-built Codex-CLI harness, with
-the gain in **tools/middleware/memory not the prompt** and positive cross-benchmark/cross-model transfer
-(largest on weaker bases — the environment substituting for model capability). It also names the loop's
-honest failure mode ("regression blindness" — it can say why an edit helps but not what it will break).
-Caveat: vendor/practitioner framing dominates the rest of the strand (LangChain product pitch, Anthropic
-product doc, Osmani's own tooling-series, Willison's link-blog over Anthropic-internal data), strong
-convergence; AHE is the first controlled evidence but is a single-benchmark research prototype. The strand
+Harness]] on the focus area. The strand's academic wing has since become a **research field with a live
+dispute about whether its results are real** — the single largest correction on this page, and it is set
+out under *harness optimisation* below. Its founding primary is still
+[[ahe-agentic-harness-engineering|AHE (Lin et al., Fudan/Peking, arXiv 2604.25850)]], which turns the
+hill-climbing loop into a controlled experiment — an evolution agent autonomously rewrites a coding
+agent's **decoupled seven-component harness** (base model frozen) via three observability pillars
+(component / experience / decision) plus a **falsifiable change-manifest with per-edit rollback**,
+reporting Terminal-Bench 2 pass@1 **69.7 → 77.0%** with the gain in *tools/middleware/memory, not the
+prompt*, and largest on weaker bases (the environment substituting for model capability). **That figure is
+now a contested claim, not an established gain** ([[harness-evolution]]), and it must be cited with the
+dispute attached every time. Its own measured **regression blindness** — it predicts which tasks an edit
+will *fix* ~5× better than random, which it will *break* only ~2× — is the honest version of the strand's
+failure mode, and the field has since named it as an open problem in its own right. Caveat on the rest of
+the strand unchanged: vendor/practitioner framing dominates (LangChain product pitch, Anthropic product
+doc, Osmani's own tooling-series, Willison's link-blog over Anthropic-internal data), strong convergence,
+thin independent evidence. The strand
 also gained its **top rung** — the [[software-factory]] ("an org chart made of loops":
 [[addyosmani-software-factories-light-and-dark]], via [[dex-horthy]]), with **light-vs-dark**,
 **back-pressure** (verification, not generation, is the constraint), and **loops-vs-graphs** as its handles,
@@ -203,6 +256,70 @@ engineering"]] (Oct 2025), which the field later renamed "agentic engineering." 
 Event Sourcing in union, sold as a "flexible, agent-enabled architecture" whose low coupling is what makes a
 slice cheap for an agent to build (one slice = one agent's context), the structural precondition under
 [[dilger-event-modeling-agent-harness|the Event Modeling Agent Harness]].
+
+**Thread 4 sub-thread — the loop vocabulary is not settled, and the provenance was wrong.** This page used
+to present loop engineering as a June-2026 coinage sitting one floor above the harness. Neither half
+survives contact with the definitional primaries now captured. On **provenance**: [[simon-willison]] named
+*"designing agentic loops"* as a skill on **2025-09-30** ([[willison-designing-agentic-loops]], with the
+mechanics the 2026 sources under-weight — YOLO mode plus sandboxing, shell over
+[[model-context-protocol|MCP]], scoped credentials, a when-to-loop test), and **Kief Morris** ([[morris-humans-and-agents-in-software-engineering-loops]]) published the
+**out-the-loop / in-the-loop / on-the-loop** positions *and* the **agentic flywheel** on **2026-03-04**,
+months before [[addyosmani-own-the-outer-loop|Osmani's outer loop]] and
+[[langchain-the-art-of-loop-engineering|LangChain's hill-climbing loop]] — both of which this page
+previously described as the naming events. The corrected timeline: **skill (2025-09) → positions and
+flywheel (2026-03) → discipline and stack (2026-06) → disambiguation (2026-07)**. *(Morris is **NOT
+INDEPENDENT** — Thoughtworks author, Thoughtworks series, Thoughtworks-coined term.)* On **definition**:
+seven definitional sources give incompatible answers about the unit a loop iterates on and where the
+harness sits, and **three of five invert the loop/harness ordering** — Morris makes the harness *what
+controls the loops*, [[breunig-harnesses-are-situated-agents|Breunig]] makes the loop the small keyboard
+core inside a harness that is "the world," and Cloudflare's Flue **hides the loop from users entirely**,
+against Osmani's and [[wong-loop-engineering-teaching-ai-agents-how-to-think|Wong's]] loop-above-harness
+("a harness governs one step, a loop governs the campaign"). The three fourfold taxonomies (LangChain,
+Anthropic, [[voss-what-the-hell-is-a-loop-anyway|Voss]]) do not share members, and Voss's frame needs the
+loops *unalike* where [[miracle-my-loop-engineering-workflow|Miracle's]] needs them *alike* — both cannot
+be the frame. **The one thing they do converge on is worth stating as a result:** Voss — *"a loop without
+feedback is just a `for` statement"* — and Miracle — *"feedback that doesn't refine the next objective is
+just logging"* — independently make **refinement of the next iteration** the test for a loop rather than a
+pipeline. Worth running the KB's own [[agentic-workflow-patterns]] against it: several are pipelines. If
+the loop can be abstracted away as an implementation detail of a declarative harness, "loop engineering"
+may name a **current tooling gap** rather than a permanent layer. Unresolved; do not smooth it over.
+
+**Thread 4 sub-thread — harness optimisation is a research field, and its headline results are
+contested.** The KB previously treated this as three candidate papers with AHE's 69.7 → 77.0 as an
+established gain. Ten arXiv **preprints** are now ingested and the picture is *plural methods, disputed
+gains, unsolved regression problem* — **not** "self-improving harnesses work" ([[harness-evolution]]).
+Four groups with no shared authors make four different bets: AHE (observability over decoupled component
+files), [[harnessx-composable-adaptive-evolvable-agent-harness-foundry|HarnessX]] (typed primitives + a
+substitution algebra; **+14.5% avg** over five benchmarks — *a contested claim, not a settled gain*),
+[[harnessforge-joint-harness-and-policy-evolution|HarnessForge]] (the unit is a **harness–policy pair**;
+it *rejects* freezing the model; **up to +12.0%** — *likewise contested*), and
+[[sbco-verifier-grounded-harness-optimization|SBCO]] (a learned **bank of verifiers**; equal-or-better at
+**4–5.5× less compute**), plus a purpose-built instrument,
+[[evo-bench-can-language-models-improve-agent-harness|Evo-Bench]]. Two independent surveys exist to
+organise the literature, with **disjoint author sets** —
+[[ning-code-as-agent-harness|Ning et al. (arXiv:2605.18747, 42 authors)]], which frames the harness by its
+medium ("code as agent harness") and closes by calling for a *"science of harness engineering"*, and
+[[guo-survey-question-answering-to-task-completion-harness-design|Guo et al. (arXiv:2606.20683)]] above.
+*(Ning et al. is a **SURVEY, not a method paper** — a standing KB assumption corrected today, and it means
+it corroborates no number.)* **And then the negative result, which is the load-bearing item:**
+[[wang-rethinking-evaluation-of-harness-evolution-for-agents|Wang et al. (arXiv:2607.12227v2)]] attack the
+**evaluation protocol** the positive results share — these methods "use unit test cases to search for
+harness configurations and then report final performance on the same public benchmark", so the gains may be
+**search budget** rather than harness design, and may be **overfitting to the search task set**. Against
+matched-budget test-time-scaling baselines on Terminal-Bench 2.1, automatic harness evolution *"does not
+consistently outperform simple test-time scaling methods and exhibits limited generalization."* Read it
+precisely — "not *consistently*" is not "does not work" — and note it cuts both ways: Wang tests frontier
+bases where AHE and HarnessX report their *smallest* gains, and **neither side has run the other's
+regime**. **Every paper here is a PREPRINT, including the critique.** The strongest evidence that this is a
+field rather than a pile of papers is that it polices itself: both surveys independently name
+**"self-evolving harnesses without regression"** and **oracle adequacy** as open problems, which is AHE's
+measured regression blindness restated from outside. Two limits worth carrying: Evo-Bench finds autonomous
+evolution beats hand-built harnesses on general and search tasks but **"struggles in Office tasks that
+demand highly specific processing workflows"** — i.e. most enterprise work, and a direct experiment on
+[[dilger-harness-is-20-percent-requirements-are-80|Dilger's "harness is the easy 20%"]]; and SBCO's own
+precondition (self-modification competence must coincide with task competence, "which is the case for
+coding tasks") means **every result here is coding-or-benchmark evidence** with unestablished reach beyond
+that.
 
 **How thread 4 ties in:** harness engineering is the environment-and-controls arm of
 [[agent-engineering]] (thread 3) and the concrete answer to [[agentic-coding]]'s quality risk. Its
@@ -346,15 +463,36 @@ context switching. Now we call the same thing productivity"
 (ingested 08-16, Dannie-directed, published 2026-03):
 [[ng-spec-driven-development-is-waterfall-in-markdown|Alvis Ng's "Spec-Driven Development Is Waterfall in
 Markdown"]] was the KB's first *captured* external critique of [[spec-driven-development|SDD]] — **not the
-first written**; see the correction on that page. It relays an empirical record the wiki did not then hold
-— Eberhardt's Scott Logic SpecKit trial (on his own hobby app, not a production codebase; 2,577 lines of
-Markdown across the whole feature, bugs surviving, and his impression of **~10x slower** than iterative
-prompting), **Böckeler's** Kiro analysis (16 acceptance criteria for a minor bug fix; sole-authored, not
-"Fowler/Böckeler"), Augment Engineer's 1,300 lines of Markdown to render a date, Marmelab's "The Waterfall
-Strikes Back", and
-[[gojko-adzic]] — from inside the BDD tradition — relayed as calling SDD "the revenge of waterfall or BDD
-taken to a new level" (**a misreading: that is Adzic's title, posed as a question, and he answers the BDD
-half "it does not, really" — primary captured 2026-08-31**). Ng's mechanism
+first written**, and as of today **no longer the KB's route to the argument**: the primaries are all
+captured and the critique is held first-hand. The provenance runs **[[gojko-adzic|Adzic]] (2025-09-29) →
+[[bockeler-understanding-sdd-kiro-speckit-tessl|Böckeler]] (2025-10-15) →
+[[zaninotto-spec-driven-development-waterfall-strikes-back|Zaninotto]] (2025-11-12) →
+[[eberhardt-putting-spec-kit-through-its-paces|Eberhardt]] (2025-11-26) → Ng (2026-03)**, each citing the
+one before, so Ng is the **downstream synthesis of an Oct–Nov 2025 critique wave**, not its origin.
+
+**And the KB had one of those voices wrong, which was its most load-bearing single-source weakness.**
+[[gojko-adzic]] is **not** a hostile anti-SDD voice. *"Revenge of Waterfall or BDD taken to a new level?"*
+is a **title posed as a question**; he answers the BDD half *"It does not, really"*, **never calls SDD
+waterfall anywhere in the body**, and lands warmer than any other critic (*"definitely something to keep
+an eye on"*; the flow *"mimics a lot of what I am currently doing when using Claude Code, and makes it more
+systematic"*). His two real objections are narrower and more useful than the headline: the generated spec
+is **scope-of-work rather than specification** (*"this is on such a high level that it fits more the scope
+of work than a specification… it lacks a ton of detail"* — and the real spec then migrates into tests
+*"readable only for developers"*, which from the author of *Specification by Example* is a first-party
+verdict that SDD is **not** BDD taken further), and there is a **missing scoping phase**, so the tool
+*"tried to do too much and kind of went off the rails… the whole 'human in the loop' idea was no longer
+feasible."* **Do not flatten the critics into an anti-SDD front.** Böckeler is a **tool** critic who
+practises and recommends spec-first herself, and her **spec-first / spec-anchored / spec-as-source** ladder
+is the dispute's vocabulary (her finding: everything is spec-first, almost nothing states its spec
+*maintenance* strategy) — she is a primary here but **NOT INDEPENDENT** as external support for
+Thoughtworks framing. [[adam-tornhill|Tornhill]] **explicitly declines the waterfall argument** and scopes
+himself to strong-form SDD, arguing **requirements explosion** — each spec line spawns tens of implicit
+design requirements, so **implementation *is* the discovery process**, and *"the moment a model becomes the
+implementation, it ceases to be a good model."* Eberhardt rejects the purest form and defends the debate
+(his **~10x slower** is his own impression on a hobby app, **IMPRESSION NOT MEASUREMENT**, n=1). Only
+[[zaninotto-spec-driven-development-waterfall-strikes-back|Zaninotto]] calls SDD a step in the wrong
+direction outright. The honest summary: **spec-first is close to consensus; spec-as-source is what the
+sceptics attack** — and **nothing in the corpus measures model-first SDD at all.** Ng's own mechanism
 is an *interface* argument rather than a quality one: an agent "produces code that matches the words, not
 the intent," and a written spec **flattens designers, DevOps and product into one voice — the author's**,
 so it becomes *"a contract between you and the LLM that nobody else signed."* His replacement is
@@ -402,6 +540,47 @@ Kotlin + Python from it) — a worked instance on the [[event-modeled-agent-desi
 Modeling constructs onto the harness thread (events↔progress ledger, Automation↔executor/[[ralph-loop]],
 GWT↔feature-list specs). This partly closes the long-standing "open edge" — though a *worked* event
 model of a multi-agent/harness system is still missing.
+
+**The focus area's sharpest evidence and its sharpest tension arrive in the same author.**
+[[nick-tune]]'s [[nick-tune-event-sourced-claude-code-workflows|event-sourced Claude Code workflows]]
+(2026-03-04) is **event sourcing turned on the agent loop rather than on the domain** — a Claude Code
+workflow is already a state machine (DEVELOPING → REVIEWING → COMMITTING → RESPAWNING), so persist only
+the events and derive state by replay; the stream then yields **per-state dwell time, code-review rejection
+counts and hook-denial counts**, the last two with *"our goal is for these to always be 0, because they
+indicate… our agent has sub-optimal instructions."* That is the cleanest **deterministic sensor on the loop
+itself** the KB holds — the harness refusing the agent, read as a defect in the *instructions* — and the
+events are fed back to Claude to rewrite CLAUDE.md and prompts, which is the first shipping instance of the
+hill-climbing rung [[loop-engineering]] describes. **NOT INDEPENDENT** (the originator on his own harness)
+and **IMPRESSION NOT MEASUREMENT** for every reading (his "15 minutes in RESPAWN vs 2 minutes building" is
+one session of a personal project, and he says so); there is **no baseline** against state-based
+persistence, so the argument is a capability claim, not an efficacy one. **And the same author supplies the
+tension that must travel with it**: he cannot get rapport with a domain model he did not hand-code,
+*"maybe it's not even possible"* (Thread 7 above) — meticulous automated optimisation of the **loop**,
+deep scepticism about delegating the **domain model**. That is not a contradiction, it is a boundary — own
+the problem, delegate the process — and it **cuts against the thesis that a good enough spec DSL lets
+agents do the modelling.** Hold both.
+
+**Which is exactly the thesis [[martin-dilger]] sharpened this month, into a claim about the *medium* of
+specification.** Raw markdown is inadequate: *"What used to be a Jira Ticket became Markdown Files. Same
+old stuff, some new paint"*, and *"what's missing is a DSL to unambiguously describe flow, behavior +
+business rules"* ([[dilger-communicating-intent-to-an-agent-needs-a-dsl]], with the longer argument in
+[[dilger-markdown-is-a-suggestion-dressed-as-a-spec]]). **He is not anti-markdown-file** — *"the medium
+itself — nobody cares in the end (you can export Json, Markdown, Toon… from my tools)"* — his objection is
+to markdown as a *language*, and Event Modeling is the DSL he nominates. Note the shape of the
+disagreement: [[zaninotto-spec-driven-development-waterfall-strikes-back|Zaninotto]] and
+[[bockeler-understanding-sdd-kiro-speckit-tessl|Böckeler]] make the *same* observation ("spec" as a synonym
+for "detailed prompt") and infer **less document**; Dilger infers **a better language**. Presenting them as
+allies would be a category error. His **first falsifiable claim** lands beside it: the Build Kit assertion
+that one event model drives builds in **five stacks at once** (axon / marten / cratis / emmet / python),
+participants free to *"switch stacks mid-course or build in parallel in all Stacks"*
+([[dilger-agentic-engineer-program-stack-agnostic-spec]]). If true, the model specifies **behaviour**, not
+an implementation — the whole argument. It is also **structurally the MDA architecture that Tornhill and
+Böckeler both say failed**, which makes it the KB's sharpest live experiment on the MDA-repeats objection —
+and **nothing demonstrates it**: it is a course affordance, hedged by its own author (*"almost doesn't
+matter"*), on a **VENDOR SELF-REPORT** marketing post. **Every EM-Studio / eventmodelers.ai capability
+claim in this thread is VENDOR SELF-REPORT**, and one set of them has **no corroboration anywhere in this
+KB** — *"battle-tested over hundreds of projects by many companies"* (no project, company or method named)
+and the unfalsifiable *"every single time. Not sometimes. Every time."*
 
 **How thread 3 ties in:** Anthropic's nondeterminism-and-iterate framing, the demand for audit
 trails in [[agent-governance]], and Akka's event-sourced agent memory are the same instinct from
@@ -534,6 +713,153 @@ gives [[comprehension-debt]] its worked field anecdote (a CTO's ~30% cost rise a
 second-order costs), the cost-accounting face of the [[dora-roi-ai-assisted-software-development-2026|DORA]]
 J-Curve.
 
+**Thread 6 — the substrate now has an internal argument, where this page used to read as consensus.**
+Three of them, and none is settled. **(1) The entity.** [[entity-centric-thinking]] gathers a
+[[rico-fritzsche|Fritzsche]] cluster into one thesis: organising a system around *the things that change*
+rather than *what happens in the business* is the root defect other architectural moves fail to fix. The
+row ([[fritzsche-why-the-entity-model-is-an-illusion]]) "is actually only the result of the last write… says nothing about how they got there" (the tell being
+that "almost every system has audit tables, history tables, status columns"); **the entity is a projection,
+not a row** ([[fritzsche-the-entity-is-a-projection-not-a-row]]), and only a reference (an ID, a VIN) is
+real; **event sourcing is not an audit feature** ([[fritzsche-event-sourcing-is-not-an-audit-feature]]); and
+the sharpest consequence — **[[vertical-slice-architecture|VSA]] does not fix it** ([[fritzsche-vsa-does-not-fix-entity-centered-thinking]]): *"VSA improves locality
+**after** a team chooses a request boundary; it does not discover that boundary… Starting with the record
+that changes makes the entity lifecycle the use-case boundary. **That is an ownership problem**"* — a
+charge that entity-centred **Clean Architecture** shares, since "both preserve the same ownership problem."
+Nor does an event store fix it: *"storing vague events only preserves the vagueness permanently"*
+([[fritzsche-thinking-in-events]]).
+**Against that, [[oskar-dudycz]] keeps the entity on purpose**
+([[dudycz-vertical-slices-ownership-and-external-dependencies]]): *"business logic goes per entity or
+aggregate… slices don't each get a private notion of what an order is."* The two agree entirely on
+*naming* (CRUD verbs give you nothing to slice along) and split on **where the rules live** — Fritzsche
+arguing from information loss, Dudycz from cohesion. Both are 2026-08 practitioner primaries, **neither
+cites the other, neither is measured**, and Dudycz's position is the mainstream one restated in slice
+vocabulary rather than a lone dissent. The KB carries the disagreement instead of splitting the difference.
+**(2) What a DCB "tag" is — three incompatible statuses, all held.**
+[[sara-pellegrini]], returning to define her own terms, says a tag is a **domain-level identifier of a
+historic route**, orthogonal to event type and semantically tied to the business rules — and that
+orthogonality is precisely the **mechanism that lets a consistency boundary span several routes** where an
+aggregate could only ever be one ([[pellegrini-dcb-tag-dilemma]]; as the originator she is **authoritative
+on intent but NOT INDEPENDENT as corroboration**, and the piece contains **no measurements at all**).
+[[martin-dilger]] says tags are *"indices, not domain concepts"*, absent from discovery and added before
+handing the slice to an agent. [[rico-fritzsche]] demotes them furthest — an **optional implementation
+optimisation** of a store-agnostic principle ([[command-context-consistency|CCC]] names no store). These
+are reconcilable in practice and are **not the same claim about who decides the tag set**
+([[dynamic-consistency-boundaries]]). **(3) Whether event sourcing's *history* is the point — a three-way
+dispute.** [[axoniq]] sells the log *as* audit and explainability (**VENDOR SELF-REPORT**; its one figure,
+an 80% audit-prep reduction, has an unnamed customer); [[rico-fritzsche|Fritzsche]] rejects that motivation
+outright — history is a **consequence** of recording decisions, not the reason to record them; and
+[[yves-goeleven]] attacks from a third side: auditing is **not free** even if you want it
+([[goeleven-event-sourcing-not-auditing-for-free]], [[axoniq-government-ai-explainability-requirements]]). Record
+Fritzsche's own **trajectory** rather than averaging it: in July he listed "strong auditability" among the
+conditions that make ES compelling, by **2026-08-31** audit-motivated ES is *"fundamentally wrong."* He
+never reconciles the two, so **no page may quote one month's framing as his settled view** — the July
+position is unretracted, not superseded. **And a new concept sharpens the messaging side:**
+[[internal-vs-external-events]] ([[dudycz-backend-for-frontends-for-event-driven-apis|Dudycz]]) separates the events a module **records** from the messages it
+**publishes**, and names the failure mode worth keeping — publishing `SthSthCreated/Updated/Deleted` as
+if they were events is *"**Poor Man's replication through the queue**"*, database replication in an event's
+clothes, and the messaging twin of Fritzsche's vague-event point. Its bite on Thread 5: if inter-agent
+traffic is `AgentStateUpdated` broadcasts, the architecture has bought a distributed monolith with extra
+latency and no explanation of *why* anything happened. *(A ~450-word post; definitions, no worked example,
+nothing measured — and it is silent on the hard part, how to derive an external event from internal ones.)*
+
+**Thread 7 — the verification burden (a live dispute, May–Sept 2026).** Agents made producing code cheap
+and left the cost of *believing* it exactly where it was. This is the operational face of
+[[comprehension-debt]] — that concept prices what unread code costs, [[verification-burden]] holds the
+fight about what to do instead of reading it — and the KB records it **unresolved**. The premise arrives
+three times independently within six weeks ([[attention-bottleneck]]): [[rachel-laycock]] ([[laycock-the-conductor-developer]]) — *"AI didn't
+change what great software looks like. It changed what's scarce. **Human attention is now the
+bottleneck**"*; [[simon-willison]]
+([[willison-conceptual-integrity-and-counting-lines-of-code]]) — *"the new limiting factor is cognitive
+capacity"*; [[adam-tornhill]] ([[tornhill-compressed-cognition-cost-of-faster-coding]]) —
+*"it is the **parallelisation of human attention** that does not scale."* [[adam-tornhill|Tornhill]]
+supplies the mechanism: agents **compress the decision timeline** ("a lot more architecture per minute"),
+working memory holds "3-4 things," and each diff, question or almost-right change is an invitation to
+self-interruption. Two authors then converge on the **pivot everyone turns on — verification ≠ review**:
+Willison ([[willison-more-than-just-code-review]]), *"eyeballing every line of code has never been the most
+effective way to validate a change"*, and Tornhill six days later
+([[tornhill-task-uncertainty-decides-what-code-you-read]]), *"I never read all AI-generated code. But… **make the code you do read
+count**."* Two unrelated practitioners agreeing is the strongest thing this dispute contains. Everything
+after it is disagreement about the substitute, and there are **five positions, none reconciled**:
+
+- **Accept the debt** — [[rick-brewster]] (Paint.NET), relayed by Willison
+  ([[willison-brewster-cannot-review-180000-lines]]): ~180,000 agent-written lines
+  into a codebase he has maintained 20+ years, *"it has not been thoroughly reviewed… **I cannot possibly
+  review 180,000 lines of code**."* No substitute instrument offered. **IMPRESSION NOT MEASUREMENT** —
+  a practitioner self-report about his own unreviewed code, all three counts his own, from a forum post.
+  Note his *practice* was closer to triage than his rhetoric (he spot-inspected the COM/`AddRef()` seams,
+  and had a cheap external oracle in a documented API) — and he is a team of one, which forecloses two of
+  the other four answers.
+- **Relocate what review is for, then review by exception** — [[rachel-laycock]]
+  ([[laycock-maybe-we-shouldnt-be-reviewing-all-this-code]]): review is *over-loaded*
+  ("quality gate, security check, architecture review, mentoring mechanism, knowledge-sharing system,
+  ownership model"), so move each function to where it belongs — alternatives explored before
+  implementing, knowledge transfer by **pairing**, ownership by team structure, architectural alignment
+  encoded as [[fitness-functions]], everything deterministic automated — and review only architectural
+  changes, sensitive boundaries, large blast radius, or *"simply something where the team says, 'I'm not
+  confident about this.'"* *"We need engineers to understand systems, not diffs."* **NOT INDEPENDENT** —
+  Thoughtworks' CTO on Thoughtworks' own channel prescribing Thoughtworks-originated practices, with no
+  data of her own.
+- **Triage by task uncertainty, and enforce what you don't inspect** — Tornhill
+  ([[tornhill-controlling-the-uncertainty-machine]]), the most operational
+  answer: *"human attention should follow uncertainty"* sets *two* dials at once (agent autonomy and
+  review effort), the substitute instrument is a **human-reviewed end-to-end suite written before the
+  implementation** ("a boundary between the code I do inspect and the code I give the AI autonomy to
+  develop"), findings convert into forward-looking SKILLs, and what goes uninspected is held
+  **deterministically** by linters, scanners and architectural checks. **VENDOR SELF-REPORT on the
+  remedy** — he is founder/CTO of CodeScene, which sells the safeguards he prescribes, and the
+  companion product post states the bargain exactly: smells *"that I — as the human in the loop — never
+  need to see."* **IMPRESSION NOT MEASUREMENT** on the payoff (personal adaptation, no defect data).
+- **Automate the gate** — [[addy-osmani]] ([[osmani-agentic-code-review-skill-five-axes]]): keep review where it is and put an agent in the chair (a
+  published skill reviewing on five axes, severity-labelled, ordered by leverage). *"The review is your
+  quality gate."* And the sharp aside that rebuts the position above without naming it: *"Most automated
+  reviews collapse to 'do the tests pass?' Tests are necessary, but **they don't catch a leaking module
+  boundary**."* **Author's own tool; no evaluation, benchmark or comparison.** It is also the precise thing
+  Laycock calls *"automating the ceremony"* five days later — **neither names the other.**
+- **Distribute the reading** — Willison again: *"I don't have the cognitive capacity to stay on top of 100
+  times the amount of code. So you still need a team of engineers, so you can **load balance that
+  cognitive capacity across the team**."* The only answer in which **team size is itself the instrument**
+  — and the one unavailable to a solo maintainer.
+
+**And one dissent that stands outside the dispute.** [[nick-tune]]
+([[tune-no-rapport-with-a-model-you-didnt-code]]) relocates the loss upstream, into
+**domain modelling**: refining a model with an agent *"is not the same as writing the lines of code
+yourself. I don't feel as connected… the domain model is going to be worse because I'm clearly missing some
+nuances that could lead to big modelling breakthroughs"* — and *"I'm struggling to see how to get the same
+level of rapport with the model without actually writing the code. **Maybe it's not even possible.**"* If
+he is right, none of the five helps: the damage happens before there is code to read, and it is
+**unobservable** — a modelling breakthrough that didn't happen leaves no failing test and no diff. It is
+the KB's only suggestion that this debt may be **unpayable** rather than merely unpaid. *(Thin capture; an
+inference from a stated feeling — a hypothesis with a named mechanism, not a finding.)*
+
+**Where the positions actually overlap**, because the five-corner framing overstates the distance: Laycock
+and Tornhill both reject line-by-line reading and both push everything deterministic into automation —
+their real split is **what carries knowledge transfer once review stops doing it**, she into *people,
+earlier* (pairing, mobbing, design sessions), he into *artifacts* (a reviewed test suite, accumulated
+skills, deterministic checks). Osmani is the genuine outlier on principle. And what the KB already held
+speaks to it: [[anthropic]]'s own practice ([[willison-fireside-chat-claude-code-team]]) moved review off
+humans over months by finding files where automated review "catches 100% of the issues" then adding every
+incident's causing PR to an eval set — **which directly contradicts Laycock and the KB does not resolve
+it** (a vendor team on its own tool versus a CTO on her own channel with no data);
+[[dilger-lights-off-software-factory-dead-end|Dilger's layers of trust]] land independently close to
+Tornhill from the Event Modeling side (executable specs → static gates with defined consequences → a 2–3
+minute *structural* review, "at this point we already know it works"); and
+[[khononov-value-of-90-percent-done-never-lower|Khononov]] supplies the slogan — *"the value of being 90%
+done, or even 99% done, has never been lower than in the AI era"* — but no position.
+
+**The one hard measurement on this thread, and how it must be cited.** A controlled trial of experienced
+developers found they **estimated a 20% speedup and were measured 19% slower**. Tornhill relays it and
+**names no study, authors, date or link**, so it is *an unnamed controlled trial as relayed by Tornhill*
+and **no page here may attribute it to a named study, lab or set of authors, however tempting the guess**;
+the two figures must stay apart, because the felt-versus-measured gap *is* the finding. It is the strongest
+available caution against the self-reported speedups that fill [[agentic-coding]] and [[loop-engineering]].
+
+**Why this thread sits on the focus area.** Every proposed "other way to verify" is structurally an
+**executable specification agreed before the code exists** — Tornhill's e2e-tests-first, Dilger's
+specs-before-code, Wilger's [[given-when-then]] gates per [[slice]]. [[event-modeling]] has been producing
+exactly that artifact for a decade, which makes it a *candidate answer* to the verification burden rather
+than a neighbour of it — and, per Tune, possibly the answer to the modelling-rapport problem too (keep the
+modelling act, delegate the typing). **That inference is the KB's, not any author's.**
+
 ## Open questions / next sources
 
 - Has anyone applied **Event Modeling specifically** (not just event sourcing) to designing
@@ -542,8 +868,12 @@ J-Curve.
   ships agents that *practise* EM ([[proophboard-skills-ai-agent-event-modeling]]); and [[john-wilger]]'s
   `agent-skills` ([[jwilger-agent-skills-event-modeling]]) makes the EM output the **contract that
   governs an autonomous coding factory** — the closest to a worked pipeline. See
-  [[event-modeled-agent-design]]. *Still open, but narrower as of 2026-08-31:* a **worked event model
-  artifact** of a multi-agent/harness system itself (jwilger consumes one but doesn't show it). Dilger's
+  [[event-modeled-agent-design]]. *Still open, but narrower again as of 2026-09-04:* a **worked event model
+  artifact** of a multi-agent/harness system itself (jwilger consumes one but doesn't show it). The nearest
+  approach yet is from an unexpected direction — [[nick-tune-event-sourced-claude-code-workflows|Tune]]
+  models the *agent loop* as a state machine and event-sources it, which is the closest anyone has come to
+  treating the harness as a modelled domain, but it is a state machine and an event stream, **not an event
+  model** (no swimlanes, no slices, no GWT), and it is one personal harness. Dilger's
   self-training modeling agent ([[dilger-one-million-tokens-self-training-modeling-agent]]) is the nearest
   thing yet and does **not** close it — it is a system that *produces* event models, not one that *is*
   one. What it does close is a different gap: the model as a **grading rubric** for agent output, via
@@ -582,21 +912,70 @@ J-Curve.
   detail is ever needed; only the spec overviews are in `raw/` so far.
 - Deeper Event Modeling mechanics not yet pulled: the Given-When-Then tooling, the official
   spec/cheat-sheet, and worked examples beyond the hotel case.
-- **Primaries behind the SDD critique (opened 2026-08-16 — 3 of 4 captured 2026-08-31, none yet
-  ingested).** [[ng-spec-driven-development-is-waterfall-in-markdown]] brought the first numbers against
-  spec-first agent workflows into the KB, all of them secondhand. Three of the four originals are now in
-  `raw/`: **Eberhardt/Scott Logic**, *Putting Spec Kit Through Its Paces* (2025-11-26 — the ~10x figure,
-  which turns out to be a self-reported impression on a hobby app, not a measurement on a production
-  codebase); **Böckeler**, *Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl* (2025-10-15
-  — sole-authored, not "Fowler/Böckeler", and the origin of the spec-first/spec-anchored/spec-as-source
-  taxonomy the KB already uses); **Zaninotto/Marmelab**, *The Waterfall Strikes Back* (2025-11-12).
-  **Still open:** a primary for **[[gojko-adzic]]** — his 2025-09-29 LinkedIn Pulse post is the earliest
-  of the four and the only one from the BDD tradition, but LinkedIn was blocked on the 08-31 hunt; the KB
-  still holds nothing of his despite leaning on [[given-when-then]] throughout.
-  **The chronology finding matters more than the captures.** All three predate Ng by four to five months
-  and each cites the one before it, so Ng is the downstream synthesis of an **Oct–Nov 2025 critique
-  wave**, not its origin. Every page describing him as "the first outside-in critique" was corrected on
-  2026-08-31, but [[spec-driven-development]] still needs rewriting *from* the primaries rather than from
-  his summary of them.
+- **Primaries behind the SDD critique — CLOSED (2026-09-04).** All four are captured and ingested,
+  including the one that was blocked and mattered most: **[[gojko-adzic]]**
+  ([[adzic-spec-driven-development-revenge-of-waterfall-or-bdd]]), whose capture **overturned the KB's
+  reading of him** — he is the warmest of the critics, never calls SDD waterfall in the body, and his real
+  objections are *scope-of-work-not-specification* and *a missing scoping phase* (see Thread 5's SDD
+  block). [[tornhill-blast-from-the-past-sdd-illusion-of-known-scope|Tornhill]] joined the set as a fifth
+  voice who **declines the waterfall argument** and argues requirements explosion instead. The chronology
+  holds — Adzic → Böckeler → Zaninotto → Eberhardt → Ng, each citing the one before — so Ng is the
+  downstream synthesis, and [[spec-driven-development]] is now written *from* the primaries.
+  **What replaces this item:** the corpus contains **no measurement of model-first SDD at all**, and the
+  most direct test anyone could run is now sitting in the KB unrun —
+  [[dilger-agentic-engineer-program-stack-agnostic-spec|Dilger's Build Kit claim]] (one model, five
+  stacks) against Tornhill's and Böckeler's MDA verdict. Same requirements, one model, five stacks,
+  measured output quality and model readability. Nobody has published it.
+
+- **The intervention rate — the quantity nobody reports, and the one that would settle Thread 7.** Five
+  positions on the [[verification-burden]] disagree about what replaces reading code, and **nothing in the
+  batch measures anything**: not one source reports **how often reading the code would actually have
+  caught something the other instruments missed, and of what severity**. Until someone publishes that, all
+  five are calibrated guesses by people with different jobs (a solo maintainer, a consultancy CTO, a tool
+  vendor, a DevRel author, a blogger-practitioner), and the positions track the jobs at least as well as
+  they track the evidence. This is the highest-value missing number in the KB.
+
+- **The event-sourcing × harness seam is unexploited, not proven (opened 2026-09-04).** The harness
+  field's own stated open problems are this KB's substrate territory: [[ning-code-as-agent-harness|Ning et
+  al.]] name **"transactional shared program state and semantic conflict resolution"** and
+  **"human-in-the-loop safety and accountability as harness state"**, [[graph-engineering-era-of-llm-agents-system-intelligence|Feng
+  et al.]] want structures that "maintain evolving execution states" — total ordering, an append-only log,
+  conflict detection before effects apply, accountability as *stored state* rather than asserted process.
+  That is [[event-sourcing]]. **But no paper in the harness batch cites event sourcing**, and the KB holds
+  no evidence anyone has tried it and found it wanting — or tried it at all. So this is a **research
+  question** ("does an event-sourced substrate solve harness-state convergence?"), an unexploited seam, and
+  emphatically **not** a proven advantage of this KB's thesis. The nearest thing to a worked instance is
+  [[nick-tune-event-sourced-claude-code-workflows|Tune's]], and it is one developer's personal harness.
+  [[agent-coordination-substrates]] now holds the four candidate substrates side by side; **nobody has
+  compared them.**
+
+- **Can agent-induced spec bloat be caught at all? (opened 2026-09-04)** The model-as-rubric optimism on
+  [[event-modeled-agent-design]] rests on a schema'd model making agent output gradeable by structural
+  diff. The inverse risk is now recorded and has no instrument:
+  [[dilger-podcast-episode-47-agentic-modeling-audit-trails|a `/wdyt` agent pointed at a model]] *"flooded
+  the model with 100 comments inventing hypothetical gaps"*, and [[adam-dymitruk]] names why that is worse
+  than ordinary review noise — an over-eager agent *"can make a simple slice look far more complex than it
+  really is, **since event modeling is visual**."* The damage is to **legibility**, the property the whole
+  method trades on — and **a bloated slice is still well-formed, so neither a linter nor a structural diff
+  against a reference catalog sees it** ([[event-modeling-anti-patterns]]). The only remedy in the KB is a
+  restriction on the reviewer ("don't comment on something because it's not specified"), which is a prompt
+  fix, not a sensor. Same shape as [[bockeler-tdd-inside-the-agent-loop|Böckeler's]] finding one altitude
+  down: **the criteria must come from outside the loop.**
+
+- **The harness-evolution dispute is resolvable and nobody has resolved it (opened 2026-09-04).**
+  [[wang-rethinking-evaluation-of-harness-evolution-for-agents|Wang et al.]] test frontier bases; AHE and
+  HarnessX report their largest gains on weak ones; **neither side has run the other's regime**, and
+  HarnessForge's "Baselines and Fairness Protocol" (Appendix E) — the nearest pre-emptive answer — is
+  **uncaptured**. Capturing it is the concrete next step. Separately, the KB's **most-quoted harness
+  number** — Harness-Bench's 23.8-point spread over 106 tasks with zero model change — still has **no
+  author, venue, link or primary capture** and must be marked secondhand at every use; finding it is the
+  highest-value follow-up on [[agent-harness]]. And two further harness preprints surfaced uncaptured
+  (arXiv:2603.25723 "Natural-Language Agent Harnesses"; arXiv:2607.21557 "OpenForgeRL").
+
+- **Whether "loop engineering" names a layer or a tooling gap (opened 2026-09-04).** Three of five
+  definitional sources invert the loop/harness ordering, and Cloudflare's Flue **hides the loop entirely**
+  behind a declarative harness. If the loop can be abstracted into an implementation detail, the layer
+  dissolves. Nothing in the KB decides it, and the three fourfold taxonomies do not even share members
+  ([[loop-engineering]]).
 - Original (still open): what domains will this KB ultimately cover? Event Modeling +
   agentic AI is the first real-content direction.

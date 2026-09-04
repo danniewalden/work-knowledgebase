@@ -2,8 +2,8 @@
 title: Token-Budget Quality Cliff
 type: concept
 created: 2026-08-31
-updated: 2026-08-31
-sources: [dilger-modeling-agent-improved-by-learning-loop, dilger-one-million-tokens-self-training-modeling-agent]
+updated: 2026-09-04
+sources: [dilger-modeling-agent-improved-by-learning-loop, dilger-one-million-tokens-self-training-modeling-agent, willison-claude-fable-5-1-animated-pelican, willison-gpt6-astra]
 tags: [agentic-coding, loop-engineering, autonomy, failure-modes, focus]
 ---
 
@@ -68,7 +68,7 @@ you'd correct for it is open.
   threshold have different mitigations (chunk smaller vs. reset earlier).
 - **Does compaction help or hurt?** Context compaction frees budget but discards detail; if the cliff is
   driven by *perceived* remaining budget, compaction may reset the behavior at the cost of the material
-  the model needs.
+  the model needs. *(One data point arrived 2026-09 — see the closing paragraph of the next section.)*
 - **Is it detectable from the inside?** Dilger diagnosed it by reading reasoning traces after the fact.
   Whether a run can be flagged as budget-degraded *while it happens* — before the artifact is accepted —
   would decide whether this is a monitoring problem or a scheduling one.
@@ -76,6 +76,45 @@ you'd correct for it is open.
   described three days earlier as running QWEN3.7:27b locally, so that is an inference, not a stated
   fact. Either way nothing in the KB tests this on a frontier model, and the "trained to make the best
   with the budget they have" explanation would predict it generalizes.
+
+## The other axis — what buying budget costs (Willison, 2026-09-01)
+
+This page's cliff is about budget being *spent*. The complementary axis is what more budget *costs*, and
+[[willison-claude-fable-5-1-animated-pelican]] measures it cleanly: one unchanged prompt, one model
+(Claude Fable 5.1), five reasoning-effort levels, tokens/time/cost recorded at each.
+
+| Effort | Output tokens | Wall time | Cost |
+| --- | --- | --- | --- |
+| low | 1,998 | 23.8 s | 10.017¢ |
+| medium | 1,977 | 23 s | 9.912¢ |
+| high | 2,612 | 29.6 s | 13.087¢ |
+| xhigh | 36,767 | 7 m 51 s | $1.83 |
+| max | **65,927** | **13 m 54 s** | **$3.30** |
+
+Two findings, both relevant to how a loop is scheduled rather than to how it is prompted:
+
+1. **The dial is a step function, not a gradient.** low→high is ~1.3× cost; **high→max is ~25× cost and
+   ~28× wall time** (≈33× low→max). A cost model that treats reasoning effort as linear is wrong by an
+   order of magnitude, and the difference between a 24-second step and a **14-minute** step is a
+   scheduling property of the loop.
+2. **The bottom of the dial is non-monotonic.** At both `low` and `medium` the model *"appeared to skip
+   reasoning entirely"*, and **medium used 21 fewer output tokens than low**. Willison calls it *"a bit of
+   a mystery"* and does not explain it. If effort settings do not do what they say at the low end, then
+   "run it cheap first" is not a reliable strategy.
+
+**Caveats:** n=1 prompt (drawing an SVG), one run per level, one model; the *shape* of the curve is the
+transferable part, not the ratios. Quality judgement at `max` is Willison's aesthetic read of one drawing
+— **IMPRESSION NOT MEASUREMENT** — and he says he has been *"losing faith in the pelican benchmark"* since
+July, keeping it only for within-family and across-effort comparisons, which is exactly and only how it is
+used here.
+
+**One open question above gets a data point.** "Does compaction help or hurt?" — on ARC-AGI-3, a harness
+whose two named mechanisms were *retained reasoning state and compaction* scored **99.9% for $19K against
+the default harness's 62.7% for $26K** ([[willison-gpt6-astra]]). So: on that benchmark, compaction paired
+with retained reasoning **helped, and cost less**. **Marker: OpenAI's own harness on OpenAI's own model;
+the score is a vendor self-report and the harness/cost split is reported by the benchmark maintainer.** One
+benchmark, one vendor — it narrows the question rather than answering it, and it does not touch the
+*silent-degradation* mechanism this page is actually about.
 
 ## Evidential status
 
@@ -90,4 +129,4 @@ not because the rate is established. Treat it as a hypothesis worth instrumentin
 [[event-modeled-agent-design]] · [[context-engineering]] · [[long-running-agents]] ·
 [[harness-engineering]]
 
-_Sources: [[dilger-modeling-agent-improved-by-learning-loop]] · [[dilger-one-million-tokens-self-training-modeling-agent]]._
+_Sources: [[dilger-modeling-agent-improved-by-learning-loop]] · [[dilger-one-million-tokens-self-training-modeling-agent]] · [[willison-claude-fable-5-1-animated-pelican]] · [[willison-gpt6-astra]]._

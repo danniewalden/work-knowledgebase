@@ -2,8 +2,8 @@
 title: Command Context Consistency
 type: concept
 created: 2026-08-03
-updated: 2026-08-03
-sources: [fritzsche-command-context-consistency-principle, fritzsche-who-owns-a-rule-shared-across-domain-capabilities, fritzsche-why-your-software-cannot-explain-business-decisions, rico-fritzsche-es-does-not-require-aggregates-ccc-vs-dcb, fritzsche-ccc-atomic-append-serialized-write-order]
+updated: 2026-09-04
+sources: [fritzsche-command-context-consistency-principle, fritzsche-who-owns-a-rule-shared-across-domain-capabilities, fritzsche-why-your-software-cannot-explain-business-decisions, rico-fritzsche-es-does-not-require-aggregates-ccc-vs-dcb, fritzsche-ccc-atomic-append-serialized-write-order, fritzsche-how-event-sourcing-grows-with-the-business]
 tags: [command-context-consistency, dynamic-consistency-boundaries, event-sourcing, aggregates, autonomous-domain-capabilities, substrate, focus]
 ---
 
@@ -76,4 +76,38 @@ serialized]], not merely atomic).
 Caveat: heavily practitioner-authored (Fritzsche/Westphal/Pellegrini); strong internal convergence, no
 external benchmark.
 
-_Source pages: [[fritzsche-command-context-consistency-principle]] · [[rico-fritzsche-es-does-not-require-aggregates-ccc-vs-dcb]] · [[fritzsche-ccc-atomic-append-serialized-write-order]] · [[fritzsche-who-owns-a-rule-shared-across-domain-capabilities]] · [[fritzsche-why-your-software-cannot-explain-business-decisions]]._
+## The fold, as code (2026-08)
+
+[[fritzsche-how-event-sourcing-grows-with-the-business]] shows the context-building step the principle
+describes: "Each domain capability comes with its own command context. The context defines the scope and
+what is needed to process a request… the capability has to query a relevant list of events and derive the
+state from it. This functional operation is called a **fold**" — Greg Young, 2012: *"Current State is a
+Left Fold of previous behaviours."*
+
+```csharp
+var state = events.Aggregate(InfleetState.Empty, (s, e) => e switch
+{
+    VehicleReceived r => s with { Received = true, Vin = r.Vin },
+    VehicleInfleeted  => s with { Infleeted = true },
+    _                 => s
+});
+```
+
+The two disciplines that make it CCC rather than a small aggregate: **"events that the rules do not read
+are not taken into account"** (so the context is exactly what the decision needs, never wider — the same
+"cover the context and never less" rule this page states for the guard), and the state is **transient**:
+"it is created, the rules are applied to it, and the result is one or more new events." Two capabilities
+over the same events fold different subsets — "there is no shared vehicle object that both would need to
+share."
+
+Consequence for evolution: adding a fact means adding a fold case and a rule **only in the capabilities
+that need it** ("`AcquireVehicle` and `ReceiveVehicle` remain unchanged, since they do not require the
+information from the new event type"). *One authored example; no measurement.*
+
+## Related
+
+[[dynamic-consistency-boundaries]] · [[event-sourcing]] · [[autonomous-domain-capabilities]] ·
+[[business-capabilities]] · [[entity-centric-thinking]] · [[given-when-then]] ·
+[[agent-explainability]] · [[rico-fritzsche]] · [[sara-pellegrini]]
+
+_Source pages: [[fritzsche-command-context-consistency-principle]] · [[rico-fritzsche-es-does-not-require-aggregates-ccc-vs-dcb]] · [[fritzsche-ccc-atomic-append-serialized-write-order]] · [[fritzsche-who-owns-a-rule-shared-across-domain-capabilities]] · [[fritzsche-why-your-software-cannot-explain-business-decisions]] · [[fritzsche-how-event-sourcing-grows-with-the-business]]._

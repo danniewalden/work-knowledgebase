@@ -2,8 +2,8 @@
 title: Prompt Injection
 type: concept
 created: 2026-07-06
-updated: 2026-08-31
-sources: [willison-designing-agentic-loops, willison-lethal-trifecta, sadalage-chandrasekaran-making-data-ready-for-agentic-ai]
+updated: 2026-09-04
+sources: [willison-designing-agentic-loops, willison-lethal-trifecta, sadalage-chandrasekaran-making-data-ready-for-agentic-ai, willison-understanding-chatgpt-work]
 tags: [agent-safety, security, llm, coding-agents, focus]
 ---
 
@@ -42,6 +42,22 @@ tools from different sources; vendors can patch one product, but once a user mix
 can protect them. The only reliable end-user defense is to **avoid the trifecta combination** — the
 security counterpart of the "constrain the agent so untrusted input can't trigger consequential actions"
 design-pattern research Willison cites (and DeepMind's CaMeL).
+
+**A mainstream product with all three legs on by default (2026-08).** [[simon-willison]] applies his own
+model to OpenAI's ChatGPT Work and concludes flatly: *"ChatGPT Work combines all three!"*
+([[willison-understanding-chatgpt-work]]). The legs, as he documents them: **private data** (a persistent
+`/workspace` filesystem carrying everything from prior sessions, plus connected MCPs); **untrusted
+content** (a full headless Chrome that loads arbitrary sites, and a code-execution sandbox whose network
+default *"appears to be open to all"* rather than the short allowlist Claude's container uses); and an
+**exfiltration channel** (that same open network, plus the ability to build and *deploy* public sites). He
+has no answer on mitigation and asks OpenAI for one, guessing it is the same auto-review mechanism as
+Codex.
+
+**One amplification worth stating, because it is a reading of what he describes rather than a claim he
+makes:** the `/workspace` volume is **mounted into all concurrently running Work sessions and persists
+across them**, so a successful injection in one session has a durable, cross-session *write* surface into
+files other sessions will read. Persistence upgrades a single-session compromise into a foothold. This is
+the sharpest open risk in the Sept-2026 captures and nothing in the KB addresses it.
 
 ## Relevance to this KB — the safety ceiling on autonomy
 
@@ -86,4 +102,4 @@ permissions, never a broad service account, because "shared service accounts des
 privilege** — which shrink the *reach* leg of the trifecta rather than the authorisation path. See
 [[business-capabilities]], [[autonomy-ladder]].
 
-_Sources: [[willison-lethal-trifecta]] · [[willison-designing-agentic-loops]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]]._
+_Sources: [[willison-lethal-trifecta]] · [[willison-designing-agentic-loops]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]] · [[willison-understanding-chatgpt-work]]._

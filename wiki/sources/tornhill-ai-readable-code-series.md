@@ -45,7 +45,7 @@ The **thesis / reflection** posts:
 - **Compressed Cognition: The Cost of Faster Coding** (May 7, the series' most-shared) — agentic coding
   *collapses the timeline of software decisions*; speed is paid for in **decision density and mental
   energy**. A counter-weight to naive "faster is better" framing.
-- **A Blast from the Past: SDD and the Illusion of Known Scope** (May 28) — a caution on
+- **[[tornhill-blast-from-the-past-sdd-illusion-of-known-scope|A Blast from the Past: SDD and the Illusion of Known Scope]]** (May 28) — now captured and ingested in its own right — — a caution on
   [[spec-driven-development]]: "implementation was never just typing — it's discovery and learning";
   tooling changed, human problem-solving didn't.
 - **Coding Is Dead (…But It Still Smells Funny)** (Apr 26) — the post-AI developer role; design smells
@@ -59,7 +59,7 @@ The **thesis / reflection** posts:
 The body of evidence behind [[ai-readable-code]] and [[adam-tornhill]]'s entity page: shows CLEAR was
 distilled from concrete refactorings, and adds two notable cross-thread points — **Compressed Cognition**
 (a wellbeing/decision-density caution that complements the speed-vs-quality story in
-[[agentic-coding]]) and **SDD and the Illusion of Known Scope** (a pragmatic challenge to the
+[[agentic-coding]]) and **[[tornhill-blast-from-the-past-sdd-illusion-of-known-scope|SDD and the Illusion of Known Scope]]** (a pragmatic challenge to the
 [[spec-driven-development]] "spec-first" optimism of [[martin-dilger]] et al., worth holding alongside
 it). Reinforces [[agent-legibility]], [[locality-of-reference]], and [[balanced-coupling]].
 

@@ -2,8 +2,8 @@
 title: Agent Explainability
 type: concept
 created: 2026-06-21
-updated: 2026-08-31
-sources: [axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember, roden-event-sourcing-meets-mcp-whole-story-for-llms, akka-event-sourcing-backbone-agentic-ai, confluent-agentic-event-driven-systems-architecture, martinfowler-prince-building-reliable-agentic-ai-systems, fritzsche-why-your-software-cannot-explain-business-decisions, fritzsche-choosing-storage-is-choosing-what-your-system-forgets, sadalage-chandrasekaran-making-data-ready-for-agentic-ai]
+updated: 2026-09-04
+sources: [axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember, roden-event-sourcing-meets-mcp-whole-story-for-llms, akka-event-sourcing-backbone-agentic-ai, confluent-agentic-event-driven-systems-architecture, martinfowler-prince-building-reliable-agentic-ai-systems, fritzsche-why-your-software-cannot-explain-business-decisions, fritzsche-choosing-storage-is-choosing-what-your-system-forgets, sadalage-chandrasekaran-making-data-ready-for-agentic-ai, axoniq-government-ai-explainability-requirements]
 tags: [agentic-ai, agent-governance, event-sourcing, compliance, focus]
 ---
 
@@ -58,6 +58,31 @@ same goal (traceability/reviewability), and PRINCE's regulated-domain framing is
 not a nice-to-have — though **not independent** corroboration in the sense the KB needs: it is
 Thoughtworks-authored, and Thoughtworks coined [[harness-engineering]]. The genuinely independent
 support on this page is the non-vendor ESAA preprint and the EU AI Act's own text. See [[thoughtworks]].
+
+## The regulatory map, widened — and where it comes from (AxonIQ, 2026-08)
+
+[[axoniq-government-ai-explainability-requirements]] takes the page's three instruments (EU AI Act, SR
+11-7, GDPR Art. 22) to roughly a dozen across nine jurisdictions: US FOIA and records-retention rules
+plus federal AI guidance and state algorithmic-accountability laws; **Canada's Directive on Automated
+Decision-Making** (impact assessment and meaningful explanations, scaled by impact level); the EU AI Act
+layered over GDPR and national administrative law's duty to give reasons; the **UK's Algorithmic
+Transparency Recording Standard**; South Korea's AI framework law, Singapore's Model AI Governance
+Framework, Japan's national guidelines; Australia's voluntary guardrails pending mandatory high-risk
+ones; New Zealand's **Algorithm Charter**; Brazil's PL 2338/2023. AxonIQ's framing: "None of these
+frameworks asks it in quite the same words, but the direction is clear" — and an agency treating each as
+a separate compliance project "will run that project forever."
+
+It also supplies a driver specific to the public sector that no other KB source carries: **explainability
+as legitimacy** rather than compliance, and **retention on institutional timescales** — a decision
+questioned "in a decade, by an oversight body that does not yet exist, under a legal standard that has
+not yet been set," where "institutional memory lives in retired databases, departed employees, and file
+formats nobody can open."
+
+**Read it as a checklist of instruments to verify, not as a statement of obligation:** this is a
+**vendor's** reading (AxonIQ sells an event store), unverified against primary law here, with a corporate
+byline. Its single number — an 80% reduction in audit-preparation time at an unnamed large US bank — is a
+**VENDOR SELF-REPORT** and must carry that marker at every use. And the post contains **no agent-specific
+evidence**: the AI section is argument, with nothing measured about an agent decision being explained.
 
 ## Caveat
 
@@ -119,6 +144,6 @@ tooling recommendations.
 
 [[event-sourcing]] · [[agent-governance]] · [[agentic-event-driven-systems]] ·
 [[event-sourced-agentic-patterns]] · [[model-context-protocol]] · [[context-engineering]] ·
-[[axoniq]] · [[golo-roden]]
+[[axoniq]] · [[golo-roden]] · [[axoniq-government-ai-explainability-requirements]]
 
-_Sources: [[axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember]] · [[roden-event-sourcing-meets-mcp-whole-story-for-llms]] · [[akka-event-sourcing-backbone-agentic-ai]] · [[confluent-agentic-event-driven-systems-architecture]] · [[fritzsche-why-your-software-cannot-explain-business-decisions]] · [[fritzsche-choosing-storage-is-choosing-what-your-system-forgets]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]]._
+_Sources: [[axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember]] · [[roden-event-sourcing-meets-mcp-whole-story-for-llms]] · [[akka-event-sourcing-backbone-agentic-ai]] · [[confluent-agentic-event-driven-systems-architecture]] · [[fritzsche-why-your-software-cannot-explain-business-decisions]] · [[fritzsche-choosing-storage-is-choosing-what-your-system-forgets]] · [[sadalage-chandrasekaran-making-data-ready-for-agentic-ai]] · [[axoniq-government-ai-explainability-requirements]]._

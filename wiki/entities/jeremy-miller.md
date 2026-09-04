@@ -2,8 +2,8 @@
 title: Jeremy Miller
 type: entity
 created: 2026-06-15
-updated: 2026-08-31
-sources: [miller-jasperfx-critterstack-ai-event-modeling-strategy, miller-codebase-is-the-prompt-vertical-slices-ai, miller-jasperfx-ai-skills-agent-skills]
+updated: 2026-09-04
+sources: [miller-jasperfx-critterstack-ai-event-modeling-strategy, miller-codebase-is-the-prompt-vertical-slices-ai, miller-jasperfx-ai-skills-agent-skills, miller-ai-assisted-production-support-with-critterwatch, miller-pondering-continuous-integration-ai-world-order, miller-new-stuff-in-critter-stack-ai-skills-1-10, miller-open-core-model-sustainable-oss-dotnet]
 tags: [person, dotnet, vertical-slice-architecture, event-sourcing, agentic-coding, harness-engineering, focus]
 ---
 
@@ -52,6 +52,10 @@ partly a [[critter-stack]] sales pitch (it advertises paid Critter Stack AI Skil
 
 - [[miller-codebase-is-the-prompt-vertical-slices-ai]] — The Codebase Is the Prompt (2026-06-04).
 - [[miller-jasperfx-ai-skills-agent-skills]] — JasperFx AI Skills 1.6.0 (2026-07-10).
+- [[miller-open-core-model-sustainable-oss-dotnet]] — the open-core model; you cannot vibe-code the production beatings (2026-08-28).
+- [[miller-pondering-continuous-integration-ai-world-order]] — CI under agent load (2026-08-31).
+- [[miller-new-stuff-in-critter-stack-ai-skills-1-10]] — AI Skills 1.10.0, 102 skills (2026-09-02).
+- [[miller-ai-assisted-production-support-with-critterwatch]] — an agent handed a production control surface via MCP (2026-09).
 
 ## Where he stands on Event Modeling (2026-08-21)
 
@@ -75,4 +79,61 @@ which keeps [[given-when-then]] as the hand-authored unit while inferring the st
 hedging throughout: the whole strategy is "spaghetti against the wall," Bobcat is "pretty mushy as far as
 details," and on the VSA token claim, "it's incumbent upon people like me to prove that out over time."
 
-_Source pages: [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[miller-jasperfx-ai-skills-agent-skills]] · [[miller-jasperfx-critterstack-ai-event-modeling-strategy]]._
+## Position — the *running fleet* is the prompt (2026-09)
+
+The runtime counterpart to "the codebase is the prompt." In
+[[miller-ai-assisted-production-support-with-critterwatch]] he hands an agent a **production control
+surface** over an event-sourced .NET fleet through MCP and works four scenarios end to end. Two positions
+worth attributing to him, both stated as internal rules:
+
+- **"A pile of tools doesn't make an agent good at operations — an agent also needs to know the
+  discipline."** Hence: *"any time CritterWatch exposes new information through an MCP tool, the paired
+  skill work ships with it. A tool with no skill coverage is an under-leveraged tool."* The skill teaches
+  the *loop* (summarize → query → act), not the tool list. See [[harness-engineering]].
+- **Tools should refuse to report an ambiguous result as an answer** — the `databasesAnnounced` /
+  `databasesAnswered` / `partial` contract, and the skill rule *"never answer 'the queue is empty'"* on a
+  partial read, which exists because a console once *"rendered 'no dead letters found' over a queue quietly
+  holding 42 of them."*
+
+He is also candid about the discomfort — *"Handing an AI agent a control surface for production… makes me a
+little nervous, and we built it"* — and about the demo's own failure (his alerting was wrong about his own
+fleet mid-post; a Postgres deadlock storm plus a Docker restart, fixed for 1.1). **Markers: VENDOR
+SELF-REPORT throughout — his company, his paid product, his fleet, failures he injected himself, nothing
+measured.** Catalogue count is now **102 skills** (2026-09-02,
+[[miller-new-stuff-in-critter-stack-ai-skills-1-10]]), superseding the 81 recorded above.
+
+## Position — CI is the same practice under new load (2026-08-31)
+
+[[miller-pondering-continuous-integration-ai-world-order]]: CI's purpose is unchanged, but *"with the
+extreme load that's come from all of us yahoos using AI agents to code so much faster, GitHub Actions are
+very noticeably slower or flat out unreliable on the worst days."* His response is local-first
+verification — *"doing trunk based development like it's 2007 and Subversion is the latest hotness!"* —
+selective test subsets chosen by changes in flight, a full **"HeavyGate"** only on pushes to `main`, PRs
+kept *"in no small part just for traceability"* rather than review, and a **supervisor** ("Bobcat", on the
+Microsoft Testing Platform) doing selective retries, process restarts and hard Docker resets on known
+flakes. A second-order effect he reports: slow CI **forced flake elimination**, because retry stopped being
+cheap. **IMPRESSION NOT MEASUREMENT — no wait times, no before/after, and he concedes his team also added
+far more tests, which is an unresolved confound.** [[martin-fowler]] answers the same Paul Stack post and
+reaches the same remedy from the opposite premise (*"that was always how Continuous Integration works"*) —
+see [[fowler-fragments-2026-09-01]] and [[feedforward-and-feedback-controls]]. **The KB holds that
+disagreement open and does not resolve it in either direction:** Fowler says the practice always
+prescribed local verification and the CI *server* was never the practice; Miller presents it as reverting
+to 2007. Paul Stack's own post is not in `raw/`, so the KB holds two rebuttals and not the primary.
+
+## Position — you cannot vibe-code the production beatings (2026-08-28)
+
+[[miller-open-core-model-sustainable-oss-dotnet]], mostly an OSS-licensing post, carries one argument with
+reach: LLMs change the cost of *producing* code, not the cost of the years of adaptation that hardened it —
+*"these kinds of tools achieve deep quality through a lot of usage, feedback, and adaptation over time."*
+His examples are the irregularities (broker connections dropping, PostgreSQL kill signals creating sequence
+gaps, Kubernetes doing Kubernetes things) plus a live one: subsystems he thought were "done" needed fixes
+last month *"because new users in new circumstances proved otherwise."* **Maximally interested** — it is
+also an argument for buying his support plans — and the direct counterweight to
+[[dudycz-fork-can-you-own-it]]'s "LLM as a fork."
+
+_Source pages: [[miller-codebase-is-the-prompt-vertical-slices-ai]] ·
+[[miller-jasperfx-ai-skills-agent-skills]] · [[miller-jasperfx-critterstack-ai-event-modeling-strategy]] ·
+[[miller-ai-assisted-production-support-with-critterwatch]] ·
+[[miller-pondering-continuous-integration-ai-world-order]] ·
+[[miller-new-stuff-in-critter-stack-ai-skills-1-10]] ·
+[[miller-open-core-model-sustainable-oss-dotnet]]._

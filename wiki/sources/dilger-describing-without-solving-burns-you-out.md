@@ -51,7 +51,7 @@ remember, that's not AI's fault."
   ([[dilger-harness-is-20-percent-requirements-are-80]],
   [[dilger-is-code-still-the-source-of-truth]], [[dilger-spec-driven-development-applied]]). This one
   supplies the missing counter-weight the KB previously had only from outside voices —
-  [[tornhill-merge-conflicts-agentic-bottleneck|Tornhill]]'s *SDD and the Illusion of Known Scope*, and
+  [[tornhill-blast-from-the-past-sdd-illusion-of-known-scope|Tornhill]]'s *SDD and the Illusion of Known Scope*, and
   the "stay the engineer" caveats in [[loop-engineering]].
 - **Parallel-agent supervision has a human cost.** "Overseeing agents like a kindergartner" across 5
   sessions is a concrete cost datapoint against the [[unattended-coding-agents|run-more-agents]] framing

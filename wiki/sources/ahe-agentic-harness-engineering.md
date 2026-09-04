@@ -103,6 +103,19 @@ artifacts rather than hidden parameter updates**" thesis that ties loop engineer
 
 ## Caveats
 
+- **DISPUTED AS OF 2026-09-04 — read this before citing any number on this page.** The
+  69.7% → 77.0% gain, and the whole class of automatic-harness-evolution results, are directly
+  contested by [[wang-rethinking-evaluation-of-harness-evolution-for-agents]] (arXiv 2607.12227v2,
+  also a **PREPRINT**): benchmarked against *matched-budget* test-time-scaling baselines on
+  Terminal-Bench 2.1, automatic harness evolution "does not consistently outperform simple
+  test-time scaling methods and exhibits limited generalization". The critique targets the
+  **evaluation protocol** this paper's gain depends on — i.e. the objection is that the reported
+  improvement may be search budget and benchmark overfitting rather than a better harness. The KB
+  does not adjudicate this; see [[harness-evolution]] for both sides. Do not quote 69.7→77.0
+  anywhere without the dispute attached.
+- **This paper is an arXiv PREPRINT and has not been peer-reviewed.** An earlier version of
+  [[index]] described it as a "peer-review primary"; that was wrong and is corrected.
+
 A **controlled research prototype**, self-described as "an initial framework rather than a finished
 answer." High-variance setting; evaluation centers on Terminal-Bench 2 (single benchmark) so broad
 generalization is not established; the larger adaptation surface is itself an **over-fitting / benchmark-

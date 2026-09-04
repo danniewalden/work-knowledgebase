@@ -2,8 +2,8 @@
 title: CQRS (Command Query Responsibility Segregation)
 type: concept
 created: 2026-06-11
-updated: 2026-07-02
-sources: [eventmodeling-what-is-event-modeling, akka-event-sourcing-backbone-agentic-ai, atomicobject-cqrs-event-sourcing-production-walkthrough, enzler-event-sourcing-aggregates-dcb-or-what]
+updated: 2026-09-04
+sources: [eventmodeling-what-is-event-modeling, akka-event-sourcing-backbone-agentic-ai, atomicobject-cqrs-event-sourcing-production-walkthrough, enzler-event-sourcing-aggregates-dcb-or-what, dudycz-vertical-slices-ownership-and-external-dependencies]
 tags: [cqrs, pattern, event-sourcing, architecture]
 ---
 
@@ -41,4 +41,26 @@ commands unlikely, so the [[dynamic-consistency-boundaries|aggregate/DCB]] quest
 same command-as-intent instinct as [[atomicobject-cqrs-event-sourcing-production-walkthrough|Atomic
 Object]] and [[event-modeling]]'s command blocks, applied to sidestep concurrency.
 
-_Source pages: [[eventmodeling-what-is-event-modeling]] · [[akka-event-sourcing-backbone-agentic-ai]] · [[atomicobject-cqrs-event-sourcing-production-walkthrough]] · [[enzler-event-sourcing-aggregates-dcb-or-what]]._
+**Read models per query, and why naming the command is the whole game (Dudycz, 2026-08).**
+[[dudycz-vertical-slices-ownership-and-external-dependencies]] states the read-side rule in one line —
+"**Read models go per query.** This is where a table per feature is right… Build a table that answers
+that. The settlement report needs something else and gets its own. **Resist making a single query serve
+five screens by expanding columns**" — while keeping write-side logic per entity/aggregate and schemas per
+module. On the write side he grounds command-as-intent in [[greg-young]]'s **Task-Based UI**: when the
+client posts data-centric structures, "the domain has no verbs, and the user's intent is lost on the way
+in." The consequence: "If every operation is 'update the order', you have one feature and nothing to
+divide. Once you have `VerifyOrder`, `ConfirmOrder`, `RejectOrder`, you have folders." **And it applies
+without event sourcing: "the name is the value, and the underlying implementation can be a single
+`UPDATE`."** A status column "records that the order is verified. It doesn't record that anybody verified
+it."
+
+Two more, from the same source: **return the available actions with the data** rather than letting the
+frontend re-derive them from status fields ("the part of HATEOAS I find useful, without the rest of the
+ceremony"); and a **backend-for-frontend is a legitimate slice** — "it's named after a screen because
+that's honestly what it is" — since "one screen is routinely composed of data gathered from several
+modules." *Experience report, no measurement.*
+
+*(His write-side rule — logic per entity or aggregate — is the live disagreement with
+[[rico-fritzsche]]; see [[entity-centric-thinking]].)*
+
+_Source pages: [[eventmodeling-what-is-event-modeling]] · [[akka-event-sourcing-backbone-agentic-ai]] · [[atomicobject-cqrs-event-sourcing-production-walkthrough]] · [[enzler-event-sourcing-aggregates-dcb-or-what]] · [[dudycz-vertical-slices-ownership-and-external-dependencies]]._

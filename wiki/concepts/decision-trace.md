@@ -2,8 +2,8 @@
 title: Decision Trace
 type: concept
 created: 2026-08-16
-updated: 2026-08-16
-sources: [ng-spec-driven-development-is-waterfall-in-markdown, dilger-describing-without-solving-burns-you-out, bockeler-tdd-inside-the-agent-loop]
+updated: 2026-09-04
+sources: [ng-spec-driven-development-is-waterfall-in-markdown, dilger-describing-without-solving-burns-you-out, bockeler-tdd-inside-the-agent-loop, dudycz-fixing-bugs-in-event-sourcing]
 tags: [spec-driven-development, agentic-coding, provenance, decision-records, focus]
 ---
 
@@ -77,5 +77,24 @@ tracer of your reasoning" — making the output of human alignment "retrievable,
 - **Does it survive scale?** A trace per ticket across a large team is a large corpus with no stated
   retrieval story beyond "follow the trail."
 
+## A cheap primitive: stamp the build that made the decision (Dudycz, 2026-07)
+
+[[dudycz-fixing-bugs-in-event-sourcing]] adds one field to event metadata and gets a decision trace for
+free: **`buildSha`**, "the commit the service was running when it appended the event… an environment
+variable and a few lines in whatever builds our metadata." Then "which decisions did *that* version of
+the system make?" is a query, not an archaeology exercise — his case returns exactly the events the broken
+binary produced, and excludes records merely touched in the same window. Alongside it,
+**`correlationId`** groups everything from one user action and **`causationId`** chains back to the
+triggering command: "when the bad value comes out of a handler three hops from the request, that chain is
+how we find which request it was."
+
+**Why it matters beyond event sourcing.** This is the "which version of the system decided this" question
+that [[agent-explainability]] and [[agent-governance]] ask of agents, answered at the cheapest possible
+layer — and it transfers directly to agent-written records (which agent, which model, which prompt or
+skill version stamped on the fact it produced). Contrast the heavier instruments on this page: it is
+detection-grade metadata rather than a narrative trace, and it is **advice, not a reported practice** —
+offered inside an invented scenario, and it assumes one deployable per stream and immutable build tags.
+
 _Sources: [[ng-spec-driven-development-is-waterfall-in-markdown]] ·
-[[dilger-describing-without-solving-burns-you-out]] · [[bockeler-tdd-inside-the-agent-loop]]._
+[[dilger-describing-without-solving-burns-you-out]] · [[bockeler-tdd-inside-the-agent-loop]] ·
+[[dudycz-fixing-bugs-in-event-sourcing]]._

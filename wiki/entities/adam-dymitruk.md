@@ -2,8 +2,8 @@
 title: Adam Dymitruk
 type: entity
 created: 2026-06-11
-updated: 2026-08-31
-sources: [eventmodeling-what-is-event-modeling, semaphore-dymitruk-event-modeling, dymitruk-event-modeling-future-proof-agents, dymitruk-ai-trained-on-dysfunction-agents-are-a-must, dilger-first-event-modeling-conference-munich-recap, event-modeling-event-sourcing-podcast, adaptech-workflow-not-inside-giant-process-manager, dymitruk-ai-melts-barrier-event-modeling-is-the-map]
+updated: 2026-09-04
+sources: [eventmodeling-what-is-event-modeling, semaphore-dymitruk-event-modeling, dymitruk-event-modeling-future-proof-agents, dymitruk-ai-trained-on-dysfunction-agents-are-a-must, dilger-first-event-modeling-conference-munich-recap, event-modeling-event-sourcing-podcast, adaptech-workflow-not-inside-giant-process-manager, dymitruk-ai-melts-barrier-event-modeling-is-the-map, dilger-podcast-episode-47-agentic-modeling-audit-trails]
 tags: [person, event-modeling, event-sourcing, software-design, agentic-ai]
 ---
 
@@ -47,6 +47,29 @@ Software developer; CEO and founder of [[adaptech-group]]. Originator of
   [[event-sourcing|Event Sourcing]] analogy) — accountability-by-default becomes cheap to adopt
   ([[dymitruk-ai-melts-barrier-event-modeling-is-the-map]]).
 
+## Podcast Episode 47 — three positions (date unresolved)
+
+**"Agents need an audit trail, not a snapshot"**
+([[dilger-podcast-episode-47-agentic-modeling-audit-trails]], **date unresolved — do not assign one**;
+the episode carries no date in HTML, metadata or body, is absent from the RSS feed and from
+podcast.eventmodeling.org, and may be a channel prior sweeps never polled): *"Events are the truth, the
+full story, not just the current state. Read models are derived and disposable. If an agent goes
+sideways, follow the event trail, find the divergence, fix it, replay. No mystery, no data surgery."*
+He is **endorsing, not originating** — the hosts are relaying a LinkedIn post by **Svet Angelov** that is
+not captured in `raw/`. It is the crispest statement of the KB's [[event-sourced-agentic-patterns]]
+thesis as an *agent requirement*.
+
+Same episode, two more positions: **screens are legitimate model content** — *"all the arguments about
+not having screens and design sessions is just gatekeeping by architect wannabes"*
+([[screens-as-specification]]) — and a caution on agentic modelling: an over-eager agent flooding a
+[[given-when-then|GWT]] list with edge cases *"can make a simple slice look far more complex than it
+really is, since event modeling is visual"* ([[event-modeling-anti-patterns]]). He also restates
+**specification by example** as the method's existing answer to over-specification: *"draw a few
+representative example paths and trust the implementer to infer the rest."*
+
+*Marker: show-notes level, not verified against audio, on a podcast he co-hosts with
+[[martin-dilger]] about a platform Dilger sells — see the vendor markers on [[eventmodelers-ai]].*
+
 ## Where he appears
 
 - [[eventmodeling-what-is-event-modeling]] — his canonical write-up (eventmodeling.org).
@@ -61,4 +84,4 @@ Software developer; CEO and founder of [[adaptech-group]]. Originator of
 
 [[model-as-code-vs-model-as-language]]
 
-_Source pages: [[eventmodeling-what-is-event-modeling]] · [[semaphore-dymitruk-event-modeling]] · [[dymitruk-event-modeling-future-proof-agents]] · [[dymitruk-ai-trained-on-dysfunction-agents-are-a-must]] · [[event-modeling-event-sourcing-podcast]] · [[adaptech-workflow-not-inside-giant-process-manager]] · [[dymitruk-ai-melts-barrier-event-modeling-is-the-map]]._
+_Source pages: [[eventmodeling-what-is-event-modeling]] · [[semaphore-dymitruk-event-modeling]] · [[dymitruk-event-modeling-future-proof-agents]] · [[dymitruk-ai-trained-on-dysfunction-agents-are-a-must]] · [[event-modeling-event-sourcing-podcast]] · [[adaptech-workflow-not-inside-giant-process-manager]] · [[dymitruk-ai-melts-barrier-event-modeling-is-the-map]] · [[dilger-podcast-episode-47-agentic-modeling-audit-trails]] (**DATE UNRESOLVED**)._

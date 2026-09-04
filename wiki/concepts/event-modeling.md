@@ -2,8 +2,8 @@
 title: Event Modeling
 type: concept
 created: 2026-06-11
-updated: 2026-08-31
-sources: [dilger-element-slice-chapter-story-context-ladder, eventmodeling-what-is-event-modeling, semaphore-dymitruk-event-modeling, goeleven-event-model-to-code-series, event-modeling-event-sourcing-podcast, dilger-how-does-dcb-affect-event-modeling, adaptech-workflow-not-inside-giant-process-manager, dilger-extending-event-modeling-query-when, dilger-99-percent-software-boring-two-patterns, dilger-the-shapes-event-modeling-anti-patterns]
+updated: 2026-09-04
+sources: [dilger-element-slice-chapter-story-context-ladder, eventmodeling-what-is-event-modeling, semaphore-dymitruk-event-modeling, goeleven-event-model-to-code-series, event-modeling-event-sourcing-podcast, dilger-how-does-dcb-affect-event-modeling, adaptech-workflow-not-inside-giant-process-manager, dilger-extending-event-modeling-query-when, dilger-99-percent-software-boring-two-patterns, dilger-the-shapes-event-modeling-anti-patterns, fritzsche-thinking-in-events, dilger-ui-only-interactions-filtering, dilger-podcast-episode-47-agentic-modeling-audit-trails]
 tags: [event-modeling, methodology, event-sourcing, software-design, ddd]
 ---
 
@@ -71,6 +71,31 @@ Complementing the constructive patterns, Dilger names an **anti-pattern taxonomy
 left/right chairs, and shelf — readable off a board's silhouette, with only the *bed* a hard red flag. It is
 built to be **agent-operable** (the `/wdyt` AI-skill flags them; a reference-catalog "linter" grades
 structure). See [[event-modeling-anti-patterns]].
+
+## UI-only interactions — model them as Views (Dilger, 2026-07-31)
+
+The method's "only state changes are events" rule stated positively.
+[[dilger-ui-only-interactions-filtering]] answers *"how would you model filtering?"* with: usually you
+don't — not as a Command and an Event.
+
+> "Filtering, sorting, expanding a row, switching a tab - these are all views on data you already have.
+> Model them as Views, not as Commands looking for an Event to justify them."
+
+The worked form uses **Multi-Screen Views**: an unfiltered page and a filtered page backed by the *same*
+`Books[]` read model, so one slice shows how the system behaves *"without inventing state changes that
+don't exist in the domain."* Behaviour is specified on the read side with the **Query WHEN** — *"Given
+two `Book registered` events… When you query by title… Then the `Books` Read Model returns just that one
+match"* — which keeps the scenario *"stated purely in terms of the data"*, independent of whether the
+implementation filters client-side or refetches. (That WHEN is the **optional, proposed, unratified**
+extension from [[dilger-extending-event-modeling-query-when]]; the status travels.)
+
+Two consequences worth carrying: the completeness bar for such a slice is **mockup + GWT scenario and
+nothing more** (*"This is enough to implement it"*), and the corresponding
+**[[event-modeling-anti-patterns|anti-pattern]]** is now nameable — *Commands invented to justify Events
+for interactions that change nothing*. The honest edge the source does not discuss: sometimes *which
+filter a user applied* **is** a business fact worth recording, and nothing here says how to tell.
+*(**VENDOR SELF-REPORT** — Multi-Screen Views, HTML Views and Query support are features of
+[[eventmodelers-ai]] / EM-Studio, and the article closes selling a paid programme.)*
 
 ## The 7-step workshop
 
@@ -161,8 +186,60 @@ analogy for reading a model (Ep 30); [[given-when-then]] on a timeline (Eps 3, 7
 work, lifecycle, and billing (Eps 12, 19, 20, 34); and swim lanes / value-stream + BPMN framing (Eps 20,
 32). Show-notes-level only — transcripts were blocked (see the source page's caveat).
 
+**Episode 47 (date unresolved).** [[dilger-podcast-episode-47-agentic-modeling-audit-trails]] is the
+newest podcast item published anywhere and **carries no date** — no date in HTML, metadata or body, and
+it is **absent from the RSS feed and from podcast.eventmodeling.org**, both of which still end at
+**Ep 46 (2026-04-26/27)**. So it post-dates 2026-04-27 and nothing more can be said; **it may be a
+channel prior sweeps never polled** (`eventmodelers.ai/docs/podcast` is a separate, more current index
+than the `.org` one) **rather than a genuinely new item**. Method-relevant content: two AI agents
+modelling alongside Dilger in real time; the `/wdyt` gap-finding skill and the **over-specification
+tuning lesson** (restrict the agent to what is present, forbid invention —
+[[event-modeling-anti-patterns]]); **specification by example** as the method's existing answer to the
+"infinite possibility tree"; **screens are legitimate, information-only artifacts** and dismissing them
+is *"gatekeeping by architect wannabes"* (Dymitruk — [[screens-as-specification]]); **events as an
+audit trail rather than a snapshot** for agents ([[event-sourced-agentic-patterns]]); and shared
+industry vocabulary — command handlers, event handlers — as the durable payoff
+([[em-standardization-foundation]]). Show-notes level only, as with Eps 1–46.
+
+## Event Modeling does not require Event Sourcing (Fritzsche, 2026-07)
+
+[[fritzsche-thinking-in-events]] is the source to cite for the boundary: "Event Modeling describes
+behavior. Event Sourcing decides how state is persisted," and confusing them "turns a useful way of
+thinking into another technical prescription." He anchors it on [[adam-dymitruk]]'s own line — **"Events
+happen — whether we store them or not is our choice"** — and notes Dymitruk demonstrates EM against table
+storage. The test for which you have is **where authority lives**: "If the current tables are
+authoritative and events only appear in the model, logs, messages, audit trails, or integration
+notifications, the system may be event-aware or event-driven, **but it is not Event Sourcing.**"
+
+Two further contributions:
+
+- **Why a model is less forgiving than a schema.** "A table can contain a status column without
+  explaining who is allowed to change the status, when the change is valid, or which consequence
+  follows… An Event Model is less forgiving because **every fact has to stand in the timeline and explain
+  its place.**" Naming a fact forces the next questions (who cancelled, before or after the
+  free-cancellation window, does availability return, is a refund due) — the [[given-when-then]] material
+  this page already carries, stated from the naming side. `ReservationUpdated` "preserves the mutation
+  and loses the reason."
+- **The symmetric warning.** "An event store does not guarantee a good model. If the stored events are
+  named `ReservationUpdated`, `GuestUpdated`, or `PropertyChanged`, the system may technically use Event
+  Sourcing while still preserving a CRUD-shaped understanding of the domain. **Storing vague events only
+  preserves the vagueness permanently.**" A vocabulary-level anti-pattern that survives adopting the
+  right technology — complementing [[event-modeling-anti-patterns]] (which grades board *shape*) and
+  paralleling [[internal-vs-external-events|"Poor Man's replication through the queue"]] on the messaging
+  side.
+
+He also separates EM from [[event-storming]] on purpose: Storming "is mainly used to explore the problem
+space"; EM "takes the discovered behavior and describes how the system should work over time." *No
+measurement, no agent content; a definitional essay with a booking-domain illustration, and its
+Fowler/Dymitruk/Azure citations are second-hand.*
+
+*(Note: this July piece also lists **strong auditability** among the reasons ES is compelling — a
+position he reverses by late August. See the three-way audit dispute on [[event-sourcing]]; the KB
+records the hardening rather than averaging it.)*
+
 ## Related
 
-[[model-as-code-vs-model-as-language]] · [[triplet-architecture]]
+[[model-as-code-vs-model-as-language]] · [[triplet-architecture]] · [[entity-centric-thinking]] ·
+[[internal-vs-external-events]] · [[screens-as-specification]] · [[event-modeling-anti-patterns]]
 
-_Source pages: [[eventmodeling-what-is-event-modeling]] · [[semaphore-dymitruk-event-modeling]] · [[goeleven-event-model-to-code-series]] · [[event-modeling-event-sourcing-podcast]] · [[dilger-how-does-dcb-affect-event-modeling]] · [[dilger-extending-event-modeling-query-when]]._
+_Source pages: [[eventmodeling-what-is-event-modeling]] · [[semaphore-dymitruk-event-modeling]] · [[goeleven-event-model-to-code-series]] · [[event-modeling-event-sourcing-podcast]] · [[dilger-how-does-dcb-affect-event-modeling]] · [[dilger-extending-event-modeling-query-when]] · [[fritzsche-thinking-in-events]] · [[dilger-ui-only-interactions-filtering]] · [[dilger-podcast-episode-47-agentic-modeling-audit-trails]]._

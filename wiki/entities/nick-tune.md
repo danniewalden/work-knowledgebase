@@ -2,9 +2,9 @@
 title: Nick Tune
 type: entity
 created: 2026-06-14
-updated: 2026-09-02
-sources: [nick-tune-graphs-memory-skills-agents, nick-tune-enforced-application-architecture-agents-humans]
-tags: [person, context-engineering, ddd, agentic-ai, fitness-functions, focus]
+updated: 2026-09-04
+sources: [nick-tune-graphs-memory-skills-agents, nick-tune-enforced-application-architecture-agents-humans, tune-no-rapport-with-a-model-you-didnt-code, nick-tune-event-sourced-claude-code-workflows]
+tags: [person, context-engineering, ddd, agentic-ai, fitness-functions, comprehension-debt, focus]
 ---
 
 # Nick Tune
@@ -43,11 +43,57 @@ Note the interested-party marker: Rivière is **his own tool**, the post is a se
 also candid that the deepest tier is unmeasured — *"still playing around with that. Come back in 6
 months. I feel confident it's the right approach"* — i.e. unsure of the payoff, not the direction.
 
+## Event-sourced agent loops (2026-03-04)
+
+[[nick-tune-event-sourced-claude-code-workflows]] is the third of a series (workflows as state machines
+→ declarative DSLs → fully event-sourced, the last suggested to him by **Yves Reynhout**) and the KB's
+only source that applies [[event-sourcing]] to the **agent loop** rather than to the domain: persist
+only events, derive state by replay, and read per-state dwell time, rejection counts and hook-denial
+counts off the log — then feed the events back to Claude to rewrite the harness. Code in his
+`autonomous-claude-agent-team` repo. **NOT INDEPENDENT · IMPRESSION NOT MEASUREMENT** — his own harness,
+personal projects, and the *"15 minutes in RESPAWN vs 2 minutes DEVELOPING"* reading is from one
+session, which he states himself; the *"I've seen great results on real projects"* claim carries no
+number.
+
+## The rapport problem — a stated open problem, not a mechanism (2026-08-28)
+
+His third written contribution is unlike the other two: no DSL, no substrate, no proposal.
+[[tune-no-rapport-with-a-model-you-didnt-code]] reports that agents are *"not that good at [domain
+modelling] by default (that's the nice way of putting it)"* — and then makes the sharper claim, which
+survives the agents getting better: *"discussing and refining a domain model is not the same as writing
+the lines of code yourself. I don't feel as connected… **And that means the domain model is going to be
+worse** because I'm clearly missing some nuances that could lead to big modelling breakthroughs."*
+Ending: *"I'm struggling to see how to get the same level of rapport with the model without actually
+writing the code. **Maybe it's not even possible.**"*
+
+This relocates the [[verification-burden]] from review to **modelling**: the loss happens before there
+is code to read, so no review regime, test boundary or agent reviewer addresses it — and it is
+**unobservable**, since a modelling breakthrough that didn't happen leaves no trace. It is the KB's only
+suggestion that [[comprehension-debt]] may be **unpayable** rather than merely unpaid. **Thin capture**:
+a short LinkedIn post, no evidence, and a quality claim inferred from a stated feeling — a hypothesis
+with a named mechanism, not a finding.
+
+### Hold his positions together; the pair is the interesting thing
+
+He instruments and automates the **loop** to the point of having an agent optimise its own harness, and
+he makes violations of architecture **fail the build** — while doubting he can build rapport with a
+**domain model** he did not hand-code. That is a **boundary claim: delegate the process, author the
+model**, and it is the most fully articulated third voice in
+[[model-as-code-vs-model-as-language]]. Two consequences worth stating:
+
+- It cuts against the [[martin-dilger]] / [[eventmodelers-ai]] thesis that a sufficiently good spec DSL
+  lets agents do the modelling.
+- It sits in tension with his own [[nick-tune-enforced-application-architecture-agents-humans|Rivière]]
+  work: build enforcement guarantees the *shape* of code nobody wrote, and **nothing in a build enforces
+  modelling insight.**
+
 ## Related
 
 [[fitness-functions]] · [[model-as-code-vs-model-as-language]] · [[vertical-slice-architecture]] ·
 [[slice]] · [[adr]] · [[business-capabilities]] · [[domain-driven-design]] · [[context-engineering]] ·
-[[graph-engineering]]
+[[graph-engineering]] · [[verification-burden]] · [[comprehension-debt]] · [[vibe-modeling]]
 
 _Source pages: [[nick-tune-graphs-memory-skills-agents]] ·
-[[nick-tune-enforced-application-architecture-agents-humans]]._
+[[nick-tune-enforced-application-architecture-agents-humans]] ·
+[[nick-tune-event-sourced-claude-code-workflows]] (2026-03-04) ·
+[[tune-no-rapport-with-a-model-you-didnt-code]] (2026-08-28)._

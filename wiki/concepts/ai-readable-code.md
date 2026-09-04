@@ -2,8 +2,8 @@
 title: AI-Readable Code
 type: concept
 created: 2026-06-17
-updated: 2026-08-03
-sources: [tornhill-clear-design-principles-agentic-age, khononov-golden-age-of-modularity, miller-codebase-is-the-prompt-vertical-slices-ai, fritzsche-functional-core-imperative-shell-agentic-coding, openai-harness-engineering-codex, tornhill-hidden-design-decisions-control-coupling, tornhill-merge-conflicts-agentic-bottleneck, tornhill-ai-readable-code-series, borg-tornhill-code-for-machines-not-just-humans, khononov-modularity-claude-code-plugin, tornhill-opinionated-guide-to-naming, tornhill-cannot-trust-agent-codescene-mcp, tornhill-why-human-level-ai-wont-be-enough, dilger-planning-like-excel-legible-to-human-and-ai, dilger-drawio-model-in-code, fritzsche-why-solid-is-outdated]
+updated: 2026-09-04
+sources: [tornhill-clear-design-principles-agentic-age, khononov-golden-age-of-modularity, miller-codebase-is-the-prompt-vertical-slices-ai, fritzsche-functional-core-imperative-shell-agentic-coding, openai-harness-engineering-codex, tornhill-hidden-design-decisions-control-coupling, tornhill-merge-conflicts-agentic-bottleneck, tornhill-ai-readable-code-series, borg-tornhill-code-for-machines-not-just-humans, khononov-modularity-claude-code-plugin, tornhill-opinionated-guide-to-naming, tornhill-cannot-trust-agent-codescene-mcp, tornhill-why-human-level-ai-wont-be-enough, dilger-planning-like-excel-legible-to-human-and-ai, dilger-drawio-model-in-code, fritzsche-why-solid-is-outdated, tornhill-beyond-lambdas-raising-the-abstraction-level, tornhill-controlling-the-uncertainty-machine, tornhill-blast-from-the-past-sdd-illusion-of-known-scope, tornhill-compressed-cognition-cost-of-faster-coding]
 tags: [agentic-coding, agent-legibility, code-health, design, focus]
 ---
 
@@ -31,7 +31,7 @@ itself*.
   15–30% lower AI-refactoring break rate; CodeHealth beats perplexity/SLOC as a predictor).
 - **[[vlad-khononov]] — modularity / [[balanced-coupling|Balanced Coupling]]**
   ([[khononov-golden-age-of-modularity]]): the theory spine — *localized change + predictable effect*,
-  achieved by balancing coupling (strength × distance × volatility). "Boundaries are what AI depends on."
+  achieved by balancing coupling (shared knowledge × distance × volatility — see [[balanced-coupling]] on the axis naming). "Boundaries are what AI depends on."
   Now shipped as a runnable agent skill ([[khononov-modularity-claude-code-plugin|Modularity Skills]]):
   review/design skills that flag or prevent coupling imbalances, since AI-generated code accumulates
   architectural debt faster than it can be caught at the line level.
@@ -69,9 +69,14 @@ models"). The principle also scales up: [[tornhill-merge-conflicts-agentic-bottl
 are AI-readability failing at the **architecture** level — when boundaries don't give independent work
 separate homes, parallel agents collide in the same code, and behavioral code analysis (hotspots,
 change coupling) locates the misalignment ([[conways-law]], [[vertical-slice-architecture]]). Two
-counter-weights from the same author are worth holding here: *Compressed Cognition* (the cost of agentic
-speed is decision density) and *SDD and the Illusion of Known Scope* (a pragmatic check on
-[[spec-driven-development|spec-first]] optimism).
+counter-weights from the same author are worth holding here:
+[[tornhill-compressed-cognition-cost-of-faster-coding|*Compressed Cognition*]] (the cost of agentic
+speed is decision density) and
+[[tornhill-blast-from-the-past-sdd-illusion-of-known-scope|*SDD and the Illusion of Known Scope*]] — not
+merely "a pragmatic check on [[spec-driven-development|spec-first]] optimism" but a positive claim about
+readability's limits: **implementation is the discovery process**, each specified requirement spawns tens
+of implicit design decisions (Glass's requirements explosion, **as relayed by Tornhill**), and *"the
+moment a model becomes the implementation, it ceases to be a good model."*
 
 ## Naming as the highest-leverage move (Tornhill, 2026-06-23)
 
@@ -131,6 +136,54 @@ external sensor"]]: AI-readability requires not only explicit, addressable struc
 [[event-modeled-agent-design]] and [[spec-driven-development]] — the spec can only be "the source of truth"
 if the agent can't silently corrupt it.
 
+## Name the nameless — abstraction level at expression scale (Tornhill, 2026-09-01)
+
+[[tornhill-beyond-lambdas-raising-the-abstraction-level|Beyond Lambdas]] is the series' newest
+walkthrough and its smallest-scale lever. The asymmetry it turns on: *"The nice thing about lambdas is
+that they optimize for **writing** code… The bad thing about lambdas is that they optimize for writing
+code. They do so at the expense of **reading** code, which is arguably a much more frequent activity."*
+A three-line `map/filter/sum` stream over dice rolls is "trivial" in mechanics and opaque in purpose —
+"it could be anything" — until the lambdas are named as domain operations (`AttackRoll::applyStrengthModifier`,
+`AttackRoll::isSuccessfulHit`), and in Clojure a step further, naming the **pipeline elements**
+themselves so "the code now reads like a story." His line: **"Anonymous functions are anonymous
+thoughts."**
+
+Three claims worth keeping beyond the refactoring:
+
+- **Abstractions need not be reused to be justified.** "Abstractions can be simple. Ridiculously
+  simple… **Lines of code are not a finite resource.**" His test is about reading, not economy: *"if it
+  elevates the level of the code, then it has earned its rights."* A deliberate break with the DRY-first
+  reflex, and — unengaged by either author — the opposite stance from
+  [[willison-conceptual-integrity-and-counting-lines-of-code|Willison's]] hard-ceiling defence of LOC as
+  a productivity indicator. Both are on-thread; the KB holds both.
+- **The target is reconstruction work**, the same target as
+  [[tornhill-clear-design-principles-agentic-age|CLEAR]]: new tasks arrive inside an existing codebase,
+  and "the closer our abstractions reflect the problem domain," the less has to be reconstructed before
+  a safe change.
+- **This is the precondition for reading selectively.** Every remedy on [[verification-burden]] —
+  Tornhill's own included — assumes a human or agent can cheaply recover intent from a fragment. Naming
+  is how that stays affordable: the *supply* side of a reading budget whose *demand* side he prices in
+  [[tornhill-compressed-cognition-cost-of-faster-coding|Compressed Cognition]].
+
+A style argument with a toy example: one D&D snippet in two languages, no measurement, and the agent
+claim is by reference to CLEAR rather than tested. The nearest actual evidence remains
+[[borg-tornhill-code-for-machines-not-just-humans]] and the LLM identifier-name result relayed in
+[[tornhill-opinionated-guide-to-naming]] — neither about lambdas.
+
+## Enforce what you don't inspect (Tornhill, 2026-08-20)
+
+The page's design advice acquires a *reason* here. If nobody reads all the code
+([[verification-burden]]), then AI-readable code stops being a courtesy to future humans and becomes
+the load-bearing guarantee: [[tornhill-controlling-the-uncertainty-machine]] argues "AI amplified the
+need for maintainable code" because "successful features attract change," and answers the obvious
+question — how do you keep uninspected code maintainable? — with a **multi-layered safety net**:
+accumulated SKILLs capturing style and architecture rules, plus **deterministic** enforcement (linters,
+vulnerability scanners, custom architectural and e2e checks, and CodeScene's CodeHealth MCP).
+*"These rules and constraints need to be enforced. Deterministically."* **VENDOR SELF-REPORT** — the
+prescription names his own company's product; the premise it rests on is his separate argument that an
+LLM cannot reliably self-assess code health ([[tornhill-cannot-trust-agent-codescene-mcp]]). See also
+[[fitness-functions]], where the same move appears as a build-time constraint.
+
 ## Open question
 
 Is there a consensus *definition* forming, or just parallel vocabularies? A synthesis that maps CLEAR ↔
@@ -151,4 +204,4 @@ a harmful boundary; only LSP (a correctness condition) survives. His replacement
 (properties by degree) and "start the review with the change itself" — *which concrete change does this
 boundary make cheaper, and who asks for it?*
 
-_Sources: [[tornhill-clear-design-principles-agentic-age]] · [[khononov-golden-age-of-modularity]] · [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[fritzsche-functional-core-imperative-shell-agentic-coding]] · [[openai-harness-engineering-codex]] · [[tornhill-hidden-design-decisions-control-coupling]] · [[tornhill-merge-conflicts-agentic-bottleneck]] · [[tornhill-ai-readable-code-series]] · [[borg-tornhill-code-for-machines-not-just-humans]] · [[tornhill-opinionated-guide-to-naming]] · [[tornhill-cannot-trust-agent-codescene-mcp]] · [[tornhill-why-human-level-ai-wont-be-enough]] · [[dilger-planning-like-excel-legible-to-human-and-ai]] · [[dilger-drawio-model-in-code]] · [[fritzsche-why-solid-is-outdated]]._
+_Sources: [[tornhill-clear-design-principles-agentic-age]] · [[khononov-golden-age-of-modularity]] · [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[fritzsche-functional-core-imperative-shell-agentic-coding]] · [[openai-harness-engineering-codex]] · [[tornhill-hidden-design-decisions-control-coupling]] · [[tornhill-merge-conflicts-agentic-bottleneck]] · [[tornhill-ai-readable-code-series]] · [[borg-tornhill-code-for-machines-not-just-humans]] · [[tornhill-opinionated-guide-to-naming]] · [[tornhill-cannot-trust-agent-codescene-mcp]] · [[tornhill-why-human-level-ai-wont-be-enough]] · [[dilger-planning-like-excel-legible-to-human-and-ai]] · [[dilger-drawio-model-in-code]] · [[fritzsche-why-solid-is-outdated]] · [[tornhill-beyond-lambdas-raising-the-abstraction-level]] · [[tornhill-controlling-the-uncertainty-machine]] · [[tornhill-blast-from-the-past-sdd-illusion-of-known-scope]]._

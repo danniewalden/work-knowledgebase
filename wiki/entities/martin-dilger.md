@@ -2,8 +2,8 @@
 title: Martin Dilger
 type: entity
 created: 2026-06-13
-updated: 2026-08-31
-sources: [dilger-one-million-tokens-self-training-modeling-agent, dilger-modeling-agent-improved-by-learning-loop, dilger-todo-lists-storylines-one-scenario, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-describing-without-solving-burns-you-out, dilger-faros-ai-report-amplifies-unclear-requirements, dilger-spec-driven-development-applied, dilger-keep-command-handlers-pure, dilger-automatic-domain-discovery-claude-code, dilger-model-is-a-living-spec-always-on-agent, dilger-hold-my-beer-engineer, dilger-craft-conf-idea-to-event-model-to-code, dilger-dcb-is-what-event-sourcing-should-have-been, dilger-event-modeling-agent-harness, dilger-is-code-still-the-source-of-truth, dilger-adding-perspectives-to-event-modeling, dilger-done-is-done-open-closed-new-slice, dilger-spec-editor-free-eventmodelers-alliance, dilger-build-kits-model-to-generated-code, dilger-event-modeling-knowledge-hub-emlang, dilger-harness-is-20-percent-requirements-are-80, dilger-first-event-modeling-conference-munich-recap, dilger-how-does-dcb-affect-event-modeling, dilger-planning-like-excel-legible-to-human-and-ai, dilger-user-stories-need-event-modeling-framework, dilger-local-llm-distributed-agent-setup-event-modeling, dilger-extending-event-modeling-query-when, dilger-drawio-model-in-code, dilger-flea-market-model-to-deploy, event-modeling-event-sourcing-podcast, dilger-triplet-flexible-agent-enabled-architecture, dilger-spec-driven-tools-need-event-modeling-front-half, dilger-real-cost-of-ai-is-second-order, dilger-the-shapes-event-modeling-anti-patterns, dilger-agentic-collaboration-freeform-drawings, dilger-99-percent-software-boring-two-patterns, dilger-event-model-structure-linter-reference-catalog]
+updated: 2026-09-04
+sources: [dilger-loop-engineering-never-argue-with-agent, dilger-ui-only-interactions-filtering, dilger-ux-as-first-class-in-spec-driven-development, dilger-only-engineers-care-about-consistent-systems, dilger-git-as-primary-persistence-for-event-models, dilger-communicating-intent-to-an-agent-needs-a-dsl, dilger-agentic-engineer-program-stack-agnostic-spec, dilger-goto-cph-2026-event-modeling-ai-native-software-design, dilger-podcast-episode-47-agentic-modeling-audit-trails, dilger-one-million-tokens-self-training-modeling-agent, dilger-modeling-agent-improved-by-learning-loop, dilger-todo-lists-storylines-one-scenario, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-describing-without-solving-burns-you-out, dilger-faros-ai-report-amplifies-unclear-requirements, dilger-spec-driven-development-applied, dilger-keep-command-handlers-pure, dilger-automatic-domain-discovery-claude-code, dilger-model-is-a-living-spec-always-on-agent, dilger-hold-my-beer-engineer, dilger-craft-conf-idea-to-event-model-to-code, dilger-dcb-is-what-event-sourcing-should-have-been, dilger-event-modeling-agent-harness, dilger-is-code-still-the-source-of-truth, dilger-adding-perspectives-to-event-modeling, dilger-done-is-done-open-closed-new-slice, dilger-spec-editor-free-eventmodelers-alliance, dilger-build-kits-model-to-generated-code, dilger-event-modeling-knowledge-hub-emlang, dilger-harness-is-20-percent-requirements-are-80, dilger-first-event-modeling-conference-munich-recap, dilger-how-does-dcb-affect-event-modeling, dilger-planning-like-excel-legible-to-human-and-ai, dilger-user-stories-need-event-modeling-framework, dilger-local-llm-distributed-agent-setup-event-modeling, dilger-extending-event-modeling-query-when, dilger-drawio-model-in-code, dilger-flea-market-model-to-deploy, event-modeling-event-sourcing-podcast, dilger-triplet-flexible-agent-enabled-architecture, dilger-spec-driven-tools-need-event-modeling-front-half, dilger-real-cost-of-ai-is-second-order, dilger-the-shapes-event-modeling-anti-patterns, dilger-agentic-collaboration-freeform-drawings, dilger-99-percent-software-boring-two-patterns, dilger-event-model-structure-linter-reference-catalog]
 tags: [person, event-modeling, event-sourcing, agentic-coding, spec-driven-development, focus]
 ---
 
@@ -191,6 +191,81 @@ Across the captured posts Dilger argues one consistent thesis from the [[event-m
   hand over the boring part" ([[dilger-describing-without-solving-burns-you-out]];
   [[spec-driven-development]], [[comprehension-debt]]).
 
+## Five short-form notes and two articles (2026-06 → 2026-09), and a date correction
+
+**A date the KB had wrong.** [[dilger-loop-engineering-never-argue-with-agent]] (**2026-06-10**) already
+contains the full Event Modeling Agent Harness mechanic — Draft → Planned → In Progress → Done, board
+subscription, claim-lock, timeout recovery — a **week before**
+[[dilger-event-modeling-agent-harness]] (2026-06-17), which this page has treated as the origin. The
+idea's date should read **2026-06-10**, with 06-17 as the restatement. It is also his fullest statement
+of loop engineering, including the rules *"I never argue with an agent"* (a broken rule ends the
+iteration with no discussion; discard everything but the learnings and retry), *"do not fine-tune the
+loop"*, and the load-bearing *"if something fails, the problem is in the spec, not the prompt."* He
+frames loop engineering as *"the 'new thing' after Spec-Driven Development"* — his own ordering.
+
+**The late-August/September position, read as one argument.** Five short notes in four days:
+[[dilger-ux-as-first-class-in-spec-driven-development]] (08-31) — *"Spec-Driven Development does not
+need Markdown Files"*, UX and business rules carried by screens and [[given-when-then|GWT]];
+[[dilger-only-engineers-care-about-consistent-systems]] (09-01) — AI is *"one more handover"* in an
+already-lossy chain, and *"only engineers care about absolutely consistent systems"*;
+[[dilger-git-as-primary-persistence-for-event-models]] (09-02) — git as **primary** persistence for the
+model, one repo per board, branching, BYODS, WORM auditability;
+[[dilger-communicating-intent-to-an-agent-needs-a-dsl]] (09-03) — *"What used to be a Jira Ticket became
+Markdown Files. Same old stuff, some new paint… What's missing is a DSL to unambiguously describe flow,
+behavior + business rules"*; [[dilger-agentic-engineer-program-stack-agnostic-spec]] (09-03) — the
+3-week paid programme, and the falsifiable claim that one model drives builds in five stacks in
+parallel. Plus [[dilger-ui-only-interactions-filtering]] (07-31), the method clarification that UI-only
+interactions are Views, and [[dilger-goto-cph-2026-event-modeling-ai-native-software-design]], a
+two-day GOTO Copenhagen masterclass at 11,000 DKK — **distribution, not efficacy**: marketing copy for
+a paid engagement that had not happened at ingest time, publication date unresolved.
+
+**Two places he concedes ground worth recording.** Real users *"are perfectly fine correcting things
+manually"* — an argument against the enforcement instinct in [[dilger-keep-command-handlers-pure]]. And
+his handover diagnosis is [[ng-spec-driven-development-is-waterfall-in-markdown|Ng's]] provenance
+objection reached from the opposite camp: they agree the problem is who was in the room, and split only
+on what the room produces.
+
+## What he asserts that nothing in this KB corroborates
+
+His commercial position is not incidental to how his claims should be read: **EM-Studio /
+[[eventmodelers-ai]] is his own product, his *Agentic Engineer* training programme is priced, and the
+*Spec Driven* book ships 2026-10-16.** Everything in the table below is therefore **VENDOR
+SELF-REPORT**, and the marker belongs at each use, not once at the top of a citing page. These are
+positions to test, not findings to build on:
+
+| What he asserts | Where | Why the KB cannot carry it as a finding |
+| --- | --- | --- |
+| *"battle-tested over hundreds of projects by many companies"* (Event Modeling as a DSL) | [[dilger-communicating-intent-to-an-agent-needs-a-dsl]] | **VENDOR SELF-REPORT · his own figure.** **No project and no company is named**, and no method of counting is given. **No independent corroboration exists anywhere in this KB.** |
+| *"as I did for hundreds of engineers already"* | [[dilger-loop-engineering-never-argue-with-agent]] | **VENDOR SELF-REPORT** for a **paid** training service. No cohort, roster or outcome. |
+| *"Clean iterations … will outperform long, polluted conversations every single time. Not sometimes. Every time."* | same | **Stated absolutely with zero evidence.** Carry as a position, never as a finding. Its mechanism claim (polluted context ⇒ hallucination) is **asserted, not demonstrated**; better-evidenced versions live at [[context-rot]]. |
+| *"it was indistinguishable from modeling with humans"* (two agents modelling alongside him) | [[dilger-podcast-episode-47-agentic-modeling-audit-trails]] | **IMPRESSION NOT MEASUREMENT · VENDOR SELF-REPORT.** A felt comparison on his own platform, and **show-notes level, not verified against audio**. |
+| **Stack-agnosticism** — *"they can even switch stacks mid-course or build in parallel in all Stacks"* | [[dilger-agentic-engineer-program-stack-agnostic-spec]] | **VENDOR SELF-REPORT · marketing.** A course affordance, hedged by its own author (*"almost doesn't matter"*), **demonstrated nowhere**. High-value *claim*, zero evidence. |
+| **Git as primary persistence** for the model | [[dilger-git-as-primary-persistence-for-event-models]] | **VENDOR SELF-REPORT — and announced, not reported in use.** No user, migration or operational account. |
+| **WORM auditability** (*"you can store your models in a Worm-Drive for auditability"*) | same | **VENDOR SELF-REPORT.** **No regulation, standard or auditor is named**, and nobody is reported as having audited anything this way. |
+
+**Also unresolved, and it must not be papered over:** Episode 47 has **no date** — absent from the RSS
+feed and from podcast.eventmodeling.org (both still ending at Ep 46, 2026-04-26/27), so it post-dates
+2026-04-27 and nothing further can be said. It may be a channel prior sweeps never polled rather than a
+new item. **Do not assign it a date**, and say so on any page that cites it.
+
+## A tension inside his own corpus (recorded, not resolved)
+
+His loop rule and his platform's newest feature pull in opposite directions, and both are his:
+
+- **"I never argue with an agent"** ([[dilger-loop-engineering-never-argue-with-agent]], 2026-06-10)
+  forbids mid-loop correction on principle — *"the agent isn't learning from your corrections. It's just
+  agreeing with you - and carrying the confusion forward"* — so a broken rule ends the iteration with no
+  discussion, and hints go into the *spec* (slice comments) rather than into a conversation.
+- **Episode 47** ([[dilger-podcast-episode-47-agentic-modeling-audit-trails]], **date unresolved**) has
+  the `/wdyt` agent **posting clarifying-question comments back onto the model** — *"he commented on the
+  slice and asked: well, what happens if a user clicks this twice?"* — which Dilger answers. That is a
+  dialogue with an agent, mid-work, on the artifact.
+
+The two are reconcilable if the distinction is *which artifact carries the exchange* (never the prompt,
+always the model), but **he does not state that reconciliation anywhere in the captures**, and the
+"never argue" rule is written as an unconditional. Recorded here as an open tension rather than resolved
+in either direction. See [[loop-engineering]], [[event-modeling-anti-patterns]].
+
 ## The self-training modeling agent (2026-08) — his strongest evidence to date
 
 Late August is where Dilger's material stops being framing and produces something the KB can point at
@@ -219,7 +294,15 @@ alongside [[adam-dymitruk]] (the method's creator) and [[john-wilger]] (the work
 Where Dymitruk supplies the role-mapping claim and Wilger a shipping example, Dilger supplies the
 day-to-day **why** — requirements, guardrails, and the spec-first operating model — plus a commercial
 platform betting on it. Caveat: most of his captured material is LinkedIn marketing for
-[[eventmodelers-ai]] and the *Spec Driven* book — strong on framing, light on independent evidence.
+[[eventmodelers-ai]] and the *Spec Driven* book — strong on framing, light on independent evidence, and
+every quantified claim in it is his own (see the table above).
+
+Since his September notes, the position sharpens into a claim about the **medium**: *"What's missing is
+a DSL to unambiguously describe flow, behavior + business rules."* That is the most testable thing he
+has said, and the KB holds a fully articulated dissent from a DDD voice — [[nick-tune]], who instruments
+and automates the *loop* but doubts he can build rapport with a *domain model* he did not hand-code
+([[tune-no-rapport-with-a-model-you-didnt-code]]) — against exactly the premise that a good enough spec
+DSL lets agents do the modelling.
 
 His **[[dilger-triplet-flexible-agent-enabled-architecture|"Triplet"]]** article (2026-07-26) is the
 definitive naming of the operating model that runs through all of the above: a **flexible, agent-enabled
@@ -256,4 +339,13 @@ _Source pages: [[dilger-one-million-tokens-self-training-modeling-agent]] · [[d
 [[dilger-event-model-structure-linter-reference-catalog]] (EM "linter" via Claude Code vs a reference catalog, 2026-08-07) ·
 [[dilger-highlighting-markers-give-context-to-agents]] (screen markers as agent context, 2026-08-12) ·
 [[dilger-eventmodelers-supports-esdm-export]] (ESDM export via UI/API/MCP/CLI; joint timeline extension with Roden, 2026-08-13) ·
-[[dilger-describing-without-solving-burns-you-out]] (where SDD goes wrong: describing instead of solving, 2026-08-14)._
+[[dilger-describing-without-solving-burns-you-out]] (where SDD goes wrong: describing instead of solving, 2026-08-14) ·
+[[dilger-loop-engineering-never-argue-with-agent]] (loop engineering; "I never argue with an agent" — **2026-06-10, a week before the "harness" post**) ·
+[[dilger-ui-only-interactions-filtering]] (UI-only interactions are Views, 2026-07-31) ·
+[[dilger-ux-as-first-class-in-spec-driven-development]] ("SDD does not need Markdown Files", 2026-08-31) ·
+[[dilger-only-engineers-care-about-consistent-systems]] (AI as one more handover, 2026-09-01) ·
+[[dilger-git-as-primary-persistence-for-event-models]] (git as primary persistence; WORM auditability — **announced, not reported in use**, 2026-09-02) ·
+[[dilger-communicating-intent-to-an-agent-needs-a-dsl]] ("what's missing is a DSL"; **"hundreds of projects" is his own uncorroborated figure**, 2026-09-03) ·
+[[dilger-agentic-engineer-program-stack-agnostic-spec]] (the priced 3-week programme; **stack-agnosticism demonstrated nowhere**, 2026-09-03) ·
+[[dilger-goto-cph-2026-event-modeling-ai-native-software-design]] (paid GOTO Copenhagen masterclass, 11,000 DKK — distribution, not efficacy; date unresolved) ·
+[[dilger-podcast-episode-47-agentic-modeling-audit-trails]] (**DATE UNRESOLVED** — agentic modelling and audit trails)._

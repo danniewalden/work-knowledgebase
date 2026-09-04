@@ -2,8 +2,8 @@
 title: Event-Modeled Agent Design
 type: concept
 created: 2026-06-11
-updated: 2026-08-31
-sources: [dilger-one-million-tokens-self-training-modeling-agent, dilger-modeling-agent-improved-by-learning-loop, dilger-todo-lists-storylines-one-scenario, ng-spec-driven-development-is-waterfall-in-markdown, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-describing-without-solving-burns-you-out, bockeler-tdd-inside-the-agent-loop, dymitruk-event-modeling-future-proof-agents, qlerify-event-modeling-tool-ai, eventmodeling-what-is-event-modeling, anthropic-effective-harnesses-long-running-agents, stripe-minions-one-shot-coding-agents, proophboard-skills-ai-agent-event-modeling, jwilger-agent-skills-event-modeling, jwilger-agent-skills-factory-pipeline, dilger-spec-driven-development-applied, dilger-faros-ai-report-amplifies-unclear-requirements, dilger-keep-command-handlers-pure, dilger-automatic-domain-discovery-claude-code, dilger-model-is-a-living-spec-always-on-agent, dilger-event-modeling-agent-harness, fraktalio-event-modeler-connect-ai-agents-mcp, dymitruk-ai-trained-on-dysfunction-agents-are-a-must, rico-fritzsche-autonomous-domain-capabilities-ccc, dilger-harness-is-20-percent-requirements-are-80, dilger-first-event-modeling-conference-munich-recap, dilger-planning-like-excel-legible-to-human-and-ai, esdm-event-sourced-domain-modeling, johansen-is-it-safe-to-jump-em-conf-2026, dilger-local-llm-distributed-agent-setup-event-modeling, dilger-triplet-flexible-agent-enabled-architecture, dilger-spec-driven-tools-need-event-modeling-front-half, dilger-the-shapes-event-modeling-anti-patterns, dilger-agentic-collaboration-freeform-drawings, dilger-event-model-structure-linter-reference-catalog, dilger-99-percent-software-boring-two-patterns, dymitruk-ai-melts-barrier-event-modeling-is-the-map]
+updated: 2026-09-04
+sources: [dilger-podcast-episode-47-agentic-modeling-audit-trails, nick-tune-event-sourced-claude-code-workflows, dilger-git-as-primary-persistence-for-event-models, tornhill-blast-from-the-past-sdd-illusion-of-known-scope, dilger-ux-as-first-class-in-spec-driven-development, dilger-only-engineers-care-about-consistent-systems, dilger-ui-only-interactions-filtering, dilger-loop-engineering-never-argue-with-agent, tune-no-rapport-with-a-model-you-didnt-code, dilger-one-million-tokens-self-training-modeling-agent, dilger-modeling-agent-improved-by-learning-loop, dilger-todo-lists-storylines-one-scenario, ng-spec-driven-development-is-waterfall-in-markdown, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-describing-without-solving-burns-you-out, bockeler-tdd-inside-the-agent-loop, dymitruk-event-modeling-future-proof-agents, qlerify-event-modeling-tool-ai, eventmodeling-what-is-event-modeling, anthropic-effective-harnesses-long-running-agents, stripe-minions-one-shot-coding-agents, proophboard-skills-ai-agent-event-modeling, jwilger-agent-skills-event-modeling, jwilger-agent-skills-factory-pipeline, dilger-spec-driven-development-applied, dilger-faros-ai-report-amplifies-unclear-requirements, dilger-keep-command-handlers-pure, dilger-automatic-domain-discovery-claude-code, dilger-model-is-a-living-spec-always-on-agent, dilger-event-modeling-agent-harness, fraktalio-event-modeler-connect-ai-agents-mcp, dymitruk-ai-trained-on-dysfunction-agents-are-a-must, rico-fritzsche-autonomous-domain-capabilities-ccc, dilger-harness-is-20-percent-requirements-are-80, dilger-first-event-modeling-conference-munich-recap, dilger-planning-like-excel-legible-to-human-and-ai, esdm-event-sourced-domain-modeling, johansen-is-it-safe-to-jump-em-conf-2026, dilger-local-llm-distributed-agent-setup-event-modeling, dilger-triplet-flexible-agent-enabled-architecture, dilger-spec-driven-tools-need-event-modeling-front-half, dilger-the-shapes-event-modeling-anti-patterns, dilger-agentic-collaboration-freeform-drawings, dilger-event-model-structure-linter-reference-catalog, dilger-99-percent-software-boring-two-patterns, dymitruk-ai-melts-barrier-event-modeling-is-the-map]
 tags: [event-modeling, agentic-ai, synthesis, focus]
 ---
 
@@ -69,6 +69,22 @@ schema, making the agent's acceptance-gate artifact itself machine-checked. Cont
 camp (Fraktalio/prooph): ESDM is **file-first and offline**, letting any LLM read/write the YAML
 directly rather than authoring on a hosted board. Caveat: it models ES/DDD/CQRS *structure*, not the
 Dymitruk timeline/swimlane method, and is vendor-authored and early.
+
+**The persistence rung (2026-09-02).** [[dilger-git-as-primary-persistence-for-event-models]] makes
+**git a primary store for the model, not an export**: one repository per board, branching supported,
+under a "BYODS — bring your own datastore" design (Redis, S3, YAML, SharePoint all named), with
+*"you can store your models in a Worm-Drive for auditability."* Two consequences for this page. **(1) It
+collapses the file-first-vs-board+MCP framing entirely** — the board *is* files, so an agent can read
+the model and its whole history with ordinary git tooling, and **model↔code drift becomes a diff between
+two repos** rather than a bespoke check. Compare [[dilger-drawio-model-in-code]], where model-in-git was
+right but raw XML gave the agent *"no framework to follow, no rules"*; this is that idea with a schema
+and a platform behind it, and [[esdm-event-sourced-domain-modeling|ESDM]]'s file-first position reached
+from the hosted-board side. **(2) Branching a *specification* is new**, and it is the natural pairing
+for a fleet of agents claiming slices off one board
+([[dilger-loop-engineering-never-argue-with-agent]]) — though nothing in the source says how a
+two-dimensional board serialises for meaningful diffs, what happens when two agents diverge on the same
+slice, or how branching interacts with the claim-lock. *(**VENDOR SELF-REPORT** — EM-Studio is Dilger's
+own platform, and the git backend is **announced as being added, not reported in use**.)*
 
 ## What's solid vs. open
 
@@ -172,6 +188,29 @@ Dymitruk timeline/swimlane method, and is vendor-authored and early.
   + [[customer-support-agents]]). A visual swimlane render of the coding-factory model lives at
   `outputs/worked-event-model-autonomous-coding-factory.mermaid`. (Companion: the notation primer
   `outputs/denoting-an-agent-in-an-event-model.md` — user/processor roles + cheat-sheet.)
+- **The seam, inverted — event sourcing on the agent loop (2026-03-04).**
+  [[nick-tune-event-sourced-claude-code-workflows]] models a Claude Code workflow as a state machine
+  (DEVELOPING → REVIEWING → COMMITTING → RESPAWNING) and persists **only the events**, deriving state by
+  replay in SQLite. The payoff is entirely observational: per-state dwell times, **rejection counts**
+  (review failed) and **hook-denial counts** (the agent attempted something disallowed in that state),
+  a journal enforced at ≥1 entry per iteration by hard blocks, and the events fed **back to Claude** to
+  propose CLAUDE.md or system-prompt changes. His reading of one session — *"my agents spent 15 minutes
+  in the RESPAWN state whereas they only spent 2 minutes actually building the feature"* — is an
+  instrument reading from **one session of his own personal-project harness, and he says so**
+  (**IMPRESSION NOT MEASUREMENT · NOT INDEPENDENT**). He scopes the value honestly: it pays off for
+  autonomous loops, not for chatbot-style or hand-held sessions, and *"if we get to that point [where
+  workflows just work], the observability and analysis doesn't provide any value."*
+
+  **Why it matters to this page and why it does not close the gap.** This is *not* an event model of a
+  multi-agent system in the Dymitruk sense — no swimlanes, no commands, no read models, no timeline
+  notation — so the standing "wanted next" (a **worked event model of a harness**, using the method)
+  stays open. What it *is*, is the first published system where the **agent loop's own history is the
+  source of truth**, which makes it the nearest empirical cousin of this page's central mapping and the
+  strongest evidence that treating agent runs as an event stream buys something concrete. Note also the
+  boundary the same author draws: he instruments and automates the **loop** while doubting he can
+  delegate the **domain model** at all ([[tune-no-rapport-with-a-model-you-didnt-code]],
+  2026-08-28) — which is a direct challenge to the claim that a good
+  enough DSL lets agents do the modelling work.
 - **Adjacent cross-check (captured):** [[esaa-event-sourcing-for-autonomous-agents]] (arXiv, Feb 2026)
   gives a *worked* multi-agent system built on event *sourcing/CQRS* — agents emit JSON **intentions**,
   a deterministic orchestrator applies **effects** — which is strikingly close to Event Modeling's
@@ -292,6 +331,48 @@ structural version: a loop with no rubric has nothing that *would* catch a bad f
 the artifact looks finished. That is still the strongest practical argument on this page for
 model-as-rubric, but it is an argument from the failure's shape, not from his account of finding it.
 
+## Agents modelling *with* you, and the over-specification failure (Ep 47, date unresolved)
+
+[[dilger-podcast-episode-47-agentic-modeling-audit-trails]] pushes two rungs of this page forward and
+puts a real limit on a third.
+
+> **⚠ The date of this source is unresolved and must stay that way.** The page carries no publication
+> date in HTML, metadata or body. Ep 47 is **absent from the podcast RSS feed and from
+> podcast.eventmodeling.org**, both of which still end at **Ep 46 (2026-04-26/27)**, so it post-dates
+> 2026-04-27 and nothing further can be established. It announces [[golo-roden]] for an *"already
+> sold-out"* conference and the site banner reads *"September cohort sold out"*. **It may well be a
+> channel prior sweeps never polled** (`eventmodelers.ai/docs/podcast` is a separate, more current index
+> than the `.org` one) **rather than a genuinely new item.** Also **show-notes level, not verified
+> against audio**, and **VENDOR SELF-REPORT** — the platform and the skill are Dilger's products.
+
+**Agents as co-modellers.** Dilger ran a Claude Code instance and a **Hermes** agent modelling alongside
+him simultaneously, adding slices and comments, and reports it *"was indistinguishable from modeling
+with humans"* — **IMPRESSION NOT MEASUREMENT**, and a felt comparison rather than an evaluation, but the
+furthest the agent-authors-the-model rung has gone.
+
+**The `/wdyt` skill, worked.** The agent reads the slices and **posts clarifying-question comments on
+them**: *"He commented on the slice and asked: well, what happens if a user clicks this twice? What
+should be the behavior? … And this is perfectly valid — a perfectly valid question."* Note the shape:
+the agent's output is a **question on the artifact**, not an edit to it — a model-level review gate
+above the code-level [[given-when-then|GWT]] gates.
+
+**And the failure, which is the transferable finding.** The first version *"flooded the model with 100
+comments inventing hypothetical gaps."* The fix was a restriction: *"don't just look at what is there —
+don't comment on something because it's not specified. Just look at what is there and make sense of it,
+then give me comments. And then it got significantly better."* [[adam-dymitruk]] adds why it matters
+more here than in code review: an over-eager agent flooding a GWT list with edge cases *"can make a
+simple slice look far more complex than it really is, since event modeling is visual"* — so the noise
+does not merely waste attention, it **degrades the artifact's primary affordance**. The method's own
+answer predates the tooling: *"event modeling already solves the 'infinite possibility tree' problem:
+draw a few representative example paths and trust the implementer to infer the rest."*
+
+**What this costs the model-as-rubric optimism above.** The rubric section argues a schema'd model makes
+agent output gradeable. This shows the converse risk: **an agent pointed at a spec can inflate it**, and
+the inflation is invisible to a structural diff (a bloated slice is still well-formed). It is the same
+mechanism [[bockeler-tdd-inside-the-agent-loop|Böckeler]] found one altitude down — an agent inventing
+its own acceptance criteria — and the same remedy applies: **the criteria must come from outside the
+loop.** See [[event-modeling-anti-patterns]] for the anti-pattern this creates.
+
 ## The sharpest external challenge: whose model is it? (Ng, 2026-03)
 
 [[ng-spec-driven-development-is-waterfall-in-markdown]] attacks document-first
@@ -324,4 +405,33 @@ stakeholder participation in a model that later drove agents. That is now a name
 Ng's [[decision-trace]] is the rival proposal to beat: it keeps the multi-perspective input as a *record
 of conversation* instead of trying to encode it in a single artifact.
 
-_Sources: [[dymitruk-event-modeling-future-proof-agents]] · [[qlerify-event-modeling-tool-ai]] · [[proophboard-skills-ai-agent-event-modeling]] · [[fraktalio-event-modeler-connect-ai-agents-mcp]] · [[jwilger-agent-skills-event-modeling]] · [[jwilger-agent-skills-factory-pipeline]] · [[dilger-spec-driven-development-applied]] · [[dilger-faros-ai-report-amplifies-unclear-requirements]] · [[dilger-keep-command-handlers-pure]] · [[dilger-automatic-domain-discovery-claude-code]] · [[dilger-model-is-a-living-spec-always-on-agent]] · [[dilger-event-modeling-agent-harness]] · [[dilger-planning-like-excel-legible-to-human-and-ai]] · [[eventmodeling-what-is-event-modeling]] · [[anthropic-effective-harnesses-long-running-agents]] · [[stripe-minions-one-shot-coding-agents]] · [[dilger-triplet-flexible-agent-enabled-architecture]] · [[dilger-spec-driven-tools-need-event-modeling-front-half]] · [[dilger-the-shapes-event-modeling-anti-patterns]] · [[dilger-agentic-collaboration-freeform-drawings]] · [[dilger-event-model-structure-linter-reference-catalog]] · [[dilger-99-percent-software-boring-two-patterns]] · [[dymitruk-ai-melts-barrier-event-modeling-is-the-map]] · [[dilger-eventmodelers-supports-esdm-export]] · [[dilger-highlighting-markers-give-context-to-agents]] · [[dilger-describing-without-solving-burns-you-out]] · [[bockeler-tdd-inside-the-agent-loop]] · [[ng-spec-driven-development-is-waterfall-in-markdown]] · [[dilger-one-million-tokens-self-training-modeling-agent]] · [[dilger-modeling-agent-improved-by-learning-loop]] · [[dilger-todo-lists-storylines-one-scenario]]._
+**What this batch adds to the answer (2026-09-04), and it is partial in a specific way.** Three captures
+bear directly on the flattening objection. [[dilger-only-engineers-care-about-consistent-systems]]
+reaches **Ng's own diagnosis from the opposite camp** — every hop between end user and engineer reshapes
+the requirement, and *"now with AI - we are just adding one more hop to the chain. Engineers talking to
+AI, writing tons of markdown.. one more handover"* — and prescribes calling the end user and then
+*"invit[ing] them to a short Event Modeling Session. Show them what you planned, show them the screens
+you sketched."* [[dilger-ux-as-first-class-in-spec-driven-development]] and
+[[dilger-ui-only-interactions-filtering]] supply the mechanism: **the screen is the artifact a
+non-developer can react to**, and it is in the model rather than derived from it (see
+[[screens-as-specification]]). Ep 47 adds Dymitruk's blunt version: *"all the arguments about not having
+screens and design sessions is just gatekeeping by architect wannabes."*
+
+That is a real answer to *"nobody will open a `.specify` folder"* — a sketched screen needs no folder.
+It is **not** an answer to *"nobody else signed it"*: the KB still holds **no captured source measuring
+stakeholder participation in a model that later drove agents**, and every one of these sources is
+[[martin-dilger]] on his own platform (**VENDOR SELF-REPORT**). The gap named on this page stands; what
+changes is that the camp now has a stated mechanism rather than only a claim about workshop practice.
+
+**And a second external challenge, sharper for this page than Ng's.**
+[[tornhill-blast-from-the-past-sdd-illusion-of-known-scope|Tornhill's]] requirements-explosion argument
+says each specified requirement spawns *tens of implicit design requirements* that cannot be known up
+front, because **implementation is the discovery process** — so the acceptance-gate story on this page
+(GWT scenarios as the machine-checkable contract an agent must satisfy) is checking the small share of
+decisions that were specifiable. His obstacle (3) closes the obvious escape: enrich the model until it
+resolves the implicit decisions and *"the moment a model becomes the implementation, it ceases to be a
+good model."* Note this is **not** the waterfall objection — he explicitly declines that — and it is
+aimed at strong-form [[spec-driven-development|SDD]], which is where this page sits. The KB has no
+answer to it, and no captured source even attempts one.
+
+_Sources: [[dymitruk-event-modeling-future-proof-agents]] · [[qlerify-event-modeling-tool-ai]] · [[proophboard-skills-ai-agent-event-modeling]] · [[fraktalio-event-modeler-connect-ai-agents-mcp]] · [[jwilger-agent-skills-event-modeling]] · [[jwilger-agent-skills-factory-pipeline]] · [[dilger-spec-driven-development-applied]] · [[dilger-faros-ai-report-amplifies-unclear-requirements]] · [[dilger-keep-command-handlers-pure]] · [[dilger-automatic-domain-discovery-claude-code]] · [[dilger-model-is-a-living-spec-always-on-agent]] · [[dilger-event-modeling-agent-harness]] · [[dilger-planning-like-excel-legible-to-human-and-ai]] · [[eventmodeling-what-is-event-modeling]] · [[anthropic-effective-harnesses-long-running-agents]] · [[stripe-minions-one-shot-coding-agents]] · [[dilger-triplet-flexible-agent-enabled-architecture]] · [[dilger-spec-driven-tools-need-event-modeling-front-half]] · [[dilger-the-shapes-event-modeling-anti-patterns]] · [[dilger-agentic-collaboration-freeform-drawings]] · [[dilger-event-model-structure-linter-reference-catalog]] · [[dilger-99-percent-software-boring-two-patterns]] · [[dymitruk-ai-melts-barrier-event-modeling-is-the-map]] · [[dilger-eventmodelers-supports-esdm-export]] · [[dilger-highlighting-markers-give-context-to-agents]] · [[dilger-describing-without-solving-burns-you-out]] · [[bockeler-tdd-inside-the-agent-loop]] · [[ng-spec-driven-development-is-waterfall-in-markdown]] · [[dilger-one-million-tokens-self-training-modeling-agent]] · [[dilger-modeling-agent-improved-by-learning-loop]] · [[dilger-todo-lists-storylines-one-scenario]] · [[dilger-podcast-episode-47-agentic-modeling-audit-trails]] · [[nick-tune-event-sourced-claude-code-workflows]] · [[dilger-git-as-primary-persistence-for-event-models]] · [[tornhill-blast-from-the-past-sdd-illusion-of-known-scope]] · [[dilger-ux-as-first-class-in-spec-driven-development]] · [[dilger-only-engineers-care-about-consistent-systems]] · [[dilger-ui-only-interactions-filtering]] · [[dilger-loop-engineering-never-argue-with-agent]]._

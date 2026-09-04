@@ -2,8 +2,8 @@
 title: Critter Stack (Wolverine + Marten)
 type: entity
 created: 2026-06-15
-updated: 2026-08-31
-sources: [miller-jasperfx-critterstack-ai-event-modeling-strategy, miller-codebase-is-the-prompt-vertical-slices-ai, miller-jasperfx-ai-skills-agent-skills]
+updated: 2026-09-04
+sources: [miller-jasperfx-critterstack-ai-event-modeling-strategy, miller-codebase-is-the-prompt-vertical-slices-ai, miller-jasperfx-ai-skills-agent-skills, miller-new-stuff-in-critter-stack-ai-skills-1-10, miller-ai-assisted-production-support-with-critterwatch, miller-open-core-model-sustainable-oss-dotnet]
 tags: [product, dotnet, event-sourcing, vertical-slice-architecture, cqrs, dcb, focus]
 ---
 
@@ -65,4 +65,41 @@ rates. Much of this is unshipped; Miller frames the lot as "spaghetti against th
 
 See [[model-as-code-vs-model-as-language]] for why the direction of fit here is contested.
 
-_Source pages: [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[miller-jasperfx-ai-skills-agent-skills]] · [[miller-jasperfx-critterstack-ai-event-modeling-strategy]]._
+## Shipped state, September 2026
+
+- **AI Skills 1.10.0** (2026-09-02, [[miller-new-stuff-in-critter-stack-ai-skills-1-10]]) brings the
+  catalogue to a claimed **102 skills**, up from the **81** of 1.6.0 in July — roughly +26% in eight weeks,
+  and **superseding the 81 figure recorded above as a *count*, not as evidence**. New coverage: Wolverine
+  Sagas (including from HTTP endpoints), two projection-troubleshooting skills, Marten event
+  versioning/upcasting, archiving and stream compaction, full-text/NGram search, `Marten.PgVector`, gRPC,
+  MCP servers for your own app, CritterWatch alerts. Also new: a **`projection-run` "projection stepper"
+  CLI** in `JasperFx.Events`, shipped in Marten and Polecat. **VENDOR SELF-REPORT on a priced product
+  ($250 solo / $1,000 team / $2,000 large team, or bundled with CritterWatch Professional and
+  Enterprise); the count is inventory, and no evaluation of skill efficacy exists.**
+- Two skill *contents* are checkable facts about the libraries and worth carrying: in `Wolverine.HTTP` the
+  **first return value of an endpoint method is the response body**, so returning a `Saga` serializes saga
+  state to the caller (the `Saga` must be a later tuple member; `[EmptyResponse]` exists for no-body
+  cases); and in Marten **`ArchiveStream` only sets a flag — "archiving alone doesn't shrink anything"** —
+  it is `UseArchivedStreamPartitioning` that moves archived events to separate physical storage and buys
+  the query performance, *"and it quietly weakens a stream-identity guarantee on the way."* Compare
+  [[dudycz-archiving-events-stream-lifetime-slicing]] and [[event-versioning-and-upcasting]].
+- **CritterWatch's MCP surface is now demonstrated, not just announced**
+  ([[miller-ai-assisted-production-support-with-critterwatch]]): **48 tools — 21 read, 27 action** — mounted
+  in two lines of host code, stateless so authorization sees the actual caller, with a **license gate** and
+  **opt-in capability-scoped RBAC** (`dlq.replay`, `dlq.discard`, `chaos-monkey.configure`) scoped per
+  service, and dead-letter *reads* gated separately from actions. Plus the **projection stepper**
+  (before/after state per applied event) and `describe_lifecycle`, which returns a message type's path
+  across every monitored service as JSON **and a Mermaid sequence diagram**. **All of it paid-tier, all of
+  it VENDOR SELF-REPORT demonstrated over failures the vendor injected with its own chaos monkey, and
+  none of it measured** — no baseline, no time-to-diagnosis, no error rate; the agent's diagnoses were
+  correct because the answer was planted. See [[model-context-protocol]] and [[agent-governance]].
+- **Why the stack ships commercial AI tooling at all**: JasperFx runs an explicit **open-core** model —
+  Marten and Wolverine stay MIT, revenue comes from consulting/support plus AI Skills and CritterWatch, and
+  as of 2026-08-28 *"another set of commercial tools related to AI assisted development and Event Modeling
+  coming soon"* remains **announced, not shipped** ([[miller-open-core-model-sustainable-oss-dotnet]]).
+
+_Source pages: [[miller-codebase-is-the-prompt-vertical-slices-ai]] ·
+[[miller-jasperfx-ai-skills-agent-skills]] · [[miller-jasperfx-critterstack-ai-event-modeling-strategy]] ·
+[[miller-new-stuff-in-critter-stack-ai-skills-1-10]] (102 skills — VENDOR SELF-REPORT, inventory not
+efficacy) · [[miller-ai-assisted-production-support-with-critterwatch]] ·
+[[miller-open-core-model-sustainable-oss-dotnet]]._

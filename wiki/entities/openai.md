@@ -2,9 +2,9 @@
 title: OpenAI
 type: entity
 created: 2026-06-11
-updated: 2026-06-11
-sources: [openai-harness-engineering-codex]
-tags: [organization, ai-lab, codex, harness-engineering]
+updated: 2026-09-04
+sources: [openai-harness-engineering-codex, willison-gpt6-astra, willison-understanding-chatgpt-work, willison-codex-bundles-libreoffice, swyx-gpt6-astra-automated-ai-engineer]
+tags: [organization, ai-lab, codex, harness-engineering, agent-legibility]
 ---
 
 # OpenAI
@@ -21,4 +21,41 @@ linters and structural tests**, lint messages that inject remediation instructio
 drift. Stance: "humans steer, agents execute." Sits alongside [[anthropic]] and [[langchain]] as
 a primary voice on building agents.
 
-_Source: [[openai-harness-engineering-codex]]._
+## Frontier releases and the harness result (Sept 2026)
+
+**GPT-6 Astra** shipped 2026-09-03 ([[willison-gpt6-astra]]), API-priced at parity with Claude Fable 5/5.1
+($10/M input, $50/M output), labelled `gpt-6-astra`. The KB-relevant part is not the model: on ARC-AGI-3 it
+scored **99.9% for $19K using OpenAI's custom "Provider Adapter harness"** — which *"preserves opaque
+reasoning state between requests and uses compaction for longer conversations"* — against the **default
+ARC-AGI harness's 62.7% for $26K**. **Marker: the score is in OpenAI's own launch material (VENDOR
+SELF-REPORT); the harness attribution and costs are reported by ARC Prize, the benchmark maintainer, which
+is better provenance but NOT INDEPENDENT of the benchmark's standing; Claude Fable 5 has no published
+ARC-AGI-3 result, so this is not a model-vs-model comparison.** See [[agent-harness]]. The security and
+long-context sweeps in the same launch (ExploitBench 100%, eight-needle 100% at 256–512K, etc.) are all
+OpenAI's own benchmarks; the one third-party check available, Artificial Analysis, puts Astra **level with
+GPT-5.6 Sol and five points below Claude Fable 5.1** on intelligence while leading their **coding-agent
+cost-efficiency** frontier. **Cost-efficiency leader, not capability leader** — which is not how the launch
+material reads. The early-access write-up [[swyx-gpt6-astra-automated-ai-engineer]] is much weaker evidence
+and its claims should not lean on the Willison capture.
+
+## What OpenAI ships as a harness — and does not disclose
+
+- **ChatGPT Work** ([[willison-understanding-chatgpt-work]]): two products under one name (cloud and
+  local), paid tiers only, with code execution whose network default *"appears to be open to all"*, a full
+  headless Chrome with human-handled sign-in, a **`/workspace` filesystem persisting across sessions and
+  mounted into all running ones**, subagents, deployable Cloudflare-backed sites, and scheduled prompts. It
+  assembles Willison's [[willison-lethal-trifecta|lethal trifecta]] by default — see [[prompt-injection]].
+- **A bundled operating environment**: 1.7GB in the Codex/ChatGPT desktop runtime — Python, Node, Poppler,
+  git and **headless LibreOffice** — with *"skills which tell Codex how to find and use those binaries"*
+  ([[willison-codex-bundles-libreoffice]]).
+- **Non-disclosure as a standing property.** OpenAI publishes neither system prompts nor tool
+  descriptions, so the only available inventory came from a Work session cataloguing **itself**: the agent
+  reported **223 registered tools and 44 skills** (**MODEL SELF-REPORT, not documentation** — cite it as
+  "the agent reported…", never as an OpenAI figure). Willison: *"If the ChatGPT Work documentation included
+  the exact system prompt and tool descriptions used by the agent I wouldn't have needed to write this
+  post."* This is the sharp contrast with the same company's own [[openai-harness-engineering-codex]] case
+  study, where the harness was legible repo artifacts the team owned. See [[agent-legibility]].
+
+_Sources: [[openai-harness-engineering-codex]] · [[willison-gpt6-astra]] ·
+[[willison-understanding-chatgpt-work]] · [[willison-codex-bundles-libreoffice]] ·
+[[swyx-gpt6-astra-automated-ai-engineer]] (weak — see [[swyx]])._

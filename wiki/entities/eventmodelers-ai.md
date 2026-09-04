@@ -2,8 +2,8 @@
 title: Eventmodelers.ai
 type: entity
 created: 2026-06-13
-updated: 2026-08-31
-sources: [dilger-one-million-tokens-self-training-modeling-agent, dilger-modeling-agent-improved-by-learning-loop, dilger-todo-lists-storylines-one-scenario, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-spec-driven-development-applied, dilger-automatic-domain-discovery-claude-code, dilger-faros-ai-report-amplifies-unclear-requirements, dilger-model-is-a-living-spec-always-on-agent, dilger-spec-editor-free-eventmodelers-alliance, dilger-build-kits-model-to-generated-code, dilger-event-modeling-knowledge-hub-emlang, dilger-planning-like-excel-legible-to-human-and-ai, dilger-extending-event-modeling-query-when, dilger-drawio-model-in-code, dilger-flea-market-model-to-deploy, dilger-triplet-flexible-agent-enabled-architecture, dilger-the-shapes-event-modeling-anti-patterns, dilger-agentic-collaboration-freeform-drawings, dilger-event-model-structure-linter-reference-catalog]
+updated: 2026-09-04
+sources: [dilger-git-as-primary-persistence-for-event-models, dilger-ui-only-interactions-filtering, dilger-only-engineers-care-about-consistent-systems, dilger-podcast-episode-47-agentic-modeling-audit-trails, dilger-agentic-engineer-program-stack-agnostic-spec, dilger-one-million-tokens-self-training-modeling-agent, dilger-modeling-agent-improved-by-learning-loop, dilger-todo-lists-storylines-one-scenario, dilger-eventmodelers-supports-esdm-export, dilger-highlighting-markers-give-context-to-agents, dilger-spec-driven-development-applied, dilger-automatic-domain-discovery-claude-code, dilger-faros-ai-report-amplifies-unclear-requirements, dilger-model-is-a-living-spec-always-on-agent, dilger-spec-editor-free-eventmodelers-alliance, dilger-build-kits-model-to-generated-code, dilger-event-modeling-knowledge-hub-emlang, dilger-planning-like-excel-legible-to-human-and-ai, dilger-extending-event-modeling-query-when, dilger-drawio-model-in-code, dilger-flea-market-model-to-deploy, dilger-triplet-flexible-agent-enabled-architecture, dilger-the-shapes-event-modeling-anti-patterns, dilger-agentic-collaboration-freeform-drawings, dilger-event-model-structure-linter-reference-catalog]
 tags: [tool, platform, event-modeling, agentic-ai, spec-driven-development, focus]
 ---
 
@@ -137,6 +137,40 @@ ESDM extension for the EM **timeline**. This is the platform's strongest interop
 point where the board camp and the file camp stop being alternatives
 ([[dilger-eventmodelers-supports-esdm-export]]; [[agent-readable-model-artifacts]]).
 
+## Platform changes recorded in the 2026-07 → 2026-09 captures
+
+**All of the following are VENDOR SELF-REPORT — Dilger's own platform, his own posts — and several are
+announcements rather than reports of use.** The marker belongs at each use on any page that cites them.
+
+- **Git as primary persistence, and BYODS** — one repository per board, branching supported, no
+  relational database required (*"No relational database. All data lives in Git."*), with
+  Redis/S3/YAML/SharePoint named as possible stores and **WORM-drive storage offered for auditability**.
+  Prior stores: Supabase/Postgres, then SQLite (*"Both are live and used heavily"*, unquantified). The
+  model store is itself event-sourced.
+  ([[dilger-git-as-primary-persistence-for-event-models]], 2026-09-02 — **announced as being added, not
+  reported in use; and no regulation, standard or auditor is named behind the WORM claim.**)
+- **Multi-Screen Views, HTML Views, built-in Query support**, and `npx @eventmodelers/cli init-modeling`
+  to connect an agent in ~15 seconds ([[dilger-ui-only-interactions-filtering]], 2026-07-31).
+- **Screen Preview** — hand-sketched screens, HTML mockups and Figma screens in one storyline
+  ([[dilger-only-engineers-care-about-consistent-systems]], 2026-09-01).
+- **The `/wdyt` gap-finding skill, worked and tuned** — an agent reads slices and posts
+  clarifying-question comments; restricting it to comment only on what is *present* (no invented
+  scenarios) turned ~100 noisy comments into useful ones. **The "100 comments" → "genuinely useful"
+  pairing is impressions, not counts to compare.** And **two agents (Claude Code + Hermes) modelling
+  concurrently** alongside Dilger, reported as *"indistinguishable from modeling with humans"* —
+  **IMPRESSION NOT MEASUREMENT**, a felt comparison on his own platform, and show-notes level rather
+  than verified against audio.
+  ([[dilger-podcast-episode-47-agentic-modeling-audit-trails]], **date unresolved — do not assign one**.)
+- **Build Kits** named for Axon, Marten, Cratis, Emmett (Node) and Python, with a 12-month commercial
+  EM-Studio licence bundled into the **paid** *Agentic Engineer* programme (on-prem hostable for
+  enterprises); the *Spec Driven* book ships **2026-10-16**. The programme's headline affordance —
+  *"they can even switch stacks mid-course or build in parallel in all Stacks"* — is
+  **VENDOR SELF-REPORT · marketing**, hedged by its own author (*"almost doesn't matter"*) and
+  **demonstrated nowhere** ([[dilger-agentic-engineer-program-stack-agnostic-spec]], 2026-09-03).
+- **Channel note for the research config:** `eventmodelers.ai/docs/podcast` is a **separate and more
+  current episode index** than podcast.eventmodeling.org — Episode 47 exists only there and appears in
+  neither the RSS feed nor the `.org` index. It should be polled as its own channel.
+
 _Source pages: [[dilger-automatic-domain-discovery-claude-code]] ·
 [[dilger-spec-driven-development-applied]] ·
 [[dilger-faros-ai-report-amplifies-unclear-requirements]] ·
@@ -150,4 +184,8 @@ _Source pages: [[dilger-automatic-domain-discovery-claude-code]] ·
 [[dilger-triplet-flexible-agent-enabled-architecture]] ·
 [[dilger-the-shapes-event-modeling-anti-patterns]] · [[dilger-agentic-collaboration-freeform-drawings]] ·
 [[dilger-event-model-structure-linter-reference-catalog]] ·
-[[dilger-highlighting-markers-give-context-to-agents]] · [[dilger-eventmodelers-supports-esdm-export]] · [[dilger-one-million-tokens-self-training-modeling-agent]] · [[dilger-modeling-agent-improved-by-learning-loop]] · [[dilger-todo-lists-storylines-one-scenario]]._
+[[dilger-highlighting-markers-give-context-to-agents]] · [[dilger-eventmodelers-supports-esdm-export]] · [[dilger-one-million-tokens-self-training-modeling-agent]] · [[dilger-modeling-agent-improved-by-learning-loop]] · [[dilger-todo-lists-storylines-one-scenario]] ·
+[[dilger-git-as-primary-persistence-for-event-models]] · [[dilger-ui-only-interactions-filtering]] ·
+[[dilger-only-engineers-care-about-consistent-systems]] ·
+[[dilger-agentic-engineer-program-stack-agnostic-spec]] ·
+[[dilger-podcast-episode-47-agentic-modeling-audit-trails]] (**DATE UNRESOLVED**)._

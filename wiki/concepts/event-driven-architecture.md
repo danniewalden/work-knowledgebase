@@ -2,8 +2,8 @@
 title: Event-Driven Architecture (EDA)
 type: concept
 created: 2026-06-12
-updated: 2026-06-12
-sources: [atlan-event-driven-architecture-for-ai-agents, confluent-agentic-event-driven-systems-architecture, solace-multi-agent-systems-real-time-context-eda, akka-agentic-systems-are-distributed-systems]
+updated: 2026-09-04
+sources: [atlan-event-driven-architecture-for-ai-agents, confluent-agentic-event-driven-systems-architecture, solace-multi-agent-systems-real-time-context-eda, akka-agentic-systems-are-distributed-systems, dudycz-backend-for-frontends-for-event-driven-apis]
 tags: [eda, event-sourcing, agentic-ai, architecture, multi-agent]
 ---
 
@@ -53,4 +53,25 @@ to Thread 2 ([[event-sourcing]] backbone). Before June 2026 the link was the KB'
 [[idc]]) are independent. EDA (streaming/messaging) is also not the same as [[event-modeling]] the
 *design method*, which remains the focus-area frontier ([[event-modeled-agent-design]]).
 
-_Sources: [[atlan-event-driven-architecture-for-ai-agents]] · [[confluent-agentic-event-driven-systems-architecture]] · [[solace-multi-agent-systems-real-time-context-eda]] · [[akka-agentic-systems-are-distributed-systems]]._
+## The messages matter as much as the broker
+
+[[dudycz-backend-for-frontends-for-event-driven-apis]] supplies the design constraint this page lacks:
+publishing uniform `SthSthCreated / SthSthUpdated / SthSthDeleted` messages is not event-driven
+architecture but **"Poor Man's replication through the queue."** Two splits fix it — **internal
+(private/domain) vs external (public/integration)** events, and the recognition that messages are also
+**commands** (directed, rejectable) and **state** (Gregor Hohpe's taxonomy, cited second-hand). Two named
+failure modes: broadcasting *all* internal events gives "a leaking abstraction and a spider web of
+dependencies"; ignoring the other message types makes communication "look like parliament: a room filled
+with shouting people. **This is a first step to a distributed monolith.**"
+
+This is a direct constraint on the agent-EDA claims above: if inter-agent traffic is
+`AgentStateUpdated` broadcasts, the loose coupling this page credits to EDA has not been bought. Full
+treatment on [[internal-vs-external-events]]. *~450-word practitioner post; no measurement.*
+
+## Related
+
+[[event-sourcing]] · [[cqrs]] · [[event-modeling]] · [[internal-vs-external-events]] ·
+[[agentic-event-driven-systems]] · [[event-sourced-agentic-patterns]] · [[multi-agent-orchestration]] ·
+[[agent-governance]]
+
+_Sources: [[atlan-event-driven-architecture-for-ai-agents]] · [[confluent-agentic-event-driven-systems-architecture]] · [[solace-multi-agent-systems-real-time-context-eda]] · [[akka-agentic-systems-are-distributed-systems]] · [[dudycz-backend-for-frontends-for-event-driven-apis]]._

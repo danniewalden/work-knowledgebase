@@ -100,6 +100,32 @@ comm -23 <(find raw/articles raw/papers raw/notes raw/data -type f ! -name '.git
 Read `raw_file:` specifically rather than grepping for any `raw/...` string in the page body — a source
 page often mentions neighbouring captures in prose, and only the frontmatter key means "this page
 compiles that file."
+**Social captures cite the POST, not the feed.** A `source_url` of
+`linkedin.com/in/<person>/recent-activity/all/` is not a citation — it is a pointer at a
+mutable feed that will show something different tomorrow, so the claim becomes unverifiable
+the moment the feed moves on. Capture the canonical per-post permalink instead:
+
+```yaml
+source_url: https://www.linkedin.com/feed/update/urn:li:activity:<id>/
+```
+
+Read the id from the post element's own `data-urn` attribute, and read it in the SAME
+extraction call that takes the text — pulling ids and text in separate passes is how a
+permalink ends up attached to the wrong author's post (this happened once on 2026-09-04 and
+was caught mid-sweep). If the permalink genuinely cannot be observed, say so IN the
+`source_url` rather than silently substituting the feed URL:
+
+```yaml
+source_url: "https://www.linkedin.com/in/x/recent-activity/all/ (permalink not captured; ~1 day old at retrieval)"
+```
+
+That form is honest and greppable; a bare feed URL is neither. Same rule for X: prefer
+`x.com/<handle>/status/<id>`, and where the DOM will not yield it, mark the reconstructed
+part as unverified. The lint of 2026-09-04 found **46 back-catalogue captures** citing a feed
+or archive index this way — they are not being rewritten retroactively (the posts would have
+to be re-found one by one), so treat a feed-URL capture as having a weaker citation chain
+than its filename suggests, and re-resolve it if you are about to lean on it hard.
+
 - Every factual claim on an entity/concept page should be traceable to at least
   one source page. When sources conflict, say so explicitly on the page rather
   than silently picking one.

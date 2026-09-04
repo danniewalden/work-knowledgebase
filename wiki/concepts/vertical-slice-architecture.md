@@ -2,8 +2,8 @@
 title: Vertical Slice Architecture (VSA)
 type: concept
 created: 2026-06-14
-updated: 2026-09-02
-sources: [nick-tune-enforced-application-architecture-agents-humans, dilger-element-slice-chapter-story-context-ladder, dilger-slicing-keeps-the-cost-curve-flat, miller-jasperfx-critterstack-ai-event-modeling-strategy, bogard-vertical-slice-architecture, miller-codebase-is-the-prompt-vertical-slices-ai, rico-fritzsche-autonomous-domain-capabilities-ccc, fritzsche-functional-core-imperative-shell-agentic-coding, rico-fritzsche-rpu-reactor-vocabulary, dilger-triplet-flexible-agent-enabled-architecture]
+updated: 2026-09-04
+sources: [nick-tune-enforced-application-architecture-agents-humans, dilger-element-slice-chapter-story-context-ladder, dilger-slicing-keeps-the-cost-curve-flat, miller-jasperfx-critterstack-ai-event-modeling-strategy, bogard-vertical-slice-architecture, miller-codebase-is-the-prompt-vertical-slices-ai, rico-fritzsche-autonomous-domain-capabilities-ccc, fritzsche-functional-core-imperative-shell-agentic-coding, rico-fritzsche-rpu-reactor-vocabulary, dilger-triplet-flexible-agent-enabled-architecture, dudycz-vertical-slices-ownership-and-external-dependencies, bogard-vertical-slice-architecture-webinar-recording-whats-next, fritzsche-vsa-does-not-fix-entity-centered-thinking]
 tags: [vertical-slice-architecture, cqrs, ddd, architecture, focus]
 ---
 
@@ -97,9 +97,12 @@ obstacle is an existing-codebase problem rather than a persuasion problem.
 
 ## What's open / to capture next
 
-A source explicitly mapping VSA slices to Event Modeling slices and to agent task units — **Oskar
-Dudycz**'s "Vertical Slices, CQRS, Semantic Diffusion" (flagged on the watch list) and the
-verticalslicearchitecture.com material are the named candidates.
+**Closed (2026-09-04):** the long-flagged Dudycz capture landed — not "Semantic Diffusion" but
+[[dudycz-vertical-slices-ownership-and-external-dependencies]] (2026-08-10), which is the deeper
+source. *Still open:* verticalslicearchitecture.com, the Codeartify webinar recording behind
+[[bogard-vertical-slice-architecture-webinar-recording-whats-next]] (the argument's primary; the blog
+post is its trailer), and the Medium article behind
+[[fritzsche-vsa-does-not-fix-entity-centered-thinking]] (linked in a LinkedIn first comment, unresolved).
 
 **VSA as the "structure" block of Dilger's Triplet.** [[dilger-triplet-flexible-agent-enabled-architecture|Dilger]]
 (2026-07-26) casts vertical slices as the *natural result* of an Event Modeling session — you structure code
@@ -126,8 +129,8 @@ Three things this adds to the page:
   enforced no-cross-feature-imports rule is what makes the property true of the codebase rather than
   true of the plan. (The reason an advisory boundary is not enough is stated best elsewhere — Bogard's
   *"An agent doesn't read your architecture diagram. It reads your repo and copies what it finds"*
-  (`raw/articles/bogard-vertical-slice-architecture-webinar-recording-whats-next.md`, 2026-09-01,
-  un-ingested). Tune does not put it in those terms; he simply reports that agents violate written
+  ([[bogard-vertical-slice-architecture-webinar-recording-whats-next]], 2026-09-01,
+  now ingested). Tune does not put it in those terms; he simply reports that agents violate written
   guidance.)
 - **An asymmetry worth borrowing.** He deliberately treats the two halves differently: the domain model
   is left free-form (*"domain models should express the business however necessary"*) while slices are
@@ -144,4 +147,79 @@ mechanism described precisely, payoff asserted. He also rates the tiers honestly
 package/domain/layer rules indispensable for agentic work and the finest tier unproven ("come back in 6
 months").*
 
-_Sources: [[bogard-vertical-slice-architecture]] · [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[rico-fritzsche-autonomous-domain-capabilities-ccc]] · [[fritzsche-functional-core-imperative-shell-agentic-coding]] · [[rico-fritzsche-rpu-reactor-vocabulary]] · [[dilger-triplet-flexible-agent-enabled-architecture]] · [[nick-tune-enforced-application-architecture-agents-humans]]._
+## What a slice does when it needs something it doesn't own (Dudycz, 2026-08)
+
+[[dudycz-vertical-slices-ownership-and-external-dependencies]] is the first source on this page to give a
+**positive answer to cross-slice dependency**, and it starts by fixing the vocabulary that makes the
+question unanswerable: **a slice is one piece of functionality cut through the application** ("more a
+function than an entity"); **a module is a grouping of slices**, the criterion being "what changes
+together"; **a bounded context is a linguistic barrier**, so "a frontend and a backend aren't two
+bounded contexts; they're two deployment targets" and "seven features of one application are almost
+always slices, or at most modules, sitting inside a single context — **they were never obliged to be
+autonomous.**"
+
+The mechanism: **"From inside a slice, there's one category of thing: external.** Another slice next
+door, the parent module, a different module, a third-party API, the database. All the same." A slice
+declares a **narrow function type in its own vocabulary** (`CheckContractor` with three cases, not the
+carrier's fifteen-method interface), nothing declares that it implements it (structural typing), and a
+single composition file near the entry point supplies the real functions — "partial application, done by
+hand, in a file whose job is to know about everything so that nothing else has to. No container, no
+registration, no lifetime scopes." Tests pass stubs of the same shape, "because there's nothing to mock."
+
+Four consequences worth carrying:
+
+- **Two directions across one boundary.** A module's `api.ts` is what it **offers**; a declared
+  `CheckContractor` is what a slice **asks for**. You want both — without the module API everything is
+  reachable; without consumer-declared needs the consumer is coupled to the shape of whatever the
+  provider chose to expose. The composition root is the only code that knows both vocabularies.
+- **Cycles dissolve rather than get resolved.** "There's no cycle if neither module imports the other."
+  His diagnosis: "most module-level cycles I've run into were a shared concept whose owner hadn't been
+  decided yet" — and the usual extract-a-common-module fix "works twice; then the common module becomes
+  the place everything ambiguous lands."
+- **Persistence, three rules, not one:** **business logic per entity or aggregate**, **read models per
+  query** ("this is where a table per feature is right"), **schemas per module** ("a slice is a feature,
+  not a persistence boundary").  Reuse pure policies and calculators; **let handlers duplicate**, because
+  "handlers differ in what they load, check and record, and that's the part that tends to change."
+  *(Note the first of those three is the live disagreement with [[rico-fritzsche]] — see
+  [[entity-centric-thinking]].)*
+- **He rejects independence as a value:** "**None of this is about hiding the coupling.** I'd rather know
+  the connections I need to have… What I'm optimising for is **cohesion**, and explicit dependencies
+  serve that." A narrow consumer-declared type is Contract-level coupling by construction in
+  [[khononov-coupling-should-be-weighed-not-counted|Khononov's]] Integration Strength scale.
+
+Note this **permits what [[nick-tune-enforced-application-architecture-agents-humans|Tune's]] rule
+forbids** — a slice may reach another module, provided it goes through a consumer-declared type and the
+composition root. Dudycz's own line: "Rules that block a module from reaching another module are
+useful. Rules that block it because two files sit at the same 'layer' are enforcing a layering you may
+have already outgrown." Same goals, different grading of the same codebase.
+
+His agent paragraph is appended to the design argument and framed as a bonus — "an old argument that
+happens to have got more valuable" — and is, like the rest of this page's agent material, **assertion
+rather than measurement**.
+
+## The originator's own agent argument — and the objection it depends on (2026-09)
+
+**[[jimmy-bogard]]** finally states the agent case for his own pattern
+([[bogard-vertical-slice-architecture-webinar-recording-whats-next]], 2026-09-01): "we've made
+**writing** code nearly free and left the cost of **verifying and changing** it exactly where it was…
+**An agent doesn't read your architecture diagram. It reads your repo and copies what it finds.** That's
+why structure matters more now, not less. Slices hold up under an agent because a change fits in one
+context window, the blast radius stops at the slice boundary, and the tests still mean something after a
+refactor." He is teaching it as **"effective guardrails for AI development."** Note the evidentiary
+standing does not improve: the page's token/blast-radius argument now has four independent asserters
+(Bogard, Miller, Dilger, Dudycz) and **still no measurement** — and Bogard's post is promotional for paid
+training.
+
+**And the condition under which none of it holds.** [[rico-fritzsche]]
+([[fritzsche-vsa-does-not-fix-entity-centered-thinking]], 2026-08-28) is the counterweight this page
+lacked: **"VSA improves locality *after* a team chooses a request boundary. It does not discover that
+boundary. A CRUD-shaped request remains CRUD-shaped inside its own slice."** Noun folders over
+`Create/Get/Update/Delete` are vertically organised and entity-centred at once, and "starting with the
+record that changes makes the entity lifecycle the use-case boundary. That is an ownership problem" —
+a charge he extends to Clean Architecture ("both preserve the same ownership problem"). So every claim
+above — blast radius, one context window, parallel agents without collision — is **conditional on the cut
+having followed a business operation**, which no enforcement rule can check. Mechanised boundaries make a
+*bad* boundary permanent; neither Tune nor Bogard draws that consequence. See
+[[entity-centric-thinking]].
+
+_Sources: [[bogard-vertical-slice-architecture]] · [[miller-codebase-is-the-prompt-vertical-slices-ai]] · [[rico-fritzsche-autonomous-domain-capabilities-ccc]] · [[fritzsche-functional-core-imperative-shell-agentic-coding]] · [[rico-fritzsche-rpu-reactor-vocabulary]] · [[dilger-triplet-flexible-agent-enabled-architecture]] · [[nick-tune-enforced-application-architecture-agents-humans]] · [[dudycz-vertical-slices-ownership-and-external-dependencies]] · [[bogard-vertical-slice-architecture-webinar-recording-whats-next]] · [[fritzsche-vsa-does-not-fix-entity-centered-thinking]]._

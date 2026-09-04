@@ -2,8 +2,8 @@
 title: Architecture Fitness Functions
 type: concept
 created: 2026-06-13
-updated: 2026-09-02
-sources: [fowler-bockeler-harness-engineering, fowler-bockeler-maintainability-sensors, nick-tune-enforced-application-architecture-agents-humans]
+updated: 2026-09-04
+sources: [fowler-bockeler-harness-engineering, fowler-bockeler-maintainability-sensors, nick-tune-enforced-application-architecture-agents-humans, laycock-maybe-we-shouldnt-be-reviewing-all-this-code, addyosmani-agentic-code-quality, addyosmani-human-judgment-relocates]
 tags: [software-architecture, harness-engineering, controls]
 ---
 
@@ -76,11 +76,60 @@ around with that. Come back in 6 months. I feel confident it's the right approac
 about the payoff, not the direction. There is also a cost the post does not price: every annotation is
 maintenance, and ADR-002 and the executable config "are kept aligned" with no mechanism named.
 
+## What they are *for* when nobody reads every diff (Laycock, 2026-09)
+
+[[rachel-laycock]] gives the purpose statement this page implies but never states
+([[laycock-maybe-we-shouldnt-be-reviewing-all-this-code]]). Her argument is that code review has been
+carrying six jobs at once — "quality gate, security check, architecture review, mentoring mechanism,
+knowledge-sharing system, ownership model" — and that agent output volume breaks the arrangement. Each
+job then moves to where it belongs, and fitness functions get one specific job: *"If we want
+**architectural alignment**, design together… and then **encode the important constraints as fitness
+functions**."* Everything deterministic (formatting, linting, known security problems) is automated
+outright — "we really shouldn't still be arguing about whitespace in 2026" — and what is left for humans
+is **review by exception**.
+
+So on her account a fitness function is not a supplement to review but the **mechanism that carries
+architectural intent forward when per-diff human inspection stops being the gate**. That is the same
+role [[nick-tune]] builds machinery for above (make the violation fail the build) and the same role
+[[adam-tornhill]] assigns to deterministic checks in [[tornhill-controlling-the-uncertainty-machine]]
+("enforce what you don't inspect" — **VENDOR SELF-REPORT**, his stack includes CodeScene's own MCP).
+It is also, as she says, useless against the classes of problem
+[[fowler-bockeler-maintainability-sensors|Böckeler]] identifies and against
+[[willison-conceptual-integrity-and-counting-lines-of-code|conceptual-integrity drift]], where each
+individual change is defensible and the whole stops cohering — which is why her list keeps humans for
+"a change with a huge blast radius" and for "simply something where the team says, 'I'm not confident
+about this.'" **NOT INDEPENDENT**: Thoughtworks' CTO on martinfowler.com prescribing a
+Thoughtworks-originated practice, with no data. See [[verification-burden]].
+
+## Prose is not a constraint — three sources agree ([[addyosmani-agentic-code-quality|Osmani, 2026-08]])
+
+If Laycock says *what* a fitness function is now for, this says *why prose cannot do the job instead*.
+*"Folks can define their own constraints too, including **architecture rules that linting tools like
+ESLint can enforce**. Many of these tools have built-in hooks that can be used to pull in agents, or
+humans, when things break."* Same move as
+[[nick-tune-enforced-application-architecture-agents-humans|Tune's enforced application architecture]] and
+[[dilger-keep-command-handlers-pure|Dilger's]] finding that *"a written skill had to be **enforced**, not
+just stated"* — **architectural intent expressed as prose does not survive contact with an agent, and must
+be expressed as a failing check.**
+
+Osmani's addition to that argument is the **portfolio** view: quality is *"a collection of signals of
+varying importance to you and your team"* spanning correctness, maintainability, performance, security,
+efficiency and **comprehensibility** — and *"while it matters how many constraints we have in place, it
+matters more **whether they're challenging enough** to meet our bar."* The complements are the two rules
+now filed under [[software-factory]] and [[feedforward-and-feedback-controls]]: **"number of checks !=
+quality"**, and the **verification budget** — fast deterministic checks (lint, type checking) early;
+heavy-but-valuable ones (full suite, [[mutation-testing]], browser testing, security scans) at or after
+the draft-PR gate, *"budget[ed] for them in the right places because you don't want to slow down your
+development loop."*
+
 ## Related
 
 [[harness-engineering]] · [[agent-harness]] · [[feedforward-and-feedback-controls]] ·
 [[mutation-testing]] · [[birgitta-bockeler]] · [[nick-tune]] · [[thoughtworks]] ·
-[[vertical-slice-architecture]] · [[model-as-code-vs-model-as-language]] · [[adr]]
+[[vertical-slice-architecture]] · [[model-as-code-vs-model-as-language]] · [[adr]] ·
+[[verification-burden]] · [[rachel-laycock]] · [[addy-osmani]]
 
 _Sources: [[fowler-bockeler-harness-engineering]] · [[fowler-bockeler-maintainability-sensors]] ·
-[[nick-tune-enforced-application-architecture-agents-humans]]._
+[[nick-tune-enforced-application-architecture-agents-humans]] ·
+[[laycock-maybe-we-shouldnt-be-reviewing-all-this-code]] · [[addyosmani-agentic-code-quality]] ·
+[[addyosmani-human-judgment-relocates]]._

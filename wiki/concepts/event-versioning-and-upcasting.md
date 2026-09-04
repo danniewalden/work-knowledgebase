@@ -2,8 +2,8 @@
 title: Event Versioning & Upcasting (Schema Migration)
 type: concept
 created: 2026-06-17
-updated: 2026-06-29
-sources: [event-modeling-event-sourcing-podcast, atomicobject-cqrs-event-sourcing-production-walkthrough, dilger-done-is-done-open-closed-new-slice, dudycz-strictland-contract-testing]
+updated: 2026-09-04
+sources: [event-modeling-event-sourcing-podcast, atomicobject-cqrs-event-sourcing-production-walkthrough, dilger-done-is-done-open-closed-new-slice, dudycz-strictland-contract-testing, dudycz-fixing-bugs-in-event-sourcing]
 tags: [event-sourcing, schema-migration, versioning, pattern]
 ---
 
@@ -52,8 +52,33 @@ read each other's data. No broker or schema registry. It doesn't *resolve* the u
 debate above — it's the **detection** layer that makes either discipline enforceable in CI, in the same
 fast feedback loop as the code. (.NET / TypeScript ports planned.)
 
+## Not the same problem: an event whose *value* is wrong
+
+Versioning and upcasting are about an event's **shape** changing. A separate and more common Tuesday
+morning problem is an event whose shape is fine and whose **value** is wrong — a bad deploy wrote a
+miscalculated number. [[dudycz-fixing-bugs-in-event-sourcing]] treats that case, and the answer is not an
+upcaster: **append a corrective event** (the accountant's correcting entry — `previousTotal`,
+`correctedTotal`, `reason`), rebuild the read models, fix the bug, and **never edit in place** ("having
+precise history, bugs included, is a valid scenario"). If a clean stream is genuinely needed later, copy
+and transform into a **new** stream and keep the original.
+
+Two techniques from it belong on this page:
+
+- **`buildSha` in event metadata** — record the commit the service was running when it appended. Then the
+  blast radius of a bad deploy is a query (`WHERE metadata->>'buildSha' = '…'`) rather than a guessed
+  `WHERE` clause over timestamps, which is exactly the failure that makes state-based corrective
+  migrations compound. `correlationId`/`causationId` do the same job for diagnosis.
+- **Model the correction as a capability** — a permissioned `CorrectReservationPrice` command with a
+  mandatory reason, so bulk fixes and front-desk fixes emit the same events. The same "add a slice rather
+  than change the past" instinct as [[dilger-done-is-done-open-closed-new-slice|"Done is Done"]], applied
+  to operations — and it composes with
+  [[fritzsche-how-event-sourcing-grows-with-the-business|additive evolution]]: a correction is just
+  another event type.
+
+*Caveat: an invented hotel-pricing scenario throughout; `buildSha` is advice, not a reported practice.*
+
 ## Related
 
-[[event-sourcing]] · [[event-modeling]] · [[dynamic-consistency-boundaries]] · [[cqrs]] · [[yordis-prieto]] · [[open-closed-principle]] · [[oskar-dudycz]]
+[[event-sourcing]] · [[event-modeling]] · [[dynamic-consistency-boundaries]] · [[cqrs]] · [[yordis-prieto]] · [[open-closed-principle]] · [[oskar-dudycz]] · [[decision-trace]]
 
-_Sources: [[event-modeling-event-sourcing-podcast]] · [[atomicobject-cqrs-event-sourcing-production-walkthrough]] · [[dilger-done-is-done-open-closed-new-slice]] · [[dudycz-strictland-contract-testing]]._
+_Sources: [[event-modeling-event-sourcing-podcast]] · [[atomicobject-cqrs-event-sourcing-production-walkthrough]] · [[dilger-done-is-done-open-closed-new-slice]] · [[dudycz-strictland-contract-testing]] · [[dudycz-fixing-bugs-in-event-sourcing]]._
