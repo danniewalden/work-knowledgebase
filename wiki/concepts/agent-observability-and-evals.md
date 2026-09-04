@@ -2,8 +2,8 @@
 title: Agent Observability and Evaluation
 type: concept
 created: 2026-06-11
-updated: 2026-06-11
-sources: [langchain-state-of-agent-engineering-2026, anthropic-building-effective-agents]
+updated: 2026-06-29
+sources: [langchain-state-of-agent-engineering-2026, anthropic-building-effective-agents, martinfowler-prince-building-reliable-agentic-ai-systems]
 tags: [agentic-ai, observability, evaluation, reliability, agent-engineering]
 ---
 
@@ -34,4 +34,14 @@ This is the operational answer to the nondeterminism flagged on the [[agentic-ai
 it overlaps with the monitoring/audit requirements of [[agent-governance]]. Anthropic's
 "measure performance and iterate" advice ([[agentic-workflow-patterns]]) is the same instinct.
 
-_Source pages: [[langchain-state-of-agent-engineering-2026]] · [[anthropic-building-effective-agents]]._
+## Production reference (PRINCE, 2026-06)
+
+[[martinfowler-prince-building-reliable-agentic-ai-systems|Bayer's PRINCE]] shows this instrumented in a
+regulated enterprise system: **Langfuse** traces every production run, with **RAGAS** metrics
+(Faithfulness, Answer/Context Relevancy, Accuracy, Semantic Similarity) run as both **dataset evals** (on
+significant change) and **daily live-traffic evals** (no reference answers) — "a testing pyramid" applying
+metrics at different workflow stages, not just end-to-end. Pairs trace-based observability with
+citation-based [[agent-explainability]]. This is also the *input* to [[loop-engineering]]'s hill-climbing
+loop, where trace analysis feeds back into harness improvement.
+
+_Source pages: [[langchain-state-of-agent-engineering-2026]] · [[anthropic-building-effective-agents]] · [[martinfowler-prince-building-reliable-agentic-ai-systems]]._

@@ -1,0 +1,33 @@
+---
+source_url: https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/
+title: "Just a rumour of a bug is enough to find a security exploit these days"
+author: Simon Willison
+publication: Simon Willison's Weblog (link blog / blogmark)
+published: 2026-08-28
+retrieved: 2026-08-29
+type: article
+---
+
+# Just a rumour of a bug is enough to find a security exploit these days
+
+*Blogmark linking to [Anil Madhavapeddy, "Just a rumour of a bug is enough to find a security exploit these days"](https://anil.recoil.org/notes/rumour-is-the-exploit), via [Hacker News](https://news.ycombinator.com/item?id=49480466). Posted 28th August 2026, 10:12 pm. Tags: open-source, security, ai, generative-ai, llms, coding-agents, ocaml, ai-security-research.*
+
+Anil Madhavapeddy is a professor of computer science at Cambridge and a core maintainer of the OCaml compiler. In this somewhat alarming post he reports that security issues in OCaml projects are seeing evidence of attempted exploits within minutes of patches being shared for discussion:
+
+> This normally takes a few days and a release within a week or two is reasonable. Within about ten minutes (!) this website was fielding probes for percent-encoded traversal sequences, indicating that automated watchers are keeping an eye on public repositories.
+
+Modern coding agents have become so effective at finding flaws that the slightest hint at a new bug can be enough information for them to find it, something Anil has been able to demonstrate using his own agents, switching to DeepSeek V4 Pro when Claude Fable refused the task.
+
+Anil points out that this rate of discovery appears incompatible with existing open source embargo practices for new issues. If an issue can become an exploit this fast, we need to figure out new processes for keeping our communities safe.
+
+rclone maintainer Nick Craig-Wood [confirms in the Hacker News comments](https://news.ycombinator.com/item?id=49480466#49480777) that his project is seeing this problem:
+
+> In the first 10 years of the rclone project we received about 20 security disclosures through GitHub. We had to deal with over 40 in the last month! That has taken a huge amount of my time, even using AI tools to triage and come up with fixes for review.
+>
+> The hit rate for those security disclosures is pretty good - about 75% of them have a nugget of something which needs looking at. [...]
+>
+> GitHub assigns CVEs for the advisories. Before the AI apocalypse they took 2-3 days for an assignment but now it they are running at 3-4 weeks so I have to send the point releases out with CVE-PENDING in the changelog which isn't ideal.
+
+---
+
+*Capture note (watch, 2026-08-29): captured from Simon Willison's own link blog. The underlying primary (anil.recoil.org) was not fetched — it did not pass the `web_fetch` provenance rule this run and is worth pulling in a live session. Filed under the people watch (`people_scope: anything-substantive`); off the Event Modeling thread, adjacent to the agent-autonomy / unattended-agents thread that [[willison-breaking-claude-code-auto-mode]] and [[willison-lethal-trifecta]] sit on — here the datum is about agent **capability** (finding flaws from a hint) rather than agent **exposure**.*

@@ -4,6 +4,7 @@ type: source
 created: 2026-06-13
 updated: 2026-06-13
 sources: [jwilger-agent-skills-event-modeling]
+raw_file: [raw/articles/jwilger-agent-skills-event-modeling.md]
 tags: [event-modeling, agentic-ai, agentic-coding, harness, skills, tdd, spec-driven-development, focus]
 ---
 

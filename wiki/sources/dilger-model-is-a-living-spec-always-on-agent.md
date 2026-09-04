@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [dilger-model-is-a-living-spec-always-on-agent]
+raw_file: [raw/articles/dilger-model-is-a-living-spec-always-on-agent.md]
 tags: [event-modeling, agentic-coding, spec-driven-development, harness, long-running-agents, unattended-agents, focus]
 ---
 

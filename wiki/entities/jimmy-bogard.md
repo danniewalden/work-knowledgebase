@@ -2,7 +2,7 @@
 title: Jimmy Bogard
 type: entity
 created: 2026-06-14
-updated: 2026-06-14
+updated: 2026-08-31
 sources: [bogard-vertical-slice-architecture]
 tags: [person, architecture, cqrs, ddd, dotnet]
 ---
@@ -18,5 +18,9 @@ shipping AutoMapper/MediatR on a quarterly cadence (as of early 2026).
 In the KB he anchors the [[vertical-slice-architecture]] concept — the architecture that
 [[event-modeling]]'s vertical slices (and the agent "slice" task unit in
 [[jwilger-agent-skills-event-modeling]] / [[dilger-model-is-a-living-spec-always-on-agent]]) map onto.
+
+## Related
+
+[[slice]] · [[model-as-code-vs-model-as-language]]
 
 _Source pages: [[bogard-vertical-slice-architecture]]._

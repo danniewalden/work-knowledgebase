@@ -4,6 +4,7 @@ type: source
 created: 2026-06-13
 updated: 2026-06-13
 sources: [dilger-spec-driven-development-applied]
+raw_file: [raw/articles/dilger-spec-driven-development-applied.md]
 tags: [event-modeling, agentic-coding, spec-driven-development, harness, prompt-engineering, focus]
 ---
 

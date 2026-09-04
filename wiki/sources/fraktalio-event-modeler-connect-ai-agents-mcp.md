@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [fraktalio-event-modeler-connect-ai-agents-mcp]
+raw_file: [raw/articles/fraktalio-event-modeler-connect-ai-agents-mcp.md]
 tags: [event-modeling, agentic-ai, model-context-protocol, tool, given-when-then, focus]
 ---
 

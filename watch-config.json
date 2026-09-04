@@ -4,6 +4,8 @@
   "_scope_options": "Each watch axis has its own scope. 'focus-only' = capture only items touching the listed topics (a narrow net for on-target material). 'anything-substantive' = capture any notable new post regardless of topic, flagging off-thread items in the report (used for the people watch, where the value is the author, not the keyword match). PER-TOPIC OVERRIDE: a topic may carry its own `scope` field, which TAKES PRECEDENCE over the global `topic_scope` for that topic. This lets the tight EM×agents intersection stay 'focus-only' while the broader design-substrate topics run 'anything-substantive'.",
   "topic_scope": "focus-only",
   "people_scope": "anything-substantive",
+  "_social_topic_search": "TOPIC-LEVEL SOCIAL SEARCH (added per Dannie 2026-07-08). In addition to the web `queries`, each topic may carry a `social_queries` object with `x` and `linkedin` term/hashtag lists. During a sweep, run these as keyword/hashtag searches ON the platform (X search + LinkedIn search), NOT as web searches — they surface topic discourse that never reaches a blog (the loop-engineering thread in particular lives on X first). A social hit inherits that topic's `scope` (focus-only topics keep only genuinely on-topic items; anything-substantive topics keep any notable hit and flag off-thread). This is DISTINCT from the people watch, which follows named authors; here the axis is the KEYWORD, so it catches new voices. CONSTRAINT: X/LinkedIn are login-walled + client-rendered, so these run ONLY in a LIVE logged-in Chrome session (Dannie is logged in) — navigate to the platform search URL, scroll, and collect post text+timestamps via javascript_tool (get_page_text alone returns too little); see `_x_coverage`. In a HEADLESS scheduled run, SKIP social_queries and note in the report that a live-Chrome sweep is needed to cover them (a plain web search for the same terms is a weak fallback, fine to run opportunistically). Dedupe social hits against raw/ and the people-watch finds so an author's post isn't filed twice. Social posts capture to raw/notes/.",
+  "_x_coverage": "X/Twitter IS part of the people watch (STEP 2 says check each person's blog/linkedin/X). Like LinkedIn, X timelines are login-walled + client-rendered: headless WebFetch returns an empty shell and get_page_text grabs only the pinned tweet, so X posts otherwise enter the wiki only via incidental web-search hits. For a real X sweep, drive it in a LIVE logged-in Chrome session (Dannie is logged in): navigate to https://x.com/<handle>, then scroll + collect article text/timestamps via javascript_tool (get_page_text alone only returns the pinned tweet). Added per Dannie 2026-06-19. Per-person `x` handles are listed below; treat them with the same anything-substantive + flag-off-thread rule as LinkedIn. Observed 2026-06-19: adymitruk = off-thread World Cup reposts; vladikk = short AI-economy aphorisms (substance stays on his blog) — both quiet on-thread.",
   "topics": [
     {
       "name": "Event Modeling × AI agents",
@@ -16,34 +18,154 @@
         "eventmodeling.org new posts",
         "\"given-when-then\" agent specification",
         "discrete-event / formal specification of LLM agents"
-      ]
+      ],
+      "social_queries": {
+        "x": [
+          "\"event modeling\" agent",
+          "\"event modeling\" LLM",
+          "eventmodeling agents",
+          "#eventmodeling agent",
+          "event model agent harness"
+        ],
+        "linkedin": [
+          "event modeling AI agents",
+          "event modeling LLM agent",
+          "event model agent spec"
+        ]
+      }
+    },
+    {
+      "name": "Event Modeling (method-wide)",
+      "scope": "anything-substantive",
+      "description": "Event Modeling as a design method in its OWN right — Adam Dymitruk's timeline-of-events approach (3 building blocks, 4 patterns, 7-step workshop, swimlanes, GWT-per-slice) — captured BROADLY, with or WITHOUT an AI-agents angle (added per Dannie 2026-07-03). This is the standalone complement to Topic-1 'Event Modeling × AI agents', which stays a TIGHT agent-intersection net; here, capture any substantive new Event Modeling material regardless of whether agents are involved: tutorials / worked examples, method extensions & debates, tooling (eventmodeling.org, eventmodelers.ai, Miro/Draw.io/Fraktalio boards, prooph board, qlerify), conference talks & recaps, comparisons with Event Storming / DDD, and applied case studies. FLAG items that ALSO connect to agents as extra-relevant (they likely belong under Topic-1 too). Prefer PRIMARY sources (eventmodeling.org, the method's own practitioners, conference recordings) over secondary how-tos; still dedupe against what Topic-1 and the people watch already surface so an on-agent EM post isn't filed twice.",
+      "queries": [
+        "\"event modeling\" 2026",
+        "\"event modeling\" tutorial worked example workshop",
+        "eventmodeling.org new post",
+        "eventmodelers.ai new post",
+        "\"event modeling\" vs \"event storming\"",
+        "\"event modeling\" swimlanes given-when-then slice",
+        "\"event modeling\" conference talk recap 2026",
+        "Adam Dymitruk event modeling",
+        "\"event modeling\" case study applied"
+      ],
+      "social_queries": {
+        "x": [
+          "#eventmodeling",
+          "\"event modeling\"",
+          "#eventmodelingconference2026",
+          "event modeling workshop",
+          "event modeling vs event storming"
+        ],
+        "linkedin": [
+          "event modeling",
+          "#eventmodelingconference2026",
+          "event modeling workshop",
+          "event modeling case study"
+        ]
+      }
     },
     {
       "name": "Event sourcing, DCB, CQRS, vertical slice architecture & business capabilities",
       "scope": "anything-substantive",
       "description": "The design substrate around Event Modeling. Capture ANY substantive new development in these areas, with or without an AI-agents angle (per Dannie 2026-06-14). Flag items that DO connect to agents (extra-relevant) and note when an item is purely off the agents thread. Sub-areas: (1) event sourcing (event stores, projections, replay, aggregates); (2) Dynamic Consistency Boundaries / DCB — the 'kill the aggregate' line of work (Sara Pellegrini, Milan Savić et al.) on consistency boundaries decoupled from aggregates; (3) CQRS (command/query separation); (4) vertical slice architecture (feature slices over layered architecture; Jimmy Bogard lineage); (5) BUSINESS CAPABILITIES / capability-based design — capabilities as stable 'what-not-how' boundaries, capability maps, coupling/cohesion, business architecture, Wardley mapping of capabilities (FLAGGED IMPORTANT by Dannie 2026-06-14).",
       "queries": [
-        "\"event sourcing\" 2026 new",
         "\"dynamic consistency boundary\" event sourcing",
         "DCB \"kill the aggregate\" Sara Pellegrini",
-        "CQRS pattern 2026",
-        "\"vertical slice architecture\" 2026",
-        "Jimmy Bogard vertical slice architecture",
-        "event sourcing projections aggregates DCB talk",
-        "\"vertical slice\" event modeling CQRS",
-        "\"business capability\" design coupling cohesion architecture",
+        "\"business capability\" AND (bounded context OR capability map OR decomposition OR coupling)",
         "capability-based design bounded context business architecture",
-        "business capability map Wardley event modeling"
-      ]
+        "business capability map Wardley event modeling",
+        "\"vertical slice\" event modeling CQRS"
+      ],
+      "social_queries": {
+        "x": [
+          "#eventsourcing",
+          "\"dynamic consistency boundary\"",
+          "DCB event sourcing",
+          "\"vertical slice architecture\"",
+          "\"business capability\" architecture",
+          "CQRS aggregate"
+        ],
+        "linkedin": [
+          "dynamic consistency boundary event sourcing",
+          "vertical slice architecture",
+          "CQRS event sourcing",
+          "business capability bounded context",
+          "business capability decomposition coupling"
+        ],
+        "_note_2026_08_31": "The bare '\"business capability\" architecture' term was removed from BOTH lists — it is the confirmed homonym trap (HR/consulting capability-maturity content). Replacements pair the phrase with an architecture co-term."
+      },
+      "_revision_2026_08_31": "REWORKED after outputs/topic-3-watch-diagnosis-2026-08-30.md. The old query set was eleven generic terms plus a year (\"CQRS pattern 2026\", \"\\\"vertical slice architecture\\\" 2026\"), which web search ranks by AUTHORITY not RECENCY — so they structurally could not surface a two-day-old post, and printed the same evergreen tier for fifteen consecutive sweeps. Meanwhile ~22 substrate captures DID arrive in that same window, every one of them via the PEOPLE axis. Fix: (a) name CHANNELS, the way Topics 1-2 already do; (b) keep only the few keyword queries that carry a discriminating term; (c) report the substrate BY THREAD, crediting whichever axis found it — see `reporting` below.",
+      "channels": [
+        {
+          "url": "https://dcb.events/",
+          "note": "The official Dynamic Consistency Boundaries site (spec, FAQ, resources, library implementations). VERIFIED LIVE 2026-08-31. This is the canonical DCB channel the topic never named. Poll the resources/implementations pages for new libraries and the site for new spec material."
+        },
+        {
+          "url": "https://www.eventsourcing.dev/",
+          "note": "Event Sourcing Guide — vendor-neutral best-practices site, carries a Dynamic Consistency Boundaries best-practices page. VERIFIED LIVE 2026-08-31."
+        },
+        {
+          "url": "https://www.axoniq.io/blog",
+          "note": "AxonIQ blog. VERIFIED LIVE 2026-08-31 and actively on-thread: DCB in Axon Framework 5, 'Beyond Legacy Databases: How DCB Future-Proofs AI Systems', and the already-ingested AI-agent-explainability post. Vendor, so flag as such — but it is where DCB ships."
+        },
+        {
+          "url": "https://event-driven.io/en/",
+          "note": "Oskar Dudycz's blog — already polled via the people watch; listed here so the substrate thread is credited when a find comes from it."
+        },
+        {
+          "url": "https://sara.event-thinking.io/",
+          "note": "Sara Pellegrini's blog — the DCB origin. Also in `people`; listed here for thread attribution."
+        }
+      ],
+      "_queries_removed_2026_08_31": "Dropped outright after fifteen sweeps produced nothing attributable to them: '\"event sourcing\" 2026 new', 'CQRS pattern 2026', '\"vertical slice architecture\" 2026', 'Jimmy Bogard vertical slice architecture' (he is now a `people` entry, which is the right axis for an author), 'event sourcing projections aggregates DCB talk'. The survivors all carry a DISCRIMINATING term (a named concept or person) rather than a bare term plus a year. The 'business capability' query gained a required architecture co-term because the bare phrase is a CONFIRMED HOMONYM TRAP — it returns corporate capability-maturity and consulting marketing, not architecture.",
+      "reporting": "REPORT THIS TOPIC BY THREAD, NOT BY AXIS. The old format reported the topic axis in isolation, so a week with three Fritzsche substrate captures still printed 'Topic-3: nothing new in window' — which is what produced the false impression of a dead field and triggered the 2026-08-30 diagnosis. Instead: gather every substrate capture from the run REGARDLESS of which axis found it (topic query, channel poll, or people watch), report them together under this topic, and credit the axis in parentheses. Only say 'nothing new' when NO substrate material was captured by ANY axis."
+    },
+    {
+      "name": "Loop engineering (the layer above the harness)",
+      "scope": "anything-substantive",
+      "description": "Loop engineering / 'loopcraft' — the June-2026 evolution of harness engineering: designing the system that PROMPTS, VERIFIES, and STOPS the agent rather than prompting it yourself. A sub-thread of Thread 4 (harness engineering), promoted to its own tracked topic per Dannie 2026-06-28. Capture substantive new material on: stacked loops (agent → verification/grader → event-driven/always-on → hill-climbing/self-improving), the five primitives + on-disk memory (automations/worktrees/skills/connectors/sub-agents), maker≠checker, /loop and /goal style autonomy, trace-driven harness rewriting, and the 'stay the engineer' caveats (verification burden, comprehension debt, cognitive surrender). Flag items that connect loops to Event Modeling (slice=unit-of-work, GWT=verification rubric) as extra-relevant (the dilger-event-modeling-agent-harness seam). Anchored on swyx 'Loopcraft', Addy Osmani 'Loop Engineering', LangChain 'The Art of Loop Engineering' (all ingested 2026-06-28).",
+      "queries": [
+        "\"loop engineering\" agents 2026",
+        "loopcraft stacking loops agents",
+        "\"designing loops that prompt your agents\" Steinberger",
+        "agent verification loop grader maker checker hill climbing",
+        "\"/goal\" \"/loop\" autonomous coding agent loop",
+        "event-driven always-on coding agent heartbeat"
+      ],
+      "social_queries": {
+        "x": [
+          "#loopcraft",
+          "\"loop engineering\"",
+          "loopcraft agents",
+          "\"designing loops\" agents",
+          "stacking loops agents",
+          "maker checker agent loop",
+          "\"/loop\" agent autonomous"
+        ],
+        "linkedin": [
+          "loop engineering agents",
+          "loopcraft",
+          "agent harness loop",
+          "designing loops that prompt agents",
+          "self-improving agent loop"
+        ]
+      }
     }
   ],
   "people": [
     {
       "name": "Adam Dymitruk",
       "note": "Creator of Event Modeling; most on-target voice for the focus area.",
-      "x": ["https://x.com/adymitruk", "https://x.com/eventmodeling"],
+      "x": [
+        "https://x.com/adymitruk",
+        "https://x.com/eventmodeling"
+      ],
       "linkedin": "https://www.linkedin.com/in/eventmodeling",
-      "blog": ["https://eventmodeling.org/posts", "https://podcast.eventmodeling.org"]
+      "blog": [
+        "https://eventmodeling.org/posts",
+        "https://podcast.eventmodeling.org"
+      ]
     },
     {
       "name": "Martin Dilger",
@@ -51,31 +173,60 @@
       "x": [],
       "linkedin": "https://www.linkedin.com/in/martindilger/recent-activity/all/",
       "linkedin_requires_live_chrome": true,
-      "search_fallback": ["\"Martin Dilger\" event modeling", "\"Martin Dilger\" eventmodelers.ai", "Martin Dilger spec-driven development"],
-      "blog": ["https://www.eventmodelers.ai"]
+      "search_fallback": [
+        "\"Martin Dilger\" event modeling",
+        "\"Martin Dilger\" eventmodelers.ai",
+        "Martin Dilger spec-driven development"
+      ],
+      "blog": [
+        "https://www.eventmodelers.ai",
+        "https://www.eventmodelers.ai/docs/blog/",
+        "https://www.eventmodelers.de/docs/blog/"
+      ],
+      "blog_note": "CONFIG DEBT APPLIED 2026-08-31 (outstanding since 08-18). eventmodelers.ai/docs/blog VERIFIED LIVE 2026-08-31 (e.g. the Event Modeling Conference Munich write-up). NOTE the sibling site eventmodelers.de/docs/blog — the nebulit/Miro Event Modeling Toolkit — carries DIFFERENT posts (e.g. 'The Furniture Store of Anti-Patterns'); poll both and dedupe. These are proper articles, unlike the LinkedIn feed, and they are headless-fetchable, which matters because his LinkedIn is not."
     },
     {
       "name": "Andrej Karpathy",
       "note": "Originator of the LLM Wiki pattern this KB runs on; broad AI/ML commentary.",
-      "x": ["https://x.com/karpathy"],
+      "x": [
+        "https://x.com/karpathy"
+      ],
       "linkedin": "",
-      "blog": ["https://karpathy.ai", "https://karpathy.github.io"]
+      "blog": [
+        "https://karpathy.ai",
+        "https://karpathy.github.io"
+      ]
     },
     {
       "name": "Birgitta Böckeler",
-      "note": "Thoughtworks Distinguished Engineer; named the harness-engineering mental model.",
+      "note": "Thoughtworks Distinguished Engineer; named the harness-engineering mental model. NOTE: this entry's `blog` is martinfowler.com/articles, which is the channel for MULTIPLE tracked Thoughtworks voices — treat it as a SITE poll, not one author's feed.",
       "x": [],
       "linkedin": "",
-      "blog": ["https://martinfowler.com/articles"]
+      "blog": [
+        "https://martinfowler.com/articles",
+        "https://martinfowler.com/rachels-ramblings/",
+        "https://martinfowler.com/#recent"
+      ],
+      "blog_note": "CONFIG DEBT RESOLVED DIFFERENTLY 2026-08-31. The debt item said 'add Rachel Laycock'. On checking the two Laycock captures already in raw/, both live at martinfowler.com/rachels-ramblings/ — she has no separate channel, so adding her as a `people` entry would have duplicated a site already polled. Broadened this entry instead: added her ramblings path and the site's recent-changes page. The same site also carries the Sadalage/Chandrasekaran capability article (ingested 2026-08-31) and the Fowler/Böckeler material. LESSON from the 08-29 run: read the recent-changes page, not just /articles — an Aug-27 full article was missed that way."
     },
     {
       "name": "Fraktalio",
       "note": "Belgrade-based event-modeling/event-sourcing tooling company (Ivan Dugalić et al.). Builds an 'Event Modeler' board with direct AI-agent integration via MCP — squarely on the EM×agents focus. LinkedIn company page; requires live logged-in Chrome to fetch the feed (client-rendered, login-walled). Added per Dannie 2026-06-14.",
-      "x": [],
+      "x": [
+        "https://x.com/fraktalio"
+      ],
       "linkedin": "https://www.linkedin.com/company/fraktalio/posts/?feedView=all",
       "linkedin_requires_live_chrome": true,
-      "search_fallback": ["Fraktalio event modeler MCP", "Fraktalio event modeling AI agents", "Ivan Dugalic Fraktalio event modeling"],
-      "blog": []
+      "search_fallback": [
+        "Fraktalio event modeler MCP",
+        "Fraktalio event modeling AI agents",
+        "Ivan Dugalic Fraktalio event modeling"
+      ],
+      "blog": [
+        "https://fraktalio.com/",
+        "https://modeler.fraktalio.com/"
+      ],
+      "blog_note": "CONFIG DEBT PARTIALLY APPLIED 2026-08-31. The debt said 'switch LinkedIn→fraktalio.com'; on verification fraktalio.com is live but exposes no dated blog feed I could confirm, so the LinkedIn company feed is KEPT rather than replaced, and the site + the confirmed @fraktalio X handle are added alongside. Revisit if a feed turns up."
     },
     {
       "name": "Nick Tune",
@@ -83,8 +234,16 @@
       "x": [],
       "linkedin": "https://www.linkedin.com/in/nick-tune/recent-activity/all/",
       "linkedin_requires_live_chrome": true,
-      "search_fallback": ["\"Nick Tune\" agents context engineering", "\"Nick Tune\" domain-driven design AI", "Nick Tune architecture modernization agents"],
-      "blog": []
+      "search_fallback": [
+        "\"Nick Tune\" agents context engineering",
+        "\"Nick Tune\" domain-driven design AI",
+        "Nick Tune architecture modernization agents"
+      ],
+      "blog": [
+        "https://nick-tune.me/blog/",
+        "https://nicktune.medium.com/"
+      ],
+      "blog_note": "CONFIG DEBT APPLIED 2026-08-31 (outstanding since 08-18; several runs had already used it successfully ad hoc). nick-tune.me/blog is his PRIMARY and is headless-fetchable — VERIFIED LIVE 2026-08-31, actively publishing through 2026 and squarely on the loop/harness thread (coding-agent development workflows, post-merge reflection loops for code quality, system prompts for coding assistants). Prefer it over the LinkedIn feed, which is mostly reposts."
     },
     {
       "name": "Jeremy Miller",
@@ -92,8 +251,14 @@
       "x": [],
       "linkedin": "https://www.linkedin.com/in/jeremy-miller-500a3a1/recent-activity/all/",
       "linkedin_requires_live_chrome": true,
-      "search_fallback": ["Jeremy Miller Critter Stack agents", "Marten Wolverine AI agents event sourcing", "\"Shade Tree Developer\" agents"],
-      "blog": ["https://jeremydmiller.com/"]
+      "search_fallback": [
+        "Jeremy Miller Critter Stack agents",
+        "Marten Wolverine AI agents event sourcing",
+        "\"Shade Tree Developer\" agents"
+      ],
+      "blog": [
+        "https://jeremydmiller.com/"
+      ]
     },
     {
       "name": "Adam Tornhill",
@@ -101,8 +266,17 @@
       "x": [],
       "linkedin": "https://www.linkedin.com/in/adam-tornhill-71759b48/recent-activity/all/",
       "linkedin_requires_live_chrome": true,
-      "search_fallback": ["Adam Tornhill CodeScene agentic", "CodeScene unhealthy code agentic token", "Adam Tornhill code health AI agents"],
-      "blog": ["https://codescene.com/blog"]
+      "search_fallback": [
+        "Adam Tornhill CodeScene agentic",
+        "CodeScene unhealthy code agentic token",
+        "Adam Tornhill code health AI agents",
+        "Adam Tornhill substack Code for Humans and Machines"
+      ],
+      "blog": [
+        "https://adamtornhill.substack.com/",
+        "https://codescene.com/blog"
+      ],
+      "blog_note": "adamtornhill.substack.com ('Code for Humans and Machines') is Tornhill's PERSONAL primary — designing AI-aware software, refactoring patterns/principles; more on-thread (code health × agentic coding) and more author-voice than the CodeScene company blog. Substack archive is client-rendered (JS) — WebFetch returns an empty shell; use Claude-in-Chrome (navigate + get_page_text) to read the feed. Added per Dannie 2026-06-17."
     },
     {
       "name": "Yves Goeleven",
@@ -111,8 +285,234 @@
       "linkedin": "https://www.linkedin.com/in/goeleven/recent-activity/all/",
       "linkedin_requires_live_chrome": true,
       "lookback_override_days": 120,
-      "search_fallback": ["Yves Goeleven event modeling", "Yves Goeleven event sourcing business capabilities", "Yves Goeleven coupling cohesion architecture"],
-      "blog": ["https://www.goeleven.com/", "https://cloudshaper.wordpress.com/"]
+      "search_fallback": [
+        "Yves Goeleven event modeling",
+        "Yves Goeleven event sourcing business capabilities",
+        "Yves Goeleven coupling cohesion architecture"
+      ],
+      "blog": [
+        "https://www.goeleven.com/",
+        "https://cloudshaper.wordpress.com/"
+      ]
+    },
+    {
+      "name": "Rico Fritzsche",
+      "note": "Software architect; writes long-form on the design substrate — EVENT MODELING vs EVENT SOURCING (the distinction, not the conflation), CQRS, VERTICAL SLICES, functional/aggregateless event sourcing, and fit-for-purpose 'do you actually need ES?' pragmatism. Runs an Architecture Knowledge Base + FACTSTR (his own event store) and a functional eventstore-typescript project. Pragmatic, anti-hype voice — strong on knowing WHEN not to reach for ES/aggregates. Blog is Ghost (ricofritzsche.me, members-only on some issues); also Medium. LinkedIn requires live logged-in Chrome. Added per Dannie 2026-06-15.",
+      "x": [
+        "https://x.com/codewithrico"
+      ],
+      "linkedin": "https://www.linkedin.com/in/ricofritzsche/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": [
+        "Rico Fritzsche event sourcing",
+        "Rico Fritzsche vertical slices CQRS",
+        "Rico Fritzsche aggregateless functional event sourcing"
+      ],
+      "blog": [
+        "https://ricofritzsche.me/",
+        "https://architecture.ricofritzsche.me/",
+        "https://medium.com/@rico-fritzsche"
+      ]
+    },
+    {
+      "name": "Oskar Dudycz",
+      "note": "Event-sourcing practitioner/educator; creator of Emmett (Node.js event-sourcing toolkit) and Marten co-maintainer; prolific blogger (event-driven.io). Strong VERTICAL-SLICE / CQRS / event-sourcing substrate voice. Named candidate from the 2026-06-15 watch (his 'Vertical Slices, CQRS, Semantic Diffusion', Aug-2025, is the wanted source explicitly mapping VSA to slices). Watch his blog + LinkedIn for the VSA↔Event-Modeling↔agent-task-unit mapping. LinkedIn requires live logged-in Chrome. Added per Dannie 2026-06-15.",
+      "x": [
+        "https://x.com/oskar_at_net"
+      ],
+      "linkedin": "https://www.linkedin.com/in/oskardudycz/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": [
+        "Oskar Dudycz vertical slices CQRS semantic diffusion",
+        "Oskar Dudycz event sourcing Emmett",
+        "Oskar Dudycz vertical slice architecture event modeling"
+      ],
+      "blog": [
+        "https://event-driven.io/en/"
+      ]
+    },
+    {
+      "name": "Vlad Khononov",
+      "note": "DDD / software-design author (O'Reilly 'Learning Domain-Driven Design'; Addison-Wesley/Pearson 'Balancing Coupling in Software Design'). Creator of the Balanced Coupling model — strength × distance × volatility of coupling — directly on the coupling/cohesion × BUSINESS-CAPABILITIES substrate (Thread 2) and increasingly on AI: argues modularity/boundaries are what make codebases tractable for AI agents ('Golden Age of Modularity'), and posts on context engineering for coding agents. Blog 'Rants on Software Design' (vladikk.com). LinkedIn is repost/event-promo-heavy (O'Reilly Superstreams) — for substance prefer the blog; LinkedIn requires live logged-in Chrome. Added per Dannie 2026-06-17.",
+      "x": [
+        "https://x.com/vladikk"
+      ],
+      "linkedin": "https://www.linkedin.com/in/vladikk/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": [
+        "Vlad Khononov balancing coupling",
+        "Vladimir Khononov modularity AI agents",
+        "Vlad Khononov context engineering coding agents"
+      ],
+      "blog": [
+        "https://vladikk.com/"
+      ]
+    },
+    {
+      "name": "Addy Osmani",
+      "note": "Google engineering leader; author of the definitional loop-engineering primary (addyosmani.com/blog/loop-engineering, 2026-06-07) and a connected series on agent harness engineering, the 'factory model', the 'orchestration tax', 'intent debt', 'comprehension debt', and code review in the age of AI. Lead voice for the new loop-engineering topic. Blog is fetchable headless. Added per Dannie 2026-06-28. LinkedIn profile added per Dannie 2026-08-19.",
+      "x": [
+        "https://x.com/addyosmani"
+      ],
+      "linkedin": "https://www.linkedin.com/in/addyosmani/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "search_fallback": [
+        "Addy Osmani loop engineering",
+        "Addy Osmani agent harness factory",
+        "Addy Osmani comprehension debt AI coding"
+      ],
+      "blog": [
+        "https://addyosmani.com/blog/"
+      ]
+    },
+    {
+      "name": "swyx (Shawn Wang)",
+      "note": "Founder of Latent.Space (podcast + AINews newsletter); coined 'loopcraft' / popularized loop engineering and 'the Salty Lesson for agents' (latent.space, 2026-06-12). Synthesizer/curator voice — names and frames patterns across the AI-engineering field. NOTE: Latent.Space posts are often paywalled (free intro only) and the site is client-rendered; WebFetch gets the free intro, deeper content needs a subscription. Added per Dannie 2026-06-28.",
+      "x": [
+        "https://x.com/swyx"
+      ],
+      "linkedin": "",
+      "search_fallback": [
+        "swyx loopcraft stacking loops",
+        "Latent Space loop engineering agents",
+        "swyx AI engineering loops leverage"
+      ],
+      "blog": [
+        "https://www.latent.space/"
+      ]
+    },
+    {
+      "name": "Simon Willison",
+      "note": "Co-creator of Django; creator of Datasette and the `llm` CLI/Python library; coined 'prompt injection'. One of the most prolific, practical LLM/AI-agent commentators working today — near-daily posts on model releases, agentic coding, tool use, LLM security, and hands-on tooling at simonwillison.net (long-form entries + blogmarks + quotations + TILs). Adjacent to the agentic-coding / loop-engineering / harness threads (practitioner-voice on what actually works with coding agents) rather than the Event Modeling core; capture substantive items on agents/agentic coding/LLM tooling and flag off-thread model-release commentary. Blog is a static site and IS headless-fetchable (plain WebFetch works; Atom feed at https://simonwillison.net/atom/everything/) — no live Chrome needed. Added per Dannie 2026-07-06.",
+      "x": [
+        "https://x.com/simonw"
+      ],
+      "linkedin": "https://www.linkedin.com/in/simonwillison/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "linkedin_note": "CORRECTED 2026-07-06: the vanity slug /in/simonw is a different person (Simon Walker); Simon Willison is /in/simonwillison/. LOW-VALUE CHANNEL — live-Chrome sweep 2026-07-06 showed his LinkedIn feed tops at ~6 months old (he cross-posts occasionally, e.g. the annual LLM roundup, but does not post here regularly). His blog + X are the live channels; treat LinkedIn as a stale mirror, not a primary.",
+      "x_note": "@simonw is active on X and often posts there first; per _x_coverage, X timelines are login-walled + client-rendered, so a real X sweep needs a live logged-in Chrome session (navigate to https://x.com/simonw, scroll + collect via javascript_tool). His blog mirrors most substantive content, so the headless blog fetch is the reliable primary channel; treat LinkedIn/X as anything-substantive + flag-off-thread.",
+      "search_fallback": [
+        "Simon Willison agents agentic coding",
+        "Simon Willison LLM tools prompt injection",
+        "Simon Willison coding agents 2026"
+      ],
+      "blog": [
+        "https://simonwillison.net/"
+      ]
+    },
+    {
+      "name": "Sara Pellegrini",
+      "note": "Originator of the DYNAMIC CONSISTENCY BOUNDARY — Topic-3's own description names her, yet she was never in `people`, which the 2026-08-30 diagnosis identified as the single biggest hole in the substrate watch. Author of the 'Kill the Aggregate' series and the 2023 naming post. Already has a wiki entity page and is cited by ten sources on [[dynamic-consistency-boundaries]]. Blog VERIFIED LIVE 2026-08-31 (newest seen: 'The DCB Tag Dilemma', 2026-03) — she posts INFREQUENTLY, so use a longer lookback. Added per Dannie 2026-08-31.",
+      "x": [],
+      "linkedin": "https://www.linkedin.com/in/sara-pellegrini-55a37913/recent-activity/all/",
+      "linkedin_requires_live_chrome": true,
+      "lookback_override_days": 120,
+      "search_fallback": [
+        "Sara Pellegrini dynamic consistency boundary",
+        "Sara Pellegrini kill the aggregate event sourcing",
+        "Sara Pellegrini DCB tag"
+      ],
+      "blog": [
+        "https://sara.event-thinking.io/"
+      ]
+    },
+    {
+      "name": "Jimmy Bogard",
+      "note": "Coined VERTICAL SLICE ARCHITECTURE — named in Topic-3's own description as the VSA lineage, and likewise missing from `people` until now. Creator of AutoMapper/MediatR/Respawn (now Lucky Penny Software). Blog VERIFIED LIVE 2026-08-31: Ghost at jimmybogard.com with a HEADLESS-FETCHABLE RSS feed (https://www.jimmybogard.com/rss/), lastBuildDate 2026-08-27 — no live Chrome needed. HONEST CAVEAT: most posts are AutoMapper/MediatR release notes and licensing news; roughly one in eight is on-thread. But the on-thread ones land squarely on the focus — his 2026-07-23 post announces a webinar on 'Vertical Slice Architecture: Effective Guardrails for AI Development', arguing VSA shortens agent cycles by reducing side-effects and coupling, which is the same token-economics claim Miller and Dilger make. Filter hard; keep the VSA/DDD/AI items. Added per Dannie 2026-08-31.",
+      "x": [],
+      "linkedin": "",
+      "search_fallback": [
+        "Jimmy Bogard vertical slice architecture AI",
+        "Jimmy Bogard VSA guardrails AI development",
+        "Jimmy Bogard vertical slice DDD 2026"
+      ],
+      "blog": [
+        "https://www.jimmybogard.com/",
+        "https://www.jimmybogard.com/rss/"
+      ]
+    },
+    {
+      "name": "AxonIQ / Allard Buijze",
+      "note": "COMPANY-LEVEL channel (the diagnosis recommended it as such rather than as a person). Axon Framework/Axon Server; founder Allard Buijze, CEO Jessica Reeves. Blog VERIFIED LIVE 2026-08-31 and actively on-thread: DCB shipped in Axon Framework 5 / Axon Server 2025.2, plus 'Beyond Legacy Databases: How DCB Future-Proofs AI Systems with Event Sourcing' and the already-ingested 'AI Agent Explainability: Why Your Infrastructure Needs to Remember'. Buijze also appeared with Dymitruk and Dilger on a Feb-2026 DCB event, which is the EM×DCB seam. VENDOR — flag every capture as such; their 'you need an event store' conclusion is motivated. Added per Dannie 2026-08-31.",
+      "x": [],
+      "linkedin": "",
+      "search_fallback": [
+        "AxonIQ DCB Axon Framework 5",
+        "Allard Buijze dynamic consistency boundary",
+        "AxonIQ event sourcing AI agents"
+      ],
+      "blog": [
+        "https://www.axoniq.io/blog"
+      ]
+    },
+    {
+      "name": "Drew Breunig",
+      "note": "NEW AUTHOR surfaced 2026-08-24 on the loop-engineering topic axis via a Simon Willison quotation, then followed back to his own blog. Standing CONFIG DEBT since then, applied 2026-08-31. Two captures already in raw/ ('Harnesses are Situated Agents' 2026-08-14 — the strongest new definitional primary for harness-engineering since Böckeler's guides/sensors framing; and 'Fable and the End of the Free Lunch' 2026-08-23), BOTH still un-ingested (Batch F). Blog is a static site and headless-fetchable.",
+      "x": [],
+      "linkedin": "",
+      "search_fallback": [
+        "Drew Breunig harnesses situated agents",
+        "dbreunig agent harness",
+        "Drew Breunig LLM agents blog"
+      ],
+      "blog": [
+        "https://www.dbreunig.com/"
+      ]
     }
-  ]
+  ],
+  "candidate_primaries": [
+    {
+      "name": "Simon Wardley primary (remaining chapters)",
+      "note": "PARTIALLY SATISFIED: Value Chains + Evolution captured (wiki source wardley-maps-value-chains-and-evolution, 2026-06-15). Still wanted: the remaining Wardley Maps chapters (doctrine, gameplay, the Strategy Cycle / PST) to round out the wardley-mapping concept. Narrowed per health check 2026-06-17.",
+      "search_fallback": [
+        "Simon Wardley maps doctrine chapter",
+        "Wardley mapping gameplay strategy cycle",
+        "Simon Wardley OODA strategy cycle map"
+      ]
+    },
+    {
+      "name": "Vlad Khononov — Balanced Coupling primary",
+      "note": "A definitive primary for Khononov's Balanced Coupling model (strength x distance x volatility) — his book 'Balancing Coupling in Software Design' or a definitive article — to ground the balanced-coupling concept page beyond the 'Golden Age of Modularity' blog opinion piece. Flagged per health check 2026-06-17.",
+      "search_fallback": [
+        "Vlad Khononov Balancing Coupling in Software Design book",
+        "Khononov balanced coupling strength distance volatility",
+        "Vlad Khononov coupling cohesion model article"
+      ]
+    },
+    {
+      "name": "Rico Fritzsche — 'Autonomous Domain Capabilities' (Leanpub)",
+      "note": "CONFIG DEBT APPLIED 2026-08-31 (outstanding since 08-24). Fritzsche's book-length treatment of capability-as-home / RPU. Wanted as the PRIMARY behind the autonomous-domain-capabilities and business-capabilities pages, which currently rest on his blog posts. Flagged-important focus area.",
+      "search_fallback": [
+        "Rico Fritzsche Autonomous Domain Capabilities leanpub",
+        "Fritzsche autonomous domain capabilities book",
+        "Fritzsche RPU reactor capability book"
+      ]
+    },
+    {
+      "name": "The three arXiv harness/loop papers",
+      "note": "CONFIG DEBT APPLIED 2026-08-31 (outstanding since 08-29). arXiv 2607.00038, 2605.25665, 2604.17025 — harness/loop optimization papers. NOTE two related papers are ALREADY in raw/ un-ingested (evo-bench-can-language-models-improve-agent-harness, sbco-verifier-grounded-harness-optimization, both Batch F); check for overlap before capturing so the same paper is not filed twice.",
+      "search_fallback": [
+        "arXiv 2607.00038 agent harness",
+        "arXiv 2605.25665 agent loop optimization",
+        "arXiv 2604.17025 harness"
+      ]
+    },
+    {
+      "name": "SDD counter-evidence primaries",
+      "note": "The wiki's most load-bearing single-source dependency: [[spec-driven-development]]'s counter-evidence rests on one essayist's secondhand summary (Ng). Wanted: Scott Logic's SpecKit trial, the Fowler/Böckeler Kiro analysis, Marmelab's 'Waterfall Strikes Back', and any Gojko Adzic primary. Open since 2026-08-16; a hunt ran 2026-08-31 — see wiki/log.md for what was and was not found.",
+      "search_fallback": [
+        "Scott Logic SpecKit trial spec-driven development",
+        "Marmelab waterfall strikes back spec driven",
+        "Gojko Adzic spec driven development BDD",
+        "Fowler Boeckeler Kiro spec driven analysis"
+      ]
+    }
+  ],
+  "_candidate_primaries_satisfied": [
+    {
+      "name": "CodeScene peer-reviewed defect-risk study",
+      "satisfied": "2026-06-16 — captured the Borg/Tornhill paper 'Code for Machines, Not Just Humans' (arXiv 2601.02200, FORGE 2026) at raw/papers/borg-tornhill-code-for-machines-not-just-humans. Removed from active candidates per health check 2026-06-17."
+    }
+  ],
+  "_config_debt_status_2026_08_31": "The standing CONFIG DEBT accumulated 08-18 → 08-29 is now CLEARED. Applied: eventmodelers.ai/docs/blog (+ the .de sibling) to Dilger; nick-tune.me/blog to Nick Tune; Drew Breunig added to `people`; Fritzsche's Leanpub and the three arXiv papers added to `candidate_primaries`. Resolved differently: Rachel Laycock needed no `people` entry — she publishes at martinfowler.com/rachels-ramblings, already polled, so the Böckeler/Fowler site entry was broadened instead. Partially applied: the Fraktalio LinkedIn→fraktalio.com switch was NOT made, because no dated feed could be verified on the site; both are kept. Already satisfied, and stale in the debt list: the `linkedin` social_queries term lists were populated on every topic before this edit."
 }

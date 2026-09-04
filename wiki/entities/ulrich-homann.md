@@ -3,7 +3,7 @@ title: Ulrich Homann
 type: entity
 created: 2026-06-14
 updated: 2026-06-14
-sources: [homann-business-oriented-foundation-service-orientation]
+sources: [homann-business-capabilities]
 tags: [person, business-architecture, business-capabilities]
 ---
 
@@ -16,6 +16,9 @@ modeling a business as a network of capability "black boxes" (what, not how) wit
 organized as a nested taxonomy. The paper is a foundational reference for business architecture (cited
 by the BIZBOK Guide).
 
-Anchors the [[business-capabilities]] concept in the KB.
+Anchors the [[business-capabilities]] concept in the KB. Sits alongside **[[vlad-khononov]]** as the
+two theory anchors of that concept: Homann supplies the *capability black-box / "what not how"* boundary
+from the business-architecture side, while Khononov's [[balanced-coupling|Balanced Coupling]] model
+supplies the coupling/cohesion mechanics for *why* such boundaries hold.
 
 _Source pages: [[homann-business-capabilities]]._

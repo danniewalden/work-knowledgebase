@@ -74,9 +74,56 @@ tags: [<freeform tags>]
 
 - Filenames are `kebab-case.md`.
 - Source pages cite the file in `raw/` they came from.
+
+**Source pages carry a `raw_file:` key.** Every page in `wiki/sources/` lists, in frontmatter, the
+raw capture(s) it compiles:
+
+```yaml
+raw_file: [raw/articles/willison-what-is-agentic-engineering.md]
+```
+
+This is a list because one source page legitimately covers several raw files (a multi-part series, a
+post and its later restatement). Do **not** rename a raw file or a source page to make them match —
+the whole point of the key is that the mapping is explicit and survives divergence.
+
+Why it exists: "is this raw capture ingested yet?" is asked on every research sweep and every digest,
+and before this key the only mechanical answer was filename matching, which was wrong for 27 of 191
+captures and produced backlog counts ~30% too high for five consecutive sweeps. With `raw_file:`, the
+un-ingested backlog is a one-line query:
+
+```bash
+comm -23 <(find raw/articles raw/papers raw/notes raw/data -type f ! -name '.gitkeep' 2>/dev/null | sort) \
+         <(sed -n 's/^raw_file: \[\(.*\)\]$/\1/p' wiki/sources/*.md \
+           | tr ',' '\n' | sed 's/^ *//;s/ *$//' | sort -u)
+```
+
+Read `raw_file:` specifically rather than grepping for any `raw/...` string in the page body — a source
+page often mentions neighbouring captures in prose, and only the frontmatter key means "this page
+compiles that file."
 - Every factual claim on an entity/concept page should be traceable to at least
   one source page. When sources conflict, say so explicitly on the page rather
   than silently picking one.
+
+**Interested claims carry their marker at every use, not just on the source page.** If a figure or
+finding comes from a party with a stake in it, the caveat travels with the claim onto every page that
+cites it. A caveat that lives only in a source page's "Caveats" section does not survive being quoted.
+
+The four cases that recur here:
+
+- **Vendor self-report** — a company's own numbers about its own product (Stripe on minions, AxonIQ on
+  event stores, eventmodelers.ai, JasperFx). Mark inline: *"(Stripe's own figure)"*.
+- **Not independent** — a source that shares an employer or commercial interest with the concept it is
+  cited as corroborating. A Thoughtworks case study is not independent corroboration for a
+  Thoughtworks-coined concept; a Thoughtworks Radar placement cited by a Thoughtworks author is not
+  external support for that author.
+- **Preprint, not peer-reviewed** — arXiv is not peer review. Say "preprint" and keep saying it.
+- **Impression, not measurement** — a practitioner's "about ten times faster" is a self-report. Do not
+  promote it to "datum", "figure" or "number" on a downstream page.
+
+None of this means discounting the source. Vendor material is often the only material, and the
+practitioner closest to a thing usually notices it first. The rule exists so a reader can tell, at the
+point of reading, what a claim is worth — and so the wiki does not accumulate confidence a claim never
+had by laundering it through three pages of citation.
 
 ---
 

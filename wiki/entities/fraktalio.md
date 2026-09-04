@@ -2,7 +2,7 @@
 title: Fraktalio
 type: entity
 created: 2026-06-14
-updated: 2026-06-14
+updated: 2026-08-31
 sources: [fraktalio-event-modeler-connect-ai-agents-mcp]
 tags: [tool, platform, company, event-modeling, agentic-ai, model-context-protocol, focus]
 ---
@@ -34,5 +34,9 @@ have the model **govern** the agent.
 Evidence is a single vendor announcement — no independent review, no metrics, correctness of the
 auto-generated GWT unverified. Fraktalio also has prior (out-of-window) posts on event-driven design
 generally; only the MCP-integration post is captured.
+
+## Related
+
+[[model-as-code-vs-model-as-language]]
 
 _Source pages: [[fraktalio-event-modeler-connect-ai-agents-mcp]]._

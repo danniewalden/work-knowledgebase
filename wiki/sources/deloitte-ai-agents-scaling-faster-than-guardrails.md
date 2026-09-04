@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [deloitte-ai-agents-scaling-faster-than-guardrails]
+raw_file: [raw/articles/deloitte-ai-agents-scaling-faster-than-guardrails.md]
 tags: [agentic-ai, governance, enterprise-adoption, deloitte]
 ---
 

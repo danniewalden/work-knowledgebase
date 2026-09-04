@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [anthropic-building-effective-agents]
+raw_file: [raw/articles/anthropic-building-effective-agents.md]
 tags: [agentic-ai, agent-patterns, anthropic, engineering]
 ---
 

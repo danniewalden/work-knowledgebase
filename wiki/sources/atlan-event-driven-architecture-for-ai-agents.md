@@ -4,6 +4,7 @@ type: source
 created: 2026-06-12
 updated: 2026-06-12
 sources: [atlan-event-driven-architecture-for-ai-agents]
+raw_file: [raw/articles/atlan-event-driven-architecture-for-ai-agents.md]
 tags: [agentic-ai, event-driven-architecture, event-sourcing, patterns, governance]
 ---
 

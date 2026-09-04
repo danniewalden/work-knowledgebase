@@ -4,6 +4,7 @@ type: source
 created: 2026-06-12
 updated: 2026-06-12
 sources: [confluent-agentic-event-driven-systems-architecture]
+raw_file: [raw/articles/confluent-agentic-event-driven-systems-architecture.md]
 tags: [agentic-ai, event-driven-architecture, event-sourcing, multi-agent, closed-loop, kafka]
 ---
 

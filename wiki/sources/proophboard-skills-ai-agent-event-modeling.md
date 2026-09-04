@@ -4,6 +4,7 @@ type: source
 created: 2026-06-12
 updated: 2026-06-12
 sources: [proophboard-skills-ai-agent-event-modeling]
+raw_file: [raw/articles/proophboard-skills-ai-agent-event-modeling.md]
 tags: [event-modeling, agentic-ai, mcp, skills, tooling, focus]
 ---
 

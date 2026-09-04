@@ -3,7 +3,8 @@ title: "Homann — A Business-Oriented Foundation for Service Orientation"
 type: source
 created: 2026-06-14
 updated: 2026-06-14
-sources: [homann-business-oriented-foundation-service-orientation]
+sources: [homann-business-capabilities]
+raw_file: [raw/papers/homann-business-oriented-foundation-service-orientation.md]
 tags: [business-capabilities, business-architecture, ddd, coupling-cohesion, primary, focus]
 ---
 

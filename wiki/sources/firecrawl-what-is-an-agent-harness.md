@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [firecrawl-what-is-an-agent-harness]
+raw_file: [raw/articles/firecrawl-what-is-an-agent-harness.md]
 tags: [harness-engineering, agent-harness, survey, vendor]
 ---
 

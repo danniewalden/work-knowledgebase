@@ -2,8 +2,8 @@
 title: Agentic Event-Driven Systems (Closed-Loop)
 type: concept
 created: 2026-06-12
-updated: 2026-06-12
-sources: [confluent-agentic-event-driven-systems-architecture, solace-multi-agent-systems-real-time-context-eda, atlan-event-driven-architecture-for-ai-agents, akka-event-sourcing-backbone-agentic-ai]
+updated: 2026-06-21
+sources: [confluent-agentic-event-driven-systems-architecture, solace-multi-agent-systems-real-time-context-eda, atlan-event-driven-architecture-for-ai-agents, akka-event-sourcing-backbone-agentic-ai, axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember]
 tags: [agentic-ai, eda, event-sourcing, closed-loop, multi-agent, synthesis]
 ---
 
@@ -62,6 +62,18 @@ sourcing as a first-class agent pattern.
   [[autonomy-ladder]]).
 - **Vs. [[event-modeling]] (method)**: this is streaming/runtime architecture, not Dymitruk's design
   notation; the design-method layer is [[event-modeled-agent-design]].
+
+## Event store vs. event stream (AxonIQ, 2026-06-21)
+
+A refinement worth flagging: the sources above lean on **event streaming** (Kafka/Flink), but
+[[axoniq]] ([[axoniq-ai-agent-explainability-why-infrastructure-needs-to-remember]]) argues that for
+agent **[[agent-explainability|explainability]]** an event *stream* is **not sufficient** — it moves
+data and records *what* happened (built for throughput), whereas an event **store** captures decisions
+with full causal context and records *why* (built for replay/audit). "Kafka cannot reconstruct the
+full causal context of a decision made six months ago; an event store can." So the closed-loop
+backbone needs an *event-sourced store of decisions*, not just a streaming bus — tightening this
+concept's [[event-sourcing]] requirement and connecting it to the regulatory framing in
+[[agent-explainability]].
 
 ## Caveat
 

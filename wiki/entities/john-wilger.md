@@ -2,8 +2,8 @@
 title: John Wilger
 type: entity
 created: 2026-06-13
-updated: 2026-06-13
-sources: [jwilger-agent-skills-event-modeling]
+updated: 2026-08-31
+sources: [jwilger-agent-skills-event-modeling, jwilger-agent-skills-factory-pipeline]
 tags: [person, agentic-coding, event-modeling, skills, open-source]
 ---
 
@@ -21,4 +21,17 @@ quality gates — bridging the Event-Modeling and harness threads. Not otherwise
 [[adam-dymitruk]] / [[adaptech-group]] or [[prooph-board]] as far as the captured source shows; this
 is an independent third-party adoption of Event Modeling for agent workflows.
 
-_Source pages: [[jwilger-agent-skills-event-modeling]]._
+A second, later capture of his repo ([[jwilger-agent-skills-factory-pipeline]], v4.1) sharpens the
+*direction of fit* he represents: in his work **the event model is the upstream, human-authored spec
+that drives a whole [[software-factory|factory]] of coding agents** — the *opposite* arrow from
+[[adam-dymitruk|Dymitruk's]] "agents as users/processors inside a model" and from the "AI assists
+modeling" camp ([[qlerify-event-modeling-tool-ai|Qlerify]], [[fraktalio-event-modeler-connect-ai-agents-mcp|Fraktalio]]).
+That makes him the KB's cleanest instance of EM-as-spec-governs-the-agents, and a worked
+[[software-factory]] whose work-items (slices) and gates ([[given-when-then|GWT]]) come straight out of
+the model.
+
+## Related
+
+[[model-as-code-vs-model-as-language]]
+
+_Source pages: [[jwilger-agent-skills-event-modeling]] · [[jwilger-agent-skills-factory-pipeline]]._

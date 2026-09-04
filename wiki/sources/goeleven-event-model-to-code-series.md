@@ -3,7 +3,8 @@ title: "Goeleven — Translating an Event Model into code (series)"
 type: source
 created: 2026-06-14
 updated: 2026-06-14
-sources: [goeleven-event-modeling-visualize-business-processes, goeleven-interaction-design-aggregate-outbox-projection, goeleven-event-model-to-code-projection]
+sources: [goeleven-event-model-to-code-series]
+raw_file: [raw/articles/goeleven-event-modeling-visualize-business-processes.md, raw/articles/goeleven-interaction-design-aggregate-outbox-projection.md, raw/articles/goeleven-event-model-to-code-projection.md]
 tags: [event-modeling, event-sourcing, cqrs, business-capabilities, coupling-cohesion, focus]
 ---
 

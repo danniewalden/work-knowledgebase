@@ -4,6 +4,7 @@ type: source
 created: 2026-06-12
 updated: 2026-06-12
 sources: [esaa-event-sourcing-for-autonomous-agents]
+raw_file: [raw/papers/esaa-event-sourcing-for-autonomous-agents.md]
 tags: [event-sourcing, cqrs, agentic-ai, multi-agent, academic, focus]
 ---
 

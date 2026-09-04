@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [anthropic-effective-harnesses-long-running-agents]
+raw_file: [raw/articles/anthropic-effective-harnesses-long-running-agents.md]
 tags: [harness-engineering, long-running-agents, claude-agent-sdk, anthropic]
 ---
 

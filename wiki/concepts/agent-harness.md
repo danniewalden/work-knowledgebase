@@ -2,8 +2,8 @@
 title: Agent Harness
 type: concept
 created: 2026-06-11
-updated: 2026-06-11
-sources: [langchain-anatomy-of-an-agent-harness, firecrawl-what-is-an-agent-harness, anthropic-effective-harnesses-long-running-agents]
+updated: 2026-08-31
+sources: [langchain-anatomy-of-an-agent-harness, firecrawl-what-is-an-agent-harness, anthropic-effective-harnesses-long-running-agents, ahe-agentic-harness-engineering]
 tags: [harness-engineering, agent-harness, primitives, architecture]
 ---
 
@@ -34,6 +34,14 @@ tool calls, and lost state on failure ([[firecrawl-what-is-an-agent-harness]]).
 - **Orchestration logic:** subagent spawning, handoffs, model routing ([[multi-agent-orchestration]]).
 - **Hooks/middleware:** deterministic checks, continuation ([[ralph-loop]]), verification.
 
+A research framework makes this list concrete and editable: [[ahe-agentic-harness-engineering|AHE (Lin et
+al. 2026)]]'s NexAU substrate enumerates **seven orthogonal, file-level component types** — system prompt,
+tool description, tool implementation, middleware, skill, sub-agent configuration, and long-term memory —
+deliberately decoupled so each is independently editable and revertible. Its ablation finds the reliability
+gain concentrated in **tools, middleware, and long-term memory**, with the system prompt alone *regressing*
+— evidence that "the harness" is not prompt-shaped and that these components carry transferable engineering
+experience the model leans on more the weaker it is.
+
 ## Architecture patterns ([[firecrawl-what-is-an-agent-harness]])
 
 Single-agent supervisor · **initializer-executor split** (see [[long-running-agents]]) ·
@@ -49,5 +57,9 @@ LangChain's DeepAgents is a harness built on the LangChain framework. The [[clau
 described as a general-purpose agent harness. Note the **model↔harness co-evolution**: products are
 post-trained with their harness in the loop, so the best harness for a task isn't necessarily the
 one a model shipped with ([[langchain-anatomy-of-an-agent-harness]]).
+
+## Related
+
+[[token-budget-quality-cliff]]
 
 _Sources: [[langchain-anatomy-of-an-agent-harness]] · [[firecrawl-what-is-an-agent-harness]] · [[anthropic-effective-harnesses-long-running-agents]]._

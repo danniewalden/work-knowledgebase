@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [akka-event-sourcing-backbone-agentic-ai]
+raw_file: [raw/articles/akka-event-sourcing-backbone-agentic-ai.md]
 tags: [agentic-ai, event-sourcing, llm, rag, distributed-systems]
 ---
 

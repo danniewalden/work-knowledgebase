@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [langchain-anatomy-of-an-agent-harness]
+raw_file: [raw/articles/langchain-anatomy-of-an-agent-harness.md]
 tags: [harness-engineering, agent-harness, primitives, langchain]
 ---
 

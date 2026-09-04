@@ -2,8 +2,8 @@
 title: Agentic AI
 type: concept
 created: 2026-06-11
-updated: 2026-06-11
-sources: [akka-event-sourcing-backbone-agentic-ai, akka-agentic-systems-are-distributed-systems, anthropic-building-effective-agents, deloitte-ai-agents-scaling-faster-than-guardrails, langchain-state-of-agent-engineering-2026, svitla-agentic-ai-market-trends-2026]
+updated: 2026-08-03
+sources: [akka-event-sourcing-backbone-agentic-ai, akka-agentic-systems-are-distributed-systems, anthropic-building-effective-agents, deloitte-ai-agents-scaling-faster-than-guardrails, langchain-state-of-agent-engineering-2026, svitla-agentic-ai-market-trends-2026, dora-roi-ai-assisted-software-development-2026]
 tags: [agentic-ai, llm, distributed-systems, event-sourcing, market, patterns, governance]
 ---
 
@@ -31,6 +31,11 @@ the [[autonomy-ladder]].
 - **Where the market is** — [[svitla-agentic-ai-market-trends-2026]]: fast growth but a
   ~79%-adoption / ~11%-production gap explained by [[agentwashing]]; ~57% production among
   technical builders ([[langchain-state-of-agent-engineering-2026]]).
+- **Whether it pays off** — the [[dora-roi-ai-assisted-software-development-2026|2026 DORA ROI report]]:
+  AI is an **amplifier** of the organizational system (not the tools), value realises on a **J-Curve**
+  (a productivity dip before gains), and returns come from seven capabilities → DORA metrics → outcomes;
+  the [[autonomy-ladder|agentic-era]] reframing is "ROI = latent human creativity unlocked, not
+  headcount replaced."
 - **Keeping them safe & reliable** — [[agent-observability-and-evals]] (quality is the #1
   blocker), [[agent-governance]] (only ~21% mature, per [[deloitte]]), and
   [[guardian-agents]].

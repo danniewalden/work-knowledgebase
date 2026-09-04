@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [eventmodeling-what-is-event-modeling]
+raw_file: [raw/articles/eventmodeling-what-is-event-modeling.md]
 tags: [event-modeling, event-sourcing, methodology, ddd, software-design]
 ---
 

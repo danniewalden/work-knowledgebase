@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [bogard-vertical-slice-architecture]
+raw_file: [raw/articles/bogard-vertical-slice-architecture.md]
 tags: [vertical-slice-architecture, cqrs, ddd, architecture, seed]
 ---
 

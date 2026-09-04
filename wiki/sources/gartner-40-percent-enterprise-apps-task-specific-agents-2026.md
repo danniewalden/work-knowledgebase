@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [gartner-40-percent-enterprise-apps-task-specific-agents-2026]
+raw_file: [raw/articles/gartner-40-percent-enterprise-apps-task-specific-agents-2026.md]
 tags: [gartner, primary-source, forecasts, agentic-ai, market]
 ---
 

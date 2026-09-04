@@ -2,7 +2,7 @@
 title: prooph board
 type: entity
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-08-31
 sources: [proophboard-skills-ai-agent-event-modeling]
 tags: [event-modeling, tooling, mcp, vendor]
 ---
@@ -19,3 +19,7 @@ repository of **AI agent skills** plus an **[[model-context-protocol|MCP]] serve
 agents create and work with Event Modeling elements. It is the visual-modeling counterpart to
 [[qlerify]] (both are AI-assisted Event Modeling tools in the KB) and the clearest shipping evidence
 for [[event-modeled-agent-design]]: an agent as a *practitioner* of Event Modeling.
+
+## Related
+
+[[model-as-code-vs-model-as-language]]

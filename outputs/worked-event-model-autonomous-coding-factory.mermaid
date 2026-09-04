@@ -1,0 +1,81 @@
+---
+title: Autonomous Coding Factory — Event Model (swimlanes × command→event→read-model)
+---
+flowchart LR
+    classDef cmd fill:#cfe3ff,stroke:#3b82f6,color:#0b3d91,font-weight:bold;
+    classDef evt fill:#ffe2c2,stroke:#fb923c,color:#7c2d12;
+    classDef rm fill:#d7f5dd,stroke:#22c55e,color:#14532d;
+
+    subgraph PO["👤 Product Owner (user)"]
+        cReq(["Request Feature"]):::cmd
+        eReq["Feature Requested"]:::evt
+    end
+
+    subgraph MA["🤖 Modeling Agent (processor)"]
+        cDraft(["Draft Slice Model"]):::cmd
+        eModeled["Slice Modeled"]:::evt
+        cGWT(["Generate GWT"]):::cmd
+        eAcc["Acceptance Defined"]:::evt
+    end
+
+    subgraph OR["⚙️ Orchestrator (deterministic)"]
+        cAssign(["Assign Slice"]):::cmd
+        eAssigned["Slice Assigned"]:::evt
+    end
+
+    subgraph BA["🤖 Builder Agent (executor / ralph-loop)"]
+        cImpl(["Implement Slice"]):::cmd
+        eDrafted["Implementation Drafted"]:::evt
+    end
+
+    subgraph VH["⚙️ Verification Harness (sensors)"]
+        cRun(["Run Acceptance"]):::cmd
+        ePass["Checks Passed"]:::evt
+        eFail["Checks Failed"]:::evt
+    end
+
+    subgraph GU["🛡️ Guardian Agent (subscriber / veto)"]
+        cReview(["Review Slice"]):::cmd
+        eApproved["Slice Approved"]:::evt
+        eRejected["Slice Rejected"]:::evt
+    end
+
+    subgraph MG["⚙️ Merge / CI (deterministic)"]
+        cOpen(["Open PR"]):::cmd
+        ePR["PR Opened"]:::evt
+        cMerge(["Merge"]):::cmd
+        eMerged["PR Merged"]:::evt
+    end
+
+    %% read models (views projected from events, read by the next processor)
+    rmBacklog{{"Backlog View"}}:::rm
+    rmReady{{"Ready-Slices View"}}:::rm
+    rmWIP{{"Work-In-Progress View"}}:::rm
+    rmDiff{{"Diff / Progress Ledger"}}:::rm
+    rmHealth{{"Slice Health View"}}:::rm
+    rmMQ{{"Merge Queue View"}}:::rm
+
+    %% Slice A — capture intent
+    cReq --> eReq --> rmBacklog
+    %% Slice B — model + GWT
+    rmBacklog --> cDraft --> eModeled --> cGWT --> eAcc --> rmReady
+    %% Slice C — schedule under autonomy policy
+    rmReady --> cAssign --> eAssigned --> rmWIP
+    %% Slice D — build
+    rmWIP --> cImpl --> eDrafted --> rmDiff
+    %% Slice E — verify
+    rmDiff --> cRun
+    cRun --> ePass
+    cRun --> eFail
+    ePass --> rmHealth
+    eFail --> rmHealth
+    eFail -. "re-enter build loop" .-> cImpl
+    %% Slice F — govern
+    rmHealth --> cReview
+    cReview --> eApproved
+    cReview --> eRejected
+    eApproved --> rmMQ
+    eRejected -. "back to builder" .-> cImpl
+    %% Slice G — merge (conditional append: only if Slice Approved)
+    rmMQ --> cOpen --> ePR --> cMerge --> eMerged
+    eMerged -. "slice done" .-> rmBacklog

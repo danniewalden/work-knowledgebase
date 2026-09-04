@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [semaphore-dymitruk-event-modeling]
+raw_file: [raw/articles/semaphore-dymitruk-event-modeling.md]
 tags: [event-modeling, event-sourcing, ddd, open-closed-principle, interview]
 ---
 

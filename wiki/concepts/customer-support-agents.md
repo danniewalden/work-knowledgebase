@@ -28,4 +28,11 @@ successful resolutions**.
 Quality and latency are the binding constraints here (see [[agent-observability-and-evals]]),
 since responses are customer-facing.
 
+**Worked Event Model (2026-06-15).** The KB has an in-house worked event model of an autonomous
+support desk — `outputs/worked-event-model-customer-support-desk.md` — modeling triage → context (via
+[[model-context-protocol|MCP]]) → draft → guardian/escalation → act+send → CSAT as a multi-agent
+[[event-modeling|Event Model]], with a per-ticket [[dynamic-consistency-boundaries|DCB]] guard
+("nothing sent or executed without approval"). It's the customer-support instance of
+[[event-modeled-agent-design]].
+
 _Source pages: [[anthropic-building-effective-agents]] · [[langchain-state-of-agent-engineering-2026]] · [[svitla-agentic-ai-market-trends-2026]]._

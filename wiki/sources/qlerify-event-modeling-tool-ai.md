@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [qlerify-event-modeling-tool-ai]
+raw_file: [raw/articles/qlerify-event-modeling-tool-ai.md]
 tags: [event-modeling, ai-tooling, given-when-then, vendor]
 ---
 

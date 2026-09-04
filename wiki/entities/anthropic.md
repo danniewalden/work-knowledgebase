@@ -2,8 +2,8 @@
 title: Anthropic
 type: entity
 created: 2026-06-11
-updated: 2026-06-11
-sources: [anthropic-building-effective-agents, anthropic-effective-harnesses-long-running-agents]
+updated: 2026-07-10
+sources: [anthropic-building-effective-agents, anthropic-effective-harnesses-long-running-agents, anthropic-getting-started-with-loops]
 tags: [entity, organization, ai-lab, agentic-ai, harness-engineering]
 ---
 
@@ -25,7 +25,11 @@ building agents ([[anthropic-building-effective-agents]]).
 - Published a key **[[harness-engineering]]** recipe for **[[long-running-agents]]**
   ([[anthropic-effective-harnesses-long-running-agents]]): the initializer-executor pattern with
   feature lists, progress files, and end-to-end self-verification.
+- Published the **vendor-canonical [[loop-engineering]] taxonomy** ([[anthropic-getting-started-with-loops]],
+  Claude Code team): loops = agents cycling until a stop condition, classified into turn-based /
+  goal-based (`/goal`) / time-based (`/loop`, `/schedule`) / proactive — the primitive-level counterpart
+  to the LangChain/Osmani/swyx primaries.
 - Listed among the key platform players building agentic capability into core products
   ([[svitla-agentic-ai-market-trends-2026]]).
 
-_Source pages: [[anthropic-building-effective-agents]] · [[anthropic-effective-harnesses-long-running-agents]]._
+_Source pages: [[anthropic-building-effective-agents]] · [[anthropic-effective-harnesses-long-running-agents]] · [[anthropic-getting-started-with-loops]]._

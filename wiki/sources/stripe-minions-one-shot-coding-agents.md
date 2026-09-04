@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [stripe-minions-one-shot-coding-agents]
+raw_file: [raw/articles/stripe-minions-one-shot-coding-agents.md]
 tags: [harness-engineering, unattended-agents, coding-agents, stripe]
 ---
 
@@ -17,7 +18,7 @@ left" and heuristic pre-push linting. Raw capture:
 ## Summary
 
 **Minions** are Stripe's homegrown, fully **unattended** coding agents, built to **one-shot** tasks.
-**1,000+ minion-produced PRs merge each week** — human-reviewed but containing no human-written code.
+**1,000+ minion-produced PRs merge each week** — human-reviewed but containing no human-written code. **Vendor self-report:** this is Stripe's own engineering blog describing Stripe's own tooling. There is no external verification of the figure, no denominator (what share of all merged PRs), and no quality measure attached to it. Cite it with the attribution attached, per `CLAUDE.md`.
 A run typically starts from a Slack mention and ends at a CI-passing PR ready for review, with no
 interaction in between; engineers spin up many in parallel (handy during on-call).
 

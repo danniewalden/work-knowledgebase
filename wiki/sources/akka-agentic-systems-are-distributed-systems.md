@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [akka-agentic-systems-are-distributed-systems]
+raw_file: [raw/articles/akka-agentic-systems-are-distributed-systems.md]
 tags: [agentic-ai, distributed-systems, event-sourcing, llm, architecture]
 ---
 

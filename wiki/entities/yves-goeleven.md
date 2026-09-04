@@ -3,7 +3,7 @@ title: Yves Goeleven
 type: entity
 created: 2026-06-14
 updated: 2026-06-14
-sources: [goeleven-event-sourcing-not-auditing-for-free, goeleven-event-modeling-visualize-business-processes, goeleven-interaction-design-aggregate-outbox-projection, goeleven-event-model-to-code-projection]
+sources: [goeleven-event-sourcing-not-auditing-for-free, goeleven-event-model-to-code-series, coupling-research-note]
 tags: [person, event-modeling, event-sourcing, eda, ddd, business-capabilities, focus]
 ---
 
@@ -31,4 +31,15 @@ mapping command→**Aggregate Root**(decision)→events→**Outbox**→**Project
 sharp coupling lesson — a context's internal events shouldn't double as integration events; a
 **contract between capabilities** is required.
 
-_Source pages: [[goeleven-event-sourcing-not-auditing-for-free]]._
+## Open thread — unresolved coupling taxonomy
+
+The [[coupling-research-note]] (2026-06-22) tried to verify a **Goeleven coupling-taxonomy series** he
+appears to have published on LinkedIn but **could not extract a verified taxonomy** — LinkedIn indexes
+poorly for non-logged-in fetches. Surfaced but unconfirmed: his
+[profile](https://www.linkedin.com/in/goeleven/), a [post on minimizing data
+coupling](https://www.linkedin.com/posts/goeleven_how-to-minimize-data-coupling-data-coupling-activity-7320401061008084993-r5MX),
+and a [blog post on low coupling / high cohesion](https://www.goeleven.com/blog/how-to-achieve-low-coupling-and-high-cohesion/).
+**To resolve:** Dannie drops direct URLs to the LinkedIn series and the research is re-run. Until then,
+treat his coupling taxonomy as a gap in [[coupling-taxonomy]].
+
+_Source pages: [[goeleven-event-sourcing-not-auditing-for-free]] · [[coupling-research-note]]._

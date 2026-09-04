@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [svitla-agentic-ai-market-trends-2026]
+raw_file: [raw/articles/svitla-agentic-ai-market-trends-2026.md]
 tags: [agentic-ai, market-trends, adoption, governance, multi-agent]
 ---
 

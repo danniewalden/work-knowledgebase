@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [langchain-state-of-agent-engineering-2026]
+raw_file: [raw/articles/langchain-state-of-agent-engineering-2026.md]
 tags: [agentic-ai, agent-engineering, survey, langchain, observability, evals]
 ---
 

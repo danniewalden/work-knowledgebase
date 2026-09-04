@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [dilger-hold-my-beer-engineer]
+raw_file: [raw/articles/dilger-hold-my-beer-engineer.md]
 tags: [event-modeling, event-sourcing, spec-driven-development, focus, stub]
 ---
 

@@ -2,8 +2,8 @@
 title: Harness Engineering
 type: concept
 created: 2026-06-11
-updated: 2026-06-14
-sources: [fowler-bockeler-harness-engineering, openai-harness-engineering-codex, anthropic-effective-harnesses-long-running-agents, langchain-anatomy-of-an-agent-harness, firecrawl-what-is-an-agent-harness, hashimoto-my-ai-adoption-journey, stripe-minions-one-shot-coding-agents, fowler-bockeler-maintainability-sensors]
+updated: 2026-08-31
+sources: [dymitruk-move-prompts-into-scripts-deterministic, fowler-bockeler-harness-engineering, openai-harness-engineering-codex, anthropic-effective-harnesses-long-running-agents, langchain-anatomy-of-an-agent-harness, firecrawl-what-is-an-agent-harness, hashimoto-my-ai-adoption-journey, stripe-minions-one-shot-coding-agents, fowler-bockeler-maintainability-sensors, dilger-harness-is-20-percent-requirements-are-80, martinfowler-prince-building-reliable-agentic-ai-systems, tornhill-cannot-trust-agent-codescene-mcp, ahe-agentic-harness-engineering]
 tags: [harness-engineering, agentic-ai, reliability, coding-agents]
 ---
 
@@ -66,10 +66,32 @@ technical debt**.
   memory, compaction, [[ralph-loop]]s.
 - **Shift-left feedback at scale** ([[stripe-minions-one-shot-coding-agents]]): heuristic <5s
   pre-push lints + selective CI over millions of tests with autofixes, capped at "often one, at most
-  two" CI runs — powering [[unattended-coding-agents]] (1,000+ merged PRs/week).
+  two" CI runs — powering [[unattended-coding-agents]] (1,000+ merged PRs/week, *Stripe's own figure*).
+- **Production enterprise harness** ([[martinfowler-prince-building-reliable-agentic-ai-systems]],
+  Bayer/Thoughtworks): a LangGraph control layer that bounds which agent can act, which tools it may
+  use, where the workflow pauses, how failures retry, and how **state persists so a failed run resumes
+  from the failed node** — plus cross-provider **LLM fallbacks**, three reflection loops, and
+  Langfuse/RAGAS evals. A worked, regulated-domain instance of "engineer the context *and* the harness."
+- **Deterministic external sensors over LLM self-review** ([[tornhill-cannot-trust-agent-codescene-mcp]]):
+  an agent can't reliably assess its own code health, so give it a *computational* sensor (CodeScene
+  [[model-context-protocol|MCP]]) as an external source of truth — the [[feedforward-and-feedback-controls|sensor]]
+  argument applied to [[ai-readable-code]].
+- **The harness as a self-evolving surface** ([[ahe-agentic-harness-engineering|AHE, Lin et al. 2026]]):
+  the manual "inspect trajectories → revise prompts/tools/middleware" loop, **automated**. An evolution
+  agent rewrites a decoupled **seven-component** harness (system prompt, tool description, tool
+  implementation, middleware, skill, sub-agent config, long-term memory) with the base model frozen,
+  lifting Terminal-Bench 2 pass@1 69.7% → 77.0% and beating the hand-built Codex-CLI harness. Empirically
+  the gain lives in **tools, middleware, and memory — not the system prompt** (prompt-only regressed),
+  refining which harness surfaces actually carry reliability. This is [[loop-engineering|loop engineering's]]
+  hill-climbing loop applied *to the harness itself*.
 
 ## Relationship to neighbours
 
+- **[[loop-engineering]]:** the layer *one floor above* the harness (June-2026 term). Harness
+  engineering makes a *single* agent run reliable; loop engineering wraps that harness in automated,
+  repeating, self-improving loops (it "runs on a timer, spawns helpers, and feeds itself"). The harness
+  is the unit the loop multiplies — see [[loop-engineering]] for the stacked-loop model and the five
+  primitives + memory.
 - **[[context-engineering]]:** harness engineering *uses* context engineering. Context engineering
   optimises *what the model sees*; harness engineering controls *the environment it operates in* —
   what it can access, what gets verified, what forces a retry. Building a coding-agent user harness
@@ -81,10 +103,52 @@ technical debt**.
 - Distinct from **prompt engineering** (a single call) and from agent **frameworks/orchestrators**
   (see [[agent-harness]]).
 
+## Counterpoint — "the harness is the easy 20%" ([[martin-dilger|Dilger]])
+
+[[dilger-harness-is-20-percent-requirements-are-80|Dilger]] (2026-06-29) accepts harness engineering as
+real but **subordinate**: the harness and the code are only ~20% of the solution; the other **80% is
+clarifying requirements and understanding business processes** — "a human, communications problem" with
+no technical fix. No quantity of agents, roles, skills, and guardrails rescues unclear requirements
+("which trees to cut"). His charge is that the field over-invests in the fun 20% (taming the agent) and
+under-invests in the 80% that [[event-modeling]] / [[spec-driven-development]] target. Not a refutation —
+Böckeler's own view is that a harness can't *force* a non-deterministic model either — but a sharp claim
+about **where the leverage is**: upstream of the harness, in the spec.
+
 ## Open questions
 
-How to keep a growing harness coherent (guides/sensors not contradicting); how to evaluate harness
-coverage/quality (a "code coverage" for harnesses); whether single general-purpose vs. specialised
-agents work best; the unsolved **behaviour harness**; and how much migrates into models over time.
+How to keep a growing harness coherent (guides/sensors not contradicting — [[ahe-agentic-harness-engineering|AHE]]
+finds harness components **interact non-additively**, so stacking good edits can *cap* the aggregate gain);
+how to evaluate harness coverage/quality (a "code coverage" for harnesses — AHE's **change manifest +
+next-round attribution** is one concrete answer, though it suffers "regression blindness"); whether single
+general-purpose vs. specialised agents work best; the unsolved **behaviour harness**; and how much migrates
+into models over time (AHE's weaker-base transfer suggests the harness *substitutes* for capability the
+model lacks — the gain shrinks as the base saturates).
+
+## The convergence claim, running the other way (Dymitruk, 2026-08-15)
+
+Nearly everything in this KB argues *from* [[event-modeling]] *to* agent practice.
+[[dymitruk-move-prompts-into-scripts-deterministic]] argues the reverse in three sentences — do harness
+engineering well enough and you reinvent the method:
+
+> "Move as much from your prompts and agent md files into scripts. Deterministic behaviour is your goal.
+> Evidence of how things work should be intermediate text files in directories that correspond to steps
+> in your processes - even inboxes and outboxes. You'll naturally arrive at #EventModeling and
+> #EventSourcing."
+
+Three moves: prompts → scripts (this page's "engineer the environment, don't trust the prompt", stated as
+a migration path); evidence as append-only intermediate files per step (a [[decision-trace]] arrived at
+from the filesystem side, and the same instinct as
+[[anthropic-effective-harnesses-long-running-agents]]'s progress files); and **"even inboxes and
+outboxes"** — the tell, because once steps have inboxes and outboxes you have processors consuming and
+emitting, which is Event Modeling's Automation pattern and event sourcing's transactional outbox.
+
+It is an assertion by the method's creator about his own method's inevitability, so maximally motivated —
+but it has an obvious test: do harnesses built with no Event Modeling exposure develop event-shaped
+intermediate state? The un-ingested loop-engineering cluster is full of practitioners describing exactly
+these file-and-directory conventions without the vocabulary, which is where to check.
+
+## Related
+
+[[token-budget-quality-cliff]]
 
 _Sources: [[fowler-bockeler-harness-engineering]] · [[openai-harness-engineering-codex]] · [[anthropic-effective-harnesses-long-running-agents]] · [[langchain-anatomy-of-an-agent-harness]] · [[firecrawl-what-is-an-agent-harness]]._

@@ -4,6 +4,7 @@ type: source
 created: 2026-06-12
 updated: 2026-06-12
 sources: [solace-multi-agent-systems-real-time-context-eda]
+raw_file: [raw/articles/solace-multi-agent-systems-real-time-context-eda.md]
 tags: [agentic-ai, multi-agent, event-driven-architecture, governance, mcp, a2a, analyst]
 ---
 

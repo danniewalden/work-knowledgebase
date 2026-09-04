@@ -4,6 +4,7 @@ type: source
 created: 2026-06-13
 updated: 2026-06-13
 sources: [dilger-automatic-domain-discovery-claude-code]
+raw_file: [raw/articles/dilger-automatic-domain-discovery-claude-code.md]
 tags: [event-modeling, agentic-coding, domain-discovery, skills, ux, focus]
 ---
 

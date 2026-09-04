@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [dilger-craft-conf-idea-to-event-model-to-code]
+raw_file: [raw/notes/dilger-craft-conf-idea-to-event-model-to-code.md]
 tags: [event-modeling, event-sourcing, cqrs, spec-driven-development, agentic-coding, focus]
 ---
 

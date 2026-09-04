@@ -20,4 +20,8 @@ initializer-executor pattern. [[openai-harness-engineering-codex]] uses a Ralph-
 drive a PR to completion: the agent reviews its own changes, requests agent reviews, responds to
 feedback, and iterates until all reviewers are satisfied.
 
+In [[loop-engineering]] terms the Ralph loop is the **agent loop** (level 1) made persistent — the
+innermost primitive that loop engineering composes with verification, event-driven, and hill-climbing
+loops, rather than the whole stack.
+
 _Sources: [[langchain-anatomy-of-an-agent-harness]] · [[openai-harness-engineering-codex]]._

@@ -2,7 +2,7 @@
 title: Long-Running Agents
 type: concept
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-08-31
 sources: [anthropic-effective-harnesses-long-running-agents, langchain-anatomy-of-an-agent-harness, firecrawl-what-is-an-agent-harness, openai-harness-engineering-codex]
 tags: [harness-engineering, long-running-agents, coding-agents]
 ---
@@ -36,5 +36,13 @@ The "initializer" and "coding" agents differ only in their initial prompt — sa
 tools, and harness. The filesystem + git act as the **shared memory** across sessions
 ([[langchain-anatomy-of-an-agent-harness]]; cf. [[ralph-loop]]). OpenAI's agent-first build is a
 large-scale instance ([[openai-harness-engineering-codex]]).
+
+The "shifts" + on-disk-memory pattern is exactly the **event-driven loop** (level 3) in
+[[loop-engineering]]: "the agent forgets, the repo doesn't." Loop engineering names the surrounding
+discipline of triggering and stacking such runs.
+
+## Related
+
+[[token-budget-quality-cliff]]
 
 _Sources: [[anthropic-effective-harnesses-long-running-agents]] · [[langchain-anatomy-of-an-agent-harness]] · [[firecrawl-what-is-an-agent-harness]] · [[openai-harness-engineering-codex]]._

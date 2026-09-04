@@ -2,8 +2,8 @@
 title: Open–Closed Principle
 type: concept
 created: 2026-06-13
-updated: 2026-06-13
-sources: [semaphore-dymitruk-event-modeling, eventmodeling-what-is-event-modeling]
+updated: 2026-06-19
+sources: [semaphore-dymitruk-event-modeling, eventmodeling-what-is-event-modeling, dilger-done-is-done-open-closed-new-slice]
 tags: [software-design, principle, event-modeling]
 ---
 
@@ -29,8 +29,22 @@ cost stops compounding.
 It is the same instinct as [[event-sourcing]]'s "no erasers" rule (append, never overwrite)
 and a close relative of [[domain-driven-design]]'s emphasis on stable boundaries.
 
+## "Done is Done" — OCP as a slice decision (Dilger, 2026-06-18)
+
+[[martin-dilger]] operationalizes OCP as a question to ask before building: *"can I build this without
+touching any existing code that already works?"* — his **"Done is Done"** principle
+([[dilger-done-is-done-open-closed-new-slice]]). The payoff is that a genuinely distinct concept becomes
+a **new [[vertical-slice-architecture|slice]]** (an *addition*) rather than an *extension* of existing
+code. His worked example: "Guest Invitations" only superficially resemble "Invitations" (different rules
+and lifecycle), so reusing-and-extending would **couple concepts that should stay separate** — and on a
+live [[event-sourcing|event-sourced]] system, modifying an existing flow risks
+[[event-versioning-and-upcasting|migrations/upcasters]] and full retesting. This is the coupling-over-reuse
+view (cf. [[balanced-coupling]], [[business-capabilities]]) and a concrete
+[[event-modeled-agent-design|model-a-slice-then-let-an-agent-build-it]] anecdote.
+
 ## Related
 
-[[event-modeling]] · [[event-sourcing]] · [[domain-driven-design]] · [[cqrs]]
+[[event-modeling]] · [[event-sourcing]] · [[domain-driven-design]] · [[cqrs]] ·
+[[vertical-slice-architecture]] · [[balanced-coupling]]
 
-_Sources: [[semaphore-dymitruk-event-modeling]] · [[eventmodeling-what-is-event-modeling]]._
+_Sources: [[semaphore-dymitruk-event-modeling]] · [[eventmodeling-what-is-event-modeling]] · [[dilger-done-is-done-open-closed-new-slice]]._

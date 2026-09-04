@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [pellegrini-dynamic-consistency-boundary]
+raw_file: [raw/articles/pellegrini-dynamic-consistency-boundary.md]
 tags: [event-sourcing, dcb, ddd, consistency, seed]
 ---
 

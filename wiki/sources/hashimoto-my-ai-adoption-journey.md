@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [hashimoto-my-ai-adoption-journey]
+raw_file: [raw/articles/hashimoto-my-ai-adoption-journey.md]
 tags: [harness-engineering, coding-agents, adoption, workflow]
 ---
 

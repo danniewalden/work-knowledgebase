@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [openai-harness-engineering-codex]
+raw_file: [raw/articles/openai-harness-engineering-codex.md]
 tags: [harness-engineering, codex, agent-first, case-study]
 ---
 

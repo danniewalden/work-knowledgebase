@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [a2a-protocol-overview]
+raw_file: [raw/articles/a2a-protocol-overview.md]
 tags: [protocol, a2a, primary-source, agentic-ai, interoperability]
 ---
 

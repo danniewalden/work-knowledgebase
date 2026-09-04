@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [fowler-bockeler-harness-engineering]
+raw_file: [raw/articles/fowler-bockeler-harness-engineering.md]
 tags: [harness-engineering, coding-agents, cybernetics, thoughtworks]
 ---
 

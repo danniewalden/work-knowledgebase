@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [fowler-bockeler-maintainability-sensors]
+raw_file: [raw/articles/fowler-bockeler-maintainability-sensors.md]
 tags: [harness-engineering, coding-agents, sensors, static-analysis, testing, thoughtworks]
 ---
 

@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [karpathy-llm-wiki]
+raw_file: [raw/articles/karpathy-llm-wiki.md]
 tags: [knowledge-management, llm, pkm, method]
 ---
 

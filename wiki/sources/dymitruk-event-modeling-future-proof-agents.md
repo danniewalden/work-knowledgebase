@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [dymitruk-event-modeling-future-proof-agents]
+raw_file: [raw/notes/dymitruk-event-modeling-future-proof-agents.md]
 tags: [event-modeling, agentic-ai, multi-agent, primary-source]
 ---
 

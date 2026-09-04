@@ -4,6 +4,7 @@ type: source
 created: 2026-06-11
 updated: 2026-06-11
 sources: [mcp-specification-2025-11-25]
+raw_file: [raw/articles/mcp-specification-2025-11-25.md]
 tags: [protocol, mcp, primary-source, agentic-ai, tools]
 ---
 

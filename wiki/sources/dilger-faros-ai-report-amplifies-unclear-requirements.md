@@ -4,6 +4,7 @@ type: source
 created: 2026-06-13
 updated: 2026-06-13
 sources: [dilger-faros-ai-report-amplifies-unclear-requirements]
+raw_file: [raw/articles/dilger-faros-ai-report-amplifies-unclear-requirements.md]
 tags: [event-modeling, agentic-coding, spec-driven-development, requirements, metrics, focus]
 ---
 

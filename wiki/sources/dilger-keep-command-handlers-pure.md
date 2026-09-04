@@ -4,6 +4,7 @@ type: source
 created: 2026-06-13
 updated: 2026-06-13
 sources: [dilger-keep-command-handlers-pure]
+raw_file: [raw/articles/dilger-keep-command-handlers-pure.md]
 tags: [event-modeling, agentic-coding, cqrs, guardrails, skills, command-handler, focus]
 ---
 

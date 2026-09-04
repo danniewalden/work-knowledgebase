@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [goeleven-event-sourcing-not-auditing-for-free]
+raw_file: [raw/articles/goeleven-event-sourcing-not-auditing-for-free.md]
 tags: [event-sourcing, auditing, business-capabilities, focus]
 ---
 

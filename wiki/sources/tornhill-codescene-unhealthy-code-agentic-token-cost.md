@@ -4,6 +4,7 @@ type: source
 created: 2026-06-14
 updated: 2026-06-14
 sources: [tornhill-codescene-unhealthy-code-agentic-token-cost]
+raw_file: [raw/articles/tornhill-codescene-unhealthy-code-agentic-token-cost.md]
 tags: [agentic-coding, harness, code-health, technical-debt, focus]
 ---
 
